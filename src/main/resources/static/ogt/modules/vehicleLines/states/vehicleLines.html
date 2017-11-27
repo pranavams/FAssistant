@@ -1,0 +1,22 @@
+<div class="row" ng-controller="VehicleLinesController as  vehicleLinesCtrl">
+
+			<div class="col-sm-4">
+
+				<div id="markets"
+					ng-include="'ogt/modules/vehicleLines/states/Markets.html'"
+					ng-init="onMarketChange = 'vehicleLinesCtrl.loadVehicleLine(vehicleLinesCtrl.selectedMarket)'"></div>
+			</div>
+			<div class="col-sm-4">
+
+				<div id="models"
+					ng-include="'ogt/modules/vehicleLines/states/Models.html'"
+					ng-init="onModelChange = 'vehicleLinesCtrl.loadModelYear(vehicleLinesCtrl.selectedMarket,vehicleLinesCtrl.selectedVehicleLine)'"></div>
+			</div>
+			<div class="col-sm-4">
+
+				<div id="modelYears"
+					ng-include="'ogt/modules/vehicleLines/states/ModelYears.html'"
+					ng-init="onModelYearChange = 'vehicleLineMappingCtrl.loadContent()'"></div>
+			</div>
+		</div>
+	

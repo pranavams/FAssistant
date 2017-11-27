@@ -1,0 +1,348 @@
+{
+  "application": {
+	"title": "Java(Script) Adventure Builder-C",
+	"shortTitle": "JS Adventure Builder-C",
+	"copyright": "© 2015 Ford Motor Company. All rights reserved.-C",
+	"navigation": {
+	  "toggleTitle": "Toggle navigation-C",
+	  "links": {
+		"authenticate": "Authenticate-C",
+		"home": "Home-C",
+		"bookings": {
+		  "main": "Bookings-C",
+		  "create": "Create Booking-C",
+		  "search": "Search Bookings"
+		},
+		"agents": "Manage Agents-C",
+		"resources": {
+		  "main": "Resources-C",
+		  "statistics": "Booking Statistics"
+		},
+		"role": "Choose Role:-C",
+		"language": "Choose Language:-C",
+		"ok": "Ok-C",
+		"cancel": "Cancel-C"
+	  }
+	},
+	"welcomePhrase": "Welcome {{firstName}} {{lastName}} ({{cdsid}})-C",
+	"role": {
+	  "label": "Role:-C",
+	  "customer": "Customer-C",
+	  "agent": "Booking Agent-C"
+	},
+	"language": {
+	  "label": "Language:-C",
+	  "title": "Select Language-C",
+	  "instructions": "Select the language you wish to use for this application.-C",
+	  "english": "English-C",
+	  "chinese": "Chinese-C",
+	  "russian": "Russian-C"
+	},
+	"errors": {
+	  "wslError": "The application encountered an error with WSL authentication. It will continue in offline mode, using local cached data, unless you click the red 'nonAuthenticated' text in the heading to reauthenticate.-C",
+	  "isRequiredError": "is required.-C",
+	  "isInvalidError": "is invalid.-C",
+	  "fieldValue": "Value-C"
+	},
+	"buttons": {
+	  "create": "Create -C",
+	  "search": "Search -C",
+	  "delete": "Delete -C",
+	  "yes": "Yes -C",
+	  "no": "No -C"
+	}
+  },
+  "conflictNotification": {
+	"unableToUpdate": "Unable to Update {{item}}-C",
+	"unableToDelete": "Unable to Delete {{item}}-C",
+	"recordUpdatedConflict": "The {{item}} you are editing has been updated by someone else. Click 'Ok' to refresh the latest data and make your changes again.-C",
+	"recordDeletedConflict": "The {{item}} you are editing has been deleted by someone else. Click 'Ok' to return to the List Booking page.-C",
+	"offlineUpdateConflict": "The following {{item}} could not be updated because another user has edited {{pronoun}} while you were offline.-C",
+	"offlineDeleteConflict": "The following {{item}} could not be deleted because another user has deleted {{pronoun}} while you were offline.-C"
+  },
+  "booking": {
+	"type": "Booking-C",
+	"types": "Bookings-C",
+	"selectedTypes": "Selected Bookings-C",
+	"listBooking": {
+	  "title": "List Bookings-C",
+	  "instructions": "The existing bookings are listed below. You may create new bookings or search for existing ones.-C",
+	  "customerTitle": "Bookings for {{email}} ({{lastName}}, {{firstName}})-C",
+	  "customerInstructions": "Your bookings are listed below. Please contact your agent for information about updating or canceling your bookings.-C",
+	  "subTitle": "Bookings-C",
+	  "bookingsFailed": "Failed to get bookings: {{error}}-C"
+	},
+	"deleteBooking": {
+	  "deleteSuccess": "{{numberOfBookings}} booking(s) have been successfully deleted.-C",
+	  "deleteFailed": "Failed to delete booking(s): {{error}}-C",
+	  "title": "Delete Bookings-C",
+	  "instructions": "The following bookings will be deleted. This action cannot be undone. Are you sure you wish to continue?-C"
+	},
+	"updateBooking": {
+	  "title": "Update Booking-C",
+	  "headerText": "Select Booking Options-C",
+	  "instruction": "Use this form to update your booking options.-C",
+	  "save": "Save-C",
+	  "updateSuccess": "Booking {{id}} has been successfully updated.-C",
+	  "updateQueued": "Booking update has been queued for later processing due to being offline.-C",
+	  "updateFailed": "Failed to update booking.-C",
+	  "unableToUpdate": "Unable to Update Booking-C",
+	  "unableToDelete": "Unable to Delete Booking-C",
+	  "recordUpdatedConflict": "The Booking you are editing has been updated by someone else. Click 'Ok' to refresh the latest data and make your changes again.-C",
+	  "recordDeletedConflict": "The Booking you are editing has been deleted by someone else. Click 'Ok' to return to the List Booking page.-C",
+	  "offlineUpdateConflict": "The following Booking could not be updated because another user has edited it while you were offline.-C",
+	  "offlineDeleteConflict": "The following Booking could not be deleted because another user has deleted it while you were offline.-C"
+	},
+	"viewBooking": {
+	  "headerText": "Booking Details-C",
+	  "bookingOptions": "Booking Options-C",
+	  "flightDetails": "Flight Details-C",
+	  "adventure": "Adventure-C",
+	  "customerInfo": "Customer Information-C",
+	  "flightInfo": "Flight Information-C",
+	  "edit": "Edit-C",
+	  "type": "Type-C",
+	  "includedActivities": "Included Activities-C",
+	  "name": "Name-C",
+	  "address": "Address-C",
+	  "phone": "Phone-C",
+	  "backToPrevious": "⇐ Back to Previous-C"
+	},
+	"searchBooking": {
+	  "headerText": "Search for Bookings-C",
+	  "criteria": {
+		"header": "Search Bookings-C",
+		"instruction": "Please specify your search criteria and click 'Search'.-C",
+		"customers": "Customer(s)-C",
+		"adventureTypes": "Adventure Type(s)-C",
+		"customerEmails": "Customer Email(s)-C"
+	  },
+	  "results": {
+		"header": "Search Results-C",
+		"instruction": "Please enjoy these results tailored to your query.-C",
+		"modifySearch": "Modify Search-C",
+		"newSearch": "New Search-C",
+		"delete": "Delete Booking-C",
+		"actions": "Actions-C",
+		"telephone": "Telephone-C",
+		"totalPrice": "Total Price-C",
+		"dailyPrice": "Daily Price-C",
+		"numberOfDays": "Number of Days-C",
+		"adventureName": "Adventure Name-C",
+		"endDate": "End Date-C",
+		"startDate": "Start Date-C",
+		"bookingDetails": "Booking Details-C",
+		"confirmationNumber": "Booking Confirmation Number-C",
+		"selectBooking": "Select Booking-C",
+		"includedActivities": "Included Activities-C",
+		"returningFlightNumber": "Returning Flight #-C",
+		"departingFlightNumber": "Departing Flight #-C",
+		"updateBookingOptions": "Update Booking Options-C",
+		"updateFlightInformation": "Update Flight Information-C",
+		"bookingInformation": "Booking Information-C",
+		"view": "View Details-C",
+		"deleteSelectedBookings": "Delete Selected Bookings-C",
+		"noResultsAvailableMessage": "The results of this search are no longer available.  Please -C",
+		"noResultsAvailableMessageLink": "return to the search criteria-C",
+		"noResultsAvailableMessageContinued": " and try your search again.-C",
+		"resultsPerPage": "Results per page: -C",
+		"showingResultsInfo": "Showing Results: -C"
+	  },
+	  "cancel": "Cancel-C",
+	  "search": "Search-C",
+	  "noResultsFoundMessage": "No results matched your criteria.  Please adjust your criteria and try again.-C"
+	},
+	"createBooking": {
+	  "title": "Create Booking-C",
+	  "previous": "Previous-C",
+	  "cancel": "Cancel-C",
+	  "continue": "Continue-C",
+	  "bookAdventure": "Book Adventure-C",
+	  "pleaseWait": "Please wait...-C",
+	  "enterNewCustomer": "Enter New Customer-C",
+	  "useExistingCustomer": "Use Existing Customer-C",
+	  "custInfo": "Customer Information-C",
+	  "email": "Customer Email-C",
+	  "custName": "Name-C",
+	  "firstName": "First Name-C",
+	  "lastName": "Last Name-C",
+	  "streetAddress": "Street Address-C",
+	  "streetAddress1": "Street Address 1-C",
+	  "streetAddress2": "Street Address 2-C",
+	  "custCountry": "Country-C",
+	  "custState": "State-C",
+	  "custCity": "City-C",
+	  "postalCode": "US Zip Code-C",
+	  "custTelephone": "Telephone-C",
+	  "custNotes": "Notes-C",
+	  "notesPlaceholder": "Enter your message here-C",
+	  "adventureType": "Adventure Type-C",
+	  "adventure": "Adventure-C",
+	  "selectedAdventure": "Selected Adventure-C",
+	  "bookingOptions": "Booking Options-C",
+	  "anyPrice": "Any-C",
+	  "location": "Location-C",
+	  "dailyPrice": "Daily Price-C",
+	  "activities": "Included Activities-C",
+	  "startDate": "Start Date-C",
+	  "endDate": "End Date-C",
+	  "numberOfDays": "No. of Days-C",
+	  "totalPrice": "Total Price-C",
+	  "flightInformation": "Flight Information-C",
+	  "flightDeparting": "Departing-C",
+	  "flightReturning": "Returning-C",
+	  "airline": "Airline-C",
+	  "flightNumber": "Flight Number-C",
+	  "departureTime": "Departure Time-C",
+	  "arrivalTime": "Arrival Time-C",
+	  "flightPrice": "Price-C",
+	  "flightSelection": "Flight selection-C",
+	  "flightMaxPrice": "Flight Maximum Price-C",
+	  "stepOne": {
+		"header": "Step 1 of 6: Enter Customer Information-C",
+		"instruction": "Begin by entering the customer's email address.-C"
+	  },
+	  "stepTwo": {
+		"header": "Step 2 of 6: Select Adventure-C",
+		"instruction": "Select an adventure type and a corresponding adventure.-C"
+	  },
+	  "stepThree": {
+		"header": "Step 3 of 6: Select Booking Options-C",
+		"instruction": "Specify the start and end dates for this adventure.-C"
+	  },
+	  "stepFour": {
+		"header": "Step 4 of 6: Select Departing Flight-C",
+		"instruction": "Departing on-C"
+	  },
+	  "stepFive": {
+		"header": "Step 5 of 6: Select Returning Flight-C",
+		"instruction": "Returning on-C"
+	  },
+	  "stepSix": {
+		"header": "Step 6 of 6: Review Details-C",
+		"instruction": "Review the booking details below. To make corrections, click on the previous button. If all details are correct, click Book Adventure.-C"
+	  },
+	  "createSuccess": "Booking {{bookingID}} has been successfully created.-C",
+	  "createQueued": "Booking creation has been queued for later processing due to being offline.-C",
+	  "createFailed": "Failed to create booking: {{error}}-C",
+	  "countriesFailed": "Failed to get countries: {{error}}-C",
+	  "statesFailed": "Failed to get states: {{error}}-C",
+	  "citiesFailed": "Failed to get cities: {{error}}-C",
+	  "customersFailed": "Failed to get customers: {{error}}-C",
+	  "adventureTypesFailed": "Failed to get adventure types: {{error}}-C",
+	  "adventuresFailed": "Failed to get adventures: {{error}}-C",
+	  "departingFlightsFailed": "Failed to get departing flights: {{error}}-C",
+	  "returningFlightsFailed": "Failed to get returning flights: {{error}}-C",
+	  "validationErrors": "Errors found on this page. Please see below for details.-C",
+	  "adventureQueuedLocally": "{{customerEmailId}}'s {{adventureType}} adventure beginning on {{startDay}} queued for save locally.-C"
+	},
+	"actions": "Actions-C",
+	"customerName": "Customer Name-C",
+	"confirmationNumber": "Booking Confirmation Number-C",
+	"adventure": "Adventure-C",
+	"startDate": "Start Date-C",
+	"endDate": "End Date-C",
+	"numDays": "# of Days-C"
+  },
+  "agent": {
+	"type": "Agent-C",
+	"types": "Agents-C",
+	"selectedTypes": "Selected Agents-C",
+	"actions": "Actions-C",
+	"name": "Name-C",
+	"gender": "Gender-C",
+	"male": "Male-C",
+	"female": "Female-C",
+	"birthYear": "Birth Year-C",
+	"mostRecentCertificationYear": "Most Recent Certification Year-C",
+	"listAgent": {
+	  "title": "Manage Agents-C",
+	  "instruction": "A list of travel agents appears below. You can create a new agent or update an existing agent.-C",
+	  "filterOptions": "Filter Options-C",
+	  "apply": "Apply -C",
+	  "clear": "Clear -C",
+	  "filter": "Filter-C",
+	  "createNewAgent": "Create New Agent-C",
+	  "bookingPerPage": "Bookings Per Page-C",
+	  "showingBookings": "Showing Bookings-C",
+	  "deleteAgent": "Delete Agent-C",
+	  "deleteSelectedAgents": "Delete Selected Agents-C"
+	},
+	"updateAgent": {
+	  "title": "Update Agent-C",
+	  "updateSuccess": "Agent {{name}} has been successfully updated.-C",
+	  "updateFailed": "Failed to update agent: {{error}}-C",
+	  "unableToUpdate": "Unable to Update Agent-C",
+	  "unableToDelete": "Unable to Delete Agent-C",
+	  "recordUpdatedConflict": "The agent you are editing has been updated by someone else.  Click 'Ok' to refresh the latest data and make your changes again.-C",
+	  "recordDeletedConflict": "The agent you are editing has been deleted by someone else. Click 'Ok' to return to the List Agents page.-C",
+	  "offlineUpdateConflict": "The following agent could not be updated because another user has edited them while you were offline.-C",
+	  "offlineDeleteConflict": "The following agent could not be deleted because another user has deleted them while you were offline.-C"
+	},
+	"createAgent": {
+	  "title": "Create Agent-C",
+	  "reviewDetails": "Review Agent Details-C",
+	  "details": "Agent Details-C",
+	  "instruction": "Specify the following information for a travel agent.-C",
+	  "reviewInstruction": "Review the agent details below. To make corrections, click on the previous button. If all details are correct, click 'Save.'-C",
+	  "name": "Name-C",
+	  "firstName": "First Name-C",
+	  "lastName": "Last Name-C",
+	  "gender": "Gender-C",
+	  "male": "Male-C",
+	  "female": "Female-C",
+	  "birthYear": "Birth Year-C",
+	  "skills": "Skills-C",
+	  "cert": "Certification-C",
+	  "certifications": "Certifications-C",
+	  "certificationsInstruction": "Use the \"Add Certification\" button to add a new certification for agent - {{firstName}} {{lastName}}.-C",
+	  "continue": "Continue-C",
+	  "previous": "Previous-C",
+	  "save": "Save-C",
+	  "cancel": "Cancel-C",
+	  "step1": "Step 1 of 3: Enter Agent Details-C",
+	  "step2": "Step 2 of 3: Add Certifications-C",
+	  "step3": "Step 3 of 3: Review Details-C",
+	  "createSuccess": "Agent {{name}} has been successfully created.-C",
+	  "createFailed": "Failed to create agent: {{error}}-C",
+	  "birthYearError": "Please enter a valid birth year.-C",
+	  "birthYearInValidError": "Birth Year must be after 1900.-C",
+	  "birthYearBefore18Error": "The agent must be at least 18 years old.-C",
+	  "addCertification": "Add Certification-C",
+	  "invalidCertificationError": "The Birth Year must be before the Certification Year.-C",
+	  "certification": {
+		"title": "Add Certification-C",
+		"details": "Certification Details-C",
+		"instructions": "Please enter the certification information below.-C",
+		"year": "Certification Year-C",
+		"comments": "Comments-C",
+		"certificationLevels": "Certification Levels-C",
+		"saveCertification": "Save Certification-C",
+		"cancel": "Cancel-C",
+		"notFound": "No Records Found-C",
+		"removeTitle": "Delete Certification-C",
+		"removeMessage": "Please confirm removal of this certification. This action cannot be undone.-C",
+		"removeCertification": "Delete-C",
+		"edit": "Edit-C",
+		"delete": "Delete-C",
+		"none": "None-C",
+		"table": {
+		  "year": "Year-C",
+		  "actions": "Actions-C",
+		  "level": "Level-C",
+		  "comments": "Comments-C"
+		}
+	  }
+	},
+	"deleteAgent": {
+	  "deleteSuccess": "{{numberOfAgents}} agents(s) have been successfully deleted. -C",
+	  "deleteFailed": "Failed to delete agents(s): {{error}} -C",
+	  "title": "Delete Agents -C",
+	  "instructions": "The following agents will be deleted. This action cannot be undone. Are you sure you wish to continue? -C"
+	}
+  },
+  "actions": {
+	"selectAll": "Select All-C",
+	"selectNone": "Select None-C"
+  }
+}

@@ -1,0 +1,44 @@
+<footer role="contentinfo">
+	<form style="background-color:#215a8f" class="well" id="footerForm" name="footerForm" novalidate>
+	<fieldset>
+		<div class="row">
+
+			<div class="col-xs-2">
+					<p style="color:#ffffff">Select Business
+					Process: </p>
+			</div>
+			<div class="col-xs-2 pull-left">
+			
+				<select
+					name="region" id="region" required
+					ng-model='ogtCtrl.selectedBusiness'
+					ng-options="business.key as business.name for business in ogtCtrl.business|orderBy:'name'"
+					ng-change="ogtCtrl.loadMarketGroup()">
+			 		<option value="" default>Select Business Process</option>
+				</select>
+					
+			</div>
+			<div class="col-xs-2">
+					<p style="color:#ffffff">Select Market
+					Group: </p>
+			</div>
+				<div class="col-xs-2 pull-left">
+			
+				<select
+					name="market" id="market" required
+					ng-options="markets.key as markets.name for markets in ogtCtrl.markets|orderBy:'name'"
+					ng-model='ogtCtrl.selectedMarketGroup'
+					ng-change="ogtCtrl.resolve()">
+					<option value="" default>Select Market Group</option>
+				</select>
+				
+			</div>
+			<div class="col-xs-4">
+				<label style="color:#ffffff" for="copyright" class="control-label">{{'application.copyright'
+					| translate}} </label>
+			</div>
+		</div>
+		 </fieldset>
+	</form>
+
+</footer>

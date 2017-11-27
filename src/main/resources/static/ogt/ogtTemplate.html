@@ -1,0 +1,20 @@
+<div id="header" ng-include="'ogt/ogtHeader.html'"></div>
+<div ng-if="ogtCtrl.selectedBusiness != 'MF' && ogtCtrl.selectedBusiness != 'OG'">
+<nav id="navMenu" ogt-nav-menu menu-data="menu" menu-data-url="ogt/ogtHome.json">
+		<ul user-info class="nav"></ul>
+</nav>
+</div> 
+<div ng-if="ogtCtrl.selectedBusiness == 'MF'">
+	<nav id="navMenu" ogt-nav-menu menu-data="menu" menu-data-url="ogt/ogtMFMenu.json">
+		<ul user-info class="nav"></ul>
+	</nav>
+</div>
+<div ng-if="ogtCtrl.selectedBusiness == 'OG'">
+	<nav id="navMenu" ogt-nav-menu menu-data="menu" menu-data-url="ogt/ogtOGMenu.json">
+		<ul user-info class="nav"></ul>
+	</nav>
+</div>
+
+<div class="col-md-12" wc-alert-console></div>
+<div id="content" class="container-fluid" ui-view></div>
+<div id="footer" style="height: 5px;" ng-include="'ogt/ogtFooter.html'"></div>

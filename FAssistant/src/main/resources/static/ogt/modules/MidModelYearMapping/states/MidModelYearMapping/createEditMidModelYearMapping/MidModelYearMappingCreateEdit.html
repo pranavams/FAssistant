@@ -1,0 +1,147 @@
+<div id="content" class="container-fluid">
+	<h2>CREATE EDIT MID MODEL YEAR MAPPING</h2>
+	<hr />
+	<form class="well" novalidate
+		role="form">
+		<div class="row">
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="market" class="control-label">{{'application.fields.market'
+						| translate}} </label>
+						<select
+						name="market" id="market" class="form-control"
+						ng-model='midModelYearCreateEditCtrl.selectedMarket'
+						ng-options="market.key as market.name for market in midModelYearCreateEditCtrl.markets | orderBy:'name'"
+						ng-change="midModelYearCreateEditCtrl.getModels()">
+						<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+							translate}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-xs-2">
+
+				<div class="form-group">
+					<label for="vehicleLine" class="control-label">{{'application.fields.model'
+						| translate}} </label> <select
+						og-validation-indicator="{{'application.fields.model' | translate}}"
+						name="vehicleLine" id="vehicleLine" class="form-control" required
+						ng-model='midModelYearCreateEditCtrl.selectedModel'
+						ng-options="model.key as model.name for model in midModelYearCreateEditCtrl.models | orderBy:'name'"
+						ng-change="midModelYearCreateEditCtrl.getModelYears()">
+						<option value="" default>{{'application.dropdownDefaults.selectModel'|
+							translate}}</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+						| translate}} </label> <select name="modelYr" id="modelYr"
+						class="form-control" required
+						ng-model='midModelYearCreateEditCtrl.selectedModelYear'
+						ng-options="my.modelYear as my.modelYear for my in midModelYearCreateEditCtrl.modelYears|orderBy:['modelYear']"
+						ng-change="midModelYearCreateEditCtrl.onModelYearSelect();">
+						<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+							translate}}</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="col-xs-2">
+					<div class="form-group">
+						<label for="family" class="control-label">Families</label>  
+							<select	name="family" id="family" class="form-control"
+							ng-model='midModelYearCreateEditCtrl.selectedFamily'
+							ng-options="family.key as family.name for family in midModelYearCreateEditCtrl.families | orderBy:'name'"
+							ng-change="midModelYearCreateEditCtrl.onFamilySelect()">
+							<option value="" default>Select Family</option>
+						</select>
+					</div>
+			 </div>
+			 </div>
+			 <div>
+			<fieldset class="mapping-border" ng-if="midModelYearCreateEditCtrl.displayMappings">
+			<legend class="mapping-border">Mid ModelYear Mappings</legend>
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<label for="unmappedFeatures" class="control-label">Unmapped Features for {{midModelYearCreateEditCtrl.getFamilyName()}}</label>
+					<select id="unmappedFeatures" name="unmappedFeatures" class="form-control selectBoxHorizontalScorll" size="10" style="height:200px" ng-model="midModelYearCreateEditCtrl.selectedUnmappedFtr" 
+					ng-options='unmappedFtrObj.key as unmappedFtrObj.name for unmappedFtrObj in midModelYearCreateEditCtrl.getUnmappedFeatures()'>
+					<option ng-if="!midModelYearCreateEditCtrl.selectedUnmappedFtr" style="display:none" value=""></option>
+					</select>
+				</div>
+				<div class="col-sm-6 form-group">
+					<label for="unmappedFeatures" class="control-label">FTP Features for {{midModelYearCreateEditCtrl.getFamilyName()}}</label>
+					<select id="unmappedFeatures" name="unmappedFeatures" class="form-control selectBoxHorizontalScorll" size="10" style="height:200px" ng-model="midModelYearCreateEditCtrl.selectedUnmappedFtpFtr" 
+					ng-options='unmappedFtrObj.key as unmappedFtrObj.name for unmappedFtrObj in midModelYearCreateEditCtrl.getUnmappedFtpFtrs()'>
+					<option ng-if="!midModelYearCreateEditCtrl.selectedUnmappedFtpFtr" style="display:none" value=""></option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<div class="col-sm-12 form-group addMappingBtn midMycoAddBtn">
+				<button id="addMapping" class="btn btn-primary btn-md" ogt-protected-resource="MidModelYearMappings:execute_{{midModelYearCreateEditCtrl.businessProcess}}:{{midModelYearCreateEditCtrl.marketGroup}}:{{midModelYearCreateEditCtrl.selectedMarket}}:WRITE"
+				ng-click="midModelYearCreateEditCtrl.addMappings()">
+						<span class="glyphicon glyphicon-plus"></span>&nbsp;
+						<span>{{'application.buttons.addMapping' | translate}}</span> 
+				</button>
+			</div>
+			<br><br><br>	
+			<div class="panel-group" id="accordionManual" style="margin-bottom:2px;margin-top:10px;">
+				<div class="panel panel-default">
+					<div class="panel-heading" data-parent="#accordionManual" href="#MappingList">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;Mapped Features
+							</span>
+						</h4>
+					</div>
+					<div id="mappedFeature">
+						<div class="panel-body">
+							<div class="row form-group col-sm-15" style="padding-left: 20px">
+								<div class="checkbox" ng-repeat="mapping in midModelYearCreateEditCtrl.mappedKeysList">
+									<label>
+										<input type="checkbox" ng-true-value="{{mapping}}" ng-model="midModelYearCreateEditCtrl.selectedMappedFeature[mapping.mapId]">
+										{{midModelYearCreateEditCtrl.getFeature(mapping.from).name}} is mapped to {{midModelYearCreateEditCtrl.getFeature(mapping.to).name}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 text-left">
+					<button id="remove-mappings" class="btn btn-danger btn-md" ng-click="midModelYearCreateEditCtrl.removeMappedFeatures()">
+						<span class="glyphicon glyphicon-trash"></span>&nbsp;
+						<span>Delete Mapped Feature</span>
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 text-right">
+				
+					<button  id="saveMappings" type="button" class="btn btn-primary btn-md" ogt-protected-resource="MidModelYearMappings:execute_{{midModelYearCreateEditCtrl.businessProcess}}:{{midModelYearCreateEditCtrl.marketGroup}}:{{midModelYearCreateEditCtrl.selectedMarket}}:WRITE"
+					 ng-click="midModelYearCreateEditCtrl.saveMappings()">
+						<span class="glyphicon glyphicon-floppy-save"></span>&nbsp;
+						<span>{{'application.buttons.saveMappings' | translate}}</span>
+					</button>
+				</div>
+				<div class="col-sm-6 text-left">
+					<button id="cancel-mappings" class="btn btn-secondary btn-md" ng-click="midModelYearCreateEditCtrl.cancel()">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			</fieldset>
+			</div>
+
+	</form>
+
+
+
+	
+</div>

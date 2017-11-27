@@ -1,0 +1,115 @@
+<div id="content" wc-protected-resource="ForecastParameters:execute"
+	class="container-fluid" ng-init = "forecastCtrl.getDropdownValues()">
+	<h2>{{'application.navigation.links.administration.forecastParameter' | translate}}</h2>
+	<hr />
+	<form class="well" name="forecastParametersForm"
+		ng-if="isDataReceivedFromOgm == true" novalidate>
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear'
+					| translate}} </label> <select id="modelYear" name="modelYr"
+					class="form-control"
+					ng-model='forecastCtrl.selectedModelYear'
+					ng-options="modelYr as modelYr for modelYr in forecastCtrl.modelYears|orderBy:'-'"
+					ng-change="forecastCtrl.loadParameters();">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+						translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2 form-group"></div>
+			<div class="col-sm-1 form-group">
+			<div ng-if="forecastCtrl.showSaveCancel">
+				<button id="save" class="btn  btn-success btn-sm" 
+				ng-click="forecastCtrl.save();">
+					<span>{{'application.buttons.save' | translate}}</span>
+				</button>
+			</div>
+			</div>
+			<div class="col-sm-1 form-group">
+			<div  ng-if="forecastCtrl.showSaveCancel">
+				<button id="cancel" class="btn btn-secondary btn-md"
+				ng-click="forecastCtrl.cancel();">
+					<span>{{'application.buttons.cancel' | translate}}</span>
+				</button>
+			</div>
+			</div>
+		
+		</div>
+	<div ondragstart="return false;" ondrop="return false;" ng-show ="forecastCtrl.displayTable" class="row">
+        <div id="tab" class="row form-actions preferencePatternHeader">
+           <div class="wc-table forecastParameter">
+               <table class="table table-striped table-bordered tablePadding">
+                  <thead>
+                         <tr>
+	                        <th class="blue">{{'application.fields.model' | translate}} </th>			
+							<th class="red text-center">{{'application.fields.startHorizon' | translate}} </th>
+							<th class="red text-center">{{'application.fields.endHorizon' | translate}} </th>
+							<th class="red text-center">{{'application.fields.lockedinPeriods' | translate}} </th>
+	                     </tr>
+                  </thead>
+                  <tbody>
+                         <tr ng-repeat="(rowIndex,forecast) in forecastCtrl.forecastParameters">
+                            <td class="blue middleAlign modelWidth" style="color: #fff;" >{{forecast.modelName}}</td>
+                            <td class="middleAlign horizonWidth">
+                            <div class="form-group monthHorizon">
+                            	<p class="input-group">
+	                            	<input type="text" class="form-control" uib-datepicker-popup="MMMM-yyyy" onkeydown="return false"
+		                                    name="{{'startHorizon' + rowIndex}}" 
+		                                    ng-model="forecast.monthRange.startDate"
+		                                    is-open="forecast.monthRange.isStartDateOpen"
+		                                    datepicker-options="{minDate:
+		                                    forecast.monthRange.minStartDate,
+		                                    maxDate: forecast.monthRange.maxStartDate,
+		                                    dateMode: 'month', minMode: 'month', startingDay: 0}"
+		                                    ng-change="forecastCtrl.updateMonthSpan(rowIndex,forecast.monthRange.startDate,forecast.monthRange.endDate);
+													forecastCtrl.updateModifiedForecastParameters(forecast);"
+                                    		show-button-bar="false"> 	                                
+                                    <span class="input-group-btn"> 
+	                                    <button type="button" class="btn btn-default" ng-click="forecast.monthRange.openStartDate($event)"> 
+	                                        <i class="glyphicon glyphicon-calendar"></i> 
+	                                    </button> 
+	                                </span>
+                                </p>
+                            </div>
+                            </td>
+                            <td class="middleAlign horizonWidth">
+                            <div class="form-group monthHorizon">
+                            	<p class="input-group">
+	                            	<input type="text" class="form-control" uib-datepicker-popup="MMMM-yyyy" onkeydown="return false"
+		                                    name="{{'endHorizon' + rowIndex}}" 
+		                                    ng-model="forecast.monthRange.endDate"
+		                                    is-open="forecast.monthRange.isEndDateOpen"
+		                                    datepicker-options="{minDate:
+		                                    forecast.monthRange.minEndDate,
+		                                    maxDate: forecast.monthRange.maxEndDate,
+		                                    dateMode: 'month', minMode: 'month', startingDay: 0}"
+		                                    ng-change="forecastCtrl.updateMonthSpan(rowIndex,forecast.monthRange.startDate,forecast.monthRange.endDate);
+													forecastCtrl.updateModifiedForecastParameters(forecast);"
+                                    		show-button-bar="false"> 	                                
+                                    <span class="input-group-btn"> 
+	                                    <button type="button" class="btn btn-default" ng-click="forecast.monthRange.openEndDate($event)"> 
+	                                        <i class="glyphicon glyphicon-calendar"></i> 
+	                                    </button> 
+	                                </span>
+                                </p>
+                            </div>
+                            </td>
+                            <td class="middleAlign">
+                            	<ul>
+                            		<li ng-repeat="forecastMonths in forecast.monthsSpan" class="forecastList">
+                            			{{forecastMonths.monthName}}<br>
+                            			<input type="checkbox" ng-model="forecastMonths.lockedIn" title="{{forecastMonths.monthName}}"
+                            			ng-change="forecastCtrl.updateModifiedForecastParameters(forecast);">
+                            		</li>
+                            	</ul>
+                            </td>
+						 </tr>
+				  </tbody>
+			   </table>
+			</div>
+		</div>
+	</div>
+	  </form>
+</div>
+	

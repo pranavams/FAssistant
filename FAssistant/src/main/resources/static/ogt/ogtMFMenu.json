@@ -1,0 +1,96 @@
+[{
+	"label": "Home",
+	"state": "ogt-ui-home",
+	"protected": ""
+},{
+	"label": "Forecast Admin",
+	"secondaryNav": [{
+		"label": "Model Mapping",
+		"state": "model-mapping",
+		"protected": "ModelMappings:execute"
+	},
+	{
+		"label": "Manage Families",
+		"state": "manage-Families",
+		"protected": "ManageFamilies:execute"
+	},
+	{
+		"label": "Changeover Mappings",
+		"state": "changeover-mapping-list",
+		"protected": "ChangeOverMappings:execute"
+	},
+	{
+		"label": "Mid Model Year Mappings",
+		"state": "mid-model-year-mappings",
+		"protected": "MidModelYearMappings:execute"
+	},
+	{
+		"label": "Forecast Parameters",
+		"state": "forecast-parameter",
+		"protected": "ForecastParameters:execute"
+	}],
+	"protected": "ForecastAdmin:execute"
+},{
+	"label": "Manage Forecast",
+	"secondaryNav": [{
+		"label": "Volume Plan",
+		"secondaryNav": [{
+			"label": "Preference Patterns",
+			"state": "preference-pattern",
+			"protected": "PreferencePattern:execute"
+		},
+		{
+			"label": "Weekly Volumes",
+			"state": "planned-volumes",
+			"protected": "WeeklyVolume:execute"
+		}],
+		"protected": "ManageForecast:execute"
+	},
+	{
+		"label": "Entities",
+		"state": "entity-mix",
+		"protected": "EntityMix:execute"
+	},
+	{
+		"label": "Independent Features",
+		"state": "independent-features",
+		"protected": "IndependentFeatures:execute"
+	}],
+	"protected": "ManageForecast:execute"
+},{
+	"label": "Forecast Results",
+	"secondaryNav": [{
+		"label": "Forecast Summary",
+		"state": "forecast-summary",
+		"protected": "ForecastSummary:execute"
+	},
+	{
+		"label": "Independent Matrix",
+		"state": "independent-matrix",
+		"protected": "IndependentMatrix:execute"
+	},
+	{
+		"label": "Forecast vs MPW",
+		"state": "forecast-mpw",
+		"protected": "ForecastMpws:execute"
+	},
+	{
+		"label": "Independent Summary",
+		"state": "independent-summary",
+		"protected": "IndependentSummary:execute"
+	}],
+	"protected": "ForecastResults:execute"
+},{
+	"label": "Manage Forecast Jobs",
+	"secondaryNav": [{
+		"label": "Create Jobs",
+		"state": "create-jobs",
+		"protected": "ManageForecastJobs:execute"
+	},
+	{
+		"label": "Search Jobs",
+		"state": "search-jobs",
+		"protected": "ManageForecastJobs:execute"
+	}],
+	"protected": "ManageForecastJobs:execute"
+}]

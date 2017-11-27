@@ -1,0 +1,164 @@
+<div id="content" wc-protected-resource="ChangeOverMappings:execute"
+	class="container-fluid">
+	<h1></h1>
+	<h2>{{'application.navigation.links.administration.changeoverMapping'
+		| translate}}</h2>
+	<hr />
+	<form class="well" role="form" name="changeoverMappingForm" novalidate>
+		<div class="row">
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="market" class="control-label">{{'application.fields.market'
+						| translate}} </label> <select
+						og-validation-indicator="{{'application.fields.market' | translate}}"
+						name="market" id="market" class="form-control" required
+						ng-model='changeoverMappingCtrl.selectedMarket'
+						ng-options="market.key as market.name for market in changeoverMappingCtrl.markets | orderBy:'name'"
+						ng-change="changeoverMappingCtrl.loadModels()">
+						<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+							translate}}</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="col-xs-2">
+
+				<div class="form-group">
+					<label for="vehicleLine" class="control-label">{{'application.fields.model'
+						| translate}} </label> <select
+						og-validation-indicator="{{'application.fields.model' | translate}}"
+						name="vehicleLine" id="vehicleLine" class="form-control" required
+						ng-model='changeoverMappingCtrl.selectedModel'
+						ng-options="model.key as model.name for model in changeoverMappingCtrl.models | orderBy:'name'"
+						ng-change="changeoverMappingCtrl.loadModelYears()">
+						<option value="" default>{{'application.dropdownDefaults.selectModel'|
+							translate}}</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+						| translate}} </label> <select name="modelYr" id="modelYr"
+						class="form-control" required
+						ng-model='changeoverMappingCtrl.selectedModelYear'
+						ng-options="my.modelYear as my.modelYear for my in changeoverMappingCtrl.modelYears|orderBy:'-'"
+						ng-change="changeoverMappingCtrl.hideAndPopulateDataTable(changeoverMappingCtrl.selectedModelYear);">
+						<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+							translate}}</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row  form-actions"
+			ng-if="changeoverMappingCtrl.isDisplayTable == true">
+			<div class="row">
+			<div class="col-xs-3">
+			<div class="row form-horizontal gstform-group  pull-right">
+				<br />
+				<table>
+					<tr>
+						<td style="width: 10%">
+						Filter families:
+						</td>
+
+						<td style="width: 3%">
+							<div ng-show="changeoverMappingCtrl.disableAll">
+							<a
+								ng-click="changeoverMappingCtrl.hideAndPopulateDataTable(changeoverMappingCtrl.selectedModelYear);"
+								href="">All</a>
+						</div>
+						<div ng-hide="changeoverMappingCtrl.disableAll">
+							<span>All</span>
+						</div>
+						</td>
+						<td style="width: 2%">
+							<label> | </label>
+							
+							</td>
+						<td style="width: 25%">
+							
+							<div>
+								<div ng-show="changeoverMappingCtrl.disableDifferences">
+							<a ng-click="changeoverMappingCtrl.filterMappings('D');" href=""
+								ng-disabled="changeoverMappingCtrl.disableDifferences">With Differences only</a>
+						</div>
+						<div ng-hide="changeoverMappingCtrl.disableDifferences">
+							<span>With Differences only</span>
+						</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+					<!-- <div class="row">
+						<p>Filter families:
+						<div ng-show="changeoverMappingCtrl.disableAll">
+							<a
+								ng-click="changeoverMappingCtrl.hideAndPopulateDataTable(changeoverMappingCtrl.selectedModelYear);"
+								href="">All</a>
+						</div>
+						<div ng-hide="changeoverMappingCtrl.disableAll">
+							<span>With Differences only</span>
+						</div>
+						<label> | </label>
+						<div ng-show="changeoverMappingCtrl.disableDifferences">
+							<a ng-click="changeoverMappingCtrl.filterMappings('D');" href=""
+								ng-disabled="changeoverMappingCtrl.disableDifferences">All</a>
+						</div>
+						<div ng-hide="changeoverMappingCtrl.disableDifferences">
+							<span>With Differences only</span>
+						</div>
+						</p>
+					</div> -->
+				</div>
+			<div class="col-xs-7">
+			</div>
+				<div class="col-xs-2 pull-right">
+				<a ogt-protected-resource="ChangeOverMappings:execute_{{changeoverMappingCtrl.businessProcess}}:{{changeoverMappingCtrl.marketGroup}}:{{changeoverMappingCtrl.selectedMarket.key}}:WRITE"
+				 ng-click="changeoverMappingCtrl.editMappings(mapping);" href="">Create Changeover Mappings</a> 
+				</div>	
+			</div>
+			<div>
+				<span class="btn btn-default" ng-click="toggle(false)">Collapse
+					All</span> <span class="btn btn-default" ng-click="toggle(true)">Expand
+					All</span>
+					<hr/>
+			</div>
+			<div ng-repeat="mapping in changeoverMappingCtrl.changeovermappings.mappedFamilies"
+				ng-click="mapping.cmyFamily.open = !mapping.cmyFamily.open">
+				<div class="panel-group" id="accordion">
+
+					<div class="panel panel-default">
+						<div class="panel-heading"
+							data-parent="#accordion" href="#{{mapping.pmyFamily.key}}">
+							<h4 class="panel-title" style="color: #ffffff;">
+								<span class="accordion-toggle">
+									&nbsp;{{mapping.pmyFamily.name}} is mapped to
+									{{mapping.cmyFamily.name}} ({{mapping.mappingCount}} mappings
+									) <a ogt-protected-resource="ChangeOverMappings:execute_{{changeoverMappingCtrl.businessProcess}}:{{changeoverMappingCtrl.marketGroup}}:{{changeoverMappingCtrl.selectedMarket.key}}:WRITE" 
+									ng-click="changeoverMappingCtrl.editMappings(mapping);"  style="color: #ffffff;" href="">Edit</a> </span>
+							</h4>
+						</div>
+						<div ng-show="mapping.cmyFamily.open">
+							<div id="{{mapping.pmyFamily.key}}">
+								<div ng-repeat="feature in mapping.mappedFeatures">
+									<div class="panel-body">
+										{{feature.pmyFeature.name}} is mapped to
+										{{feature.cmyFeature.name}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+

@@ -1,0 +1,100 @@
+<div id="content" class="container-fluid">
+		<h2> MID MODEL YEAR MAPPING </h2>
+	<hr />
+	<form class="well" role="form" name="midModelYearMappingForm" novalidate>
+		<div class="row">
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="market" class="control-label">{{'application.fields.market'
+					| translate}} </label>
+						<select
+						name="market" id="market" class="form-control"
+						ng-model='midMyCtrl.selectedMarket'
+						ng-options="market.key as market.name for market in midMyCtrl.markets | orderBy:'name'"
+						ng-change="midMyCtrl.getModels()">
+						<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+							translate}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-xs-2">
+
+				<div class="form-group">
+					<label for="vehicleLine" class="control-label">{{'application.fields.model'
+						| translate}} </label> <select
+						og-validation-indicator="{{'application.fields.model' | translate}}"
+						name="vehicleLine" id="vehicleLine" class="form-control" required
+						ng-model='midMyCtrl.selectedModel'
+						ng-options="model.key as model.name for model in midMyCtrl.models | orderBy:'name'"
+						ng-change="midMyCtrl.getModelYears()">
+						<option value="" default>{{'application.dropdownDefaults.selectModel'|
+							translate}}</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+						| translate}} </label> <select name="modelYr" id="modelYr"
+						class="form-control" required
+						ng-model='midMyCtrl.selectedModelYear'
+						ng-options="my.modelYear as my.modelYear for my in midMyCtrl.modelYears|orderBy:['modelYear']"
+						ng-change="midMyCtrl.getFamilyFetauresData();">
+						<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+							translate}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row  form-actions"	ng-if="midMyCtrl.isDisplayTable == true">
+			<div class="row">
+			
+			<div class="col-xs-7">
+			</div>
+				<div class="col-xs-3 pull-right">
+				 <a ogt-protected-resource="MidModelYearMappings:execute_{{midMyCtrl.businessProcess}}:{{midMyCtrl.marketGroup}}:{{midMyCtrl.selectedMarket}}:WRITE"
+				style="font-size: 17px;font-weight: bold;" ng-click = "midMyCtrl.editMappings()" href=""> 
+				CREATE MIDMODELYEAR MAPPINGS</a> 
+				</div>	
+			</div>
+			<div>
+				<span class="btn btn-default" ng-click="toggle(false)">Collapse
+					All</span> <span class="btn btn-default" ng-click="toggle(true)">Expand
+					All</span>
+					<hr/>
+			</div>
+			
+				<div ng-repeat="transformFamily in midMyCtrl.transformedFamiliesToDisplay" ng-click="transformFamily.open = !transformFamily.open">
+				<div class="panel-group" id="accordion">
+
+					<div class="panel panel-default">
+						<div class="panel-heading"
+							data-parent="#accordion" href="#{{transformFamily.familyKey}}">
+							<h4 class="panel-title" style="color: #ffffff;">
+								<span class="accordion-toggle">
+									&nbsp;{{transformFamily.familyName}} {{transformFamily.mappingCount}}
+								 <a  ogt-protected-resource="MidModelYearMappings:execute_{{midMyCtrl.businessProcess}}:{{midMyCtrl.marketGroup}}:{{midMyCtrl.selectedMarket.key}}:WRITE"
+								  ng-click="midMyCtrl.editMappings(transformFamily);"  style="color: #ffffff;" href=""style="color: #ffffff;" href="">Edit</a> </span>
+							</h4>
+						</div>
+						<div ng-show="transformFamily.open">
+							<div id="{{mapping.key}}">
+								<div ng-repeat="feature in transformFamily.mapping">
+									<div class="panel-body">
+										{{feature.ftr1Name}} is mapped to	{{feature.ftr2Name}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</form>
+</div>
+		

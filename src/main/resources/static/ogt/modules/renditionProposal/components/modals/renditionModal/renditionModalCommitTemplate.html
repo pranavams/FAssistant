@@ -1,0 +1,13 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="renditionModalCtrl.reject()">&times;</button>
+	<h1 class="modal-title">{{renditionModalCtrl.modalType}} Proposal</h1>
+</div>
+
+<div class="modal-body">
+	<h4>Do you really want to {{renditionModalCtrl.modalType}} the Proposal?</h4>
+</div>
+
+<div class="modal-footer text-center">
+	<button id="modal-submit" class="btn btn-primary" ng-click="renditionModalCtrl.resolve()">Yes</button>
+	<button id="modal-cancel" class="btn btn-secondary" ng-click="renditionModalCtrl.reject(); renditionProposalCtrl.onClickProposalTab();">No</button>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<title>Test Speech</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/annyang.min.js"></script>
+<script src="js/SpeechSynthesizer.js"></script>
+<script src="js/findInReport.js"></script>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office"
+	xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+</head>
+<script>
+	
+	console.log("calling exract");
+	
+	console.log("Model " + extractInformation(["forecast for 2017 Edge",
+		"forecast for 2017 HP", 
+		"forecast for 2017-18",
+		"forecast for 2017 Edge sport", 
+		"forecast for 2017 HBO"], modelYearArr));
+		
+	console.log("Model " + extractInformation(["forecast for 2017 Edge",
+		"forecast for 2017 HP", 
+		"forecast for 2017-18",
+		"forecast for 2017 Edge sport", 
+		"forecast for 2017 HBO"], modelYearArr));
+	console.log("Model " + extractInformation(["forecast for 2017 Edge",
+		"forecast for 2017 HP", 
+		"forecast for 2017-18",
+		"forecast for 2017 Edge sport", 
+		"forecast for 2017 HBO"], modelYearArr));
+</script>
+
+<body leftmargin=0 topmargin=0>
+	<img src="images/fordGreenTryMe.jpg" width="90%" height="90%"
+		alt="Ford Motor Private Limited" align="middle">
+	<form name="MixRateReportForm" target="_new" method="post"
+		action="http://localhost:14000/SimsRel1/mixRateWebReport.do">
+		<input type="hidden" name="requestName"></input> <input type="hidden"
+			name="requestType"></input> <input type="hidden" name="modelYear"></input>
+		<input type="hidden" name="vehicleLineKey"></input> <input
+			type="hidden" name="marketCode"></input> <input type="hidden"
+			name="reportType"></input> <input type="hidden" name="allocationWeek"></input>
+		<input type="hidden" name="productionCycle"></input>
+		<textarea style="width:100%;height:64px" id = "txtLog" name="txtLog">
+		</textarea>
+	</form>
+</body>
+</html>

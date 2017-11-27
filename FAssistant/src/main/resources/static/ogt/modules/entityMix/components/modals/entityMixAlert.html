@@ -1,0 +1,18 @@
+<div class="modal-header">
+	<h2>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="entityMixAlertCtrl.reject()">&times;</button>
+	</h2>
+	<h2 class="modal-title">Alert</h2>
+</div>
+
+<div class="modal-body">
+	<h4>
+	You are about to apply the SPCPS Entity Mix on Weekly Volumes
+	for the horizon {{entityMixAlertCtrl.startMonth | date: 'MMM-yyyy'}} - {{entityMixAlertCtrl.endMonth | date: 'MMM-yyyy'}}
+	</h4>
+</div>
+
+<div class="modal-footer text-center">
+	<button id="modal-submit" class="btn btn-primary" ng-click="entityMixAlertCtrl.resolve()">Go Ahead</button>
+	<button id="modal-cancel" class="btn btn-secondary" ng-click="entityMixAlertCtrl.reject()">Cancel</button>
+</div>

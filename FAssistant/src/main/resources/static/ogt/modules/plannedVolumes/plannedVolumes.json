@@ -1,0 +1,2288 @@
+{
+  "plannedVolumes": {
+    "modelKey": "322",
+    "modelYear": "2017",
+    "loggedInUser": "SARUNKAR",
+    "isCrewNonCrew": "Y",
+    "operatingPlan": [
+      {
+        "weekName": "07/03",
+        "weekKey": "20170703",
+        "key": "",
+        "value": "5000",
+        "spcpsValue": "5000",
+        "spcpsOverrideValue": "5000",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "07/10",
+        "weekKey": "20170710",
+        "key": "",
+        "value": "6000",
+        "spcpsValue": "5000",
+        "spcpsOverrideValue": "5000",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "07/17",
+        "weekKey": "20170717",
+        "key": "",
+        "value": "7000",
+        "spcpsValue": "5000",
+        "spcpsOverrideValue": "5000",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "07/24",
+        "weekKey": "20170724",
+        "key": "",
+        "value": "8000",
+        "spcpsValue": "5000",
+        "spcpsOverrideValue": "5000",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "Total",
+        "weekKey": "Total",
+        "value": "26000",
+        "spcpsValue": "20000",
+        "spcpsOverrideValue": "20000",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "value": "0"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "value": "0"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "Overrides-July-2017",
+        "weekKey": "Overrides-July-2017",
+        "value": "",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "20000",
+        "plants": []
+      },
+      {
+        "weekName": "07/31",
+        "weekKey": "20170731",
+        "key": "",
+        "value": "5000",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "08/07",
+        "weekKey": "20170831",
+        "key": "",
+        "value": "5000",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "08/14",
+        "weekKey": "20170814",
+        "key": "",
+        "value": "6000",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "08/21",
+        "weekKey": "20170821",
+        "key": "",
+        "value": "7000",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "08/28",
+        "weekKey": "20170828",
+        "key": "",
+        "value": "8000",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "238"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "241"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "239"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "242"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "237"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "key": "",
+            "value": "",
+            "vehiclePlantKey": "240"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "key": "",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "Total",
+        "weekKey": "Total",
+        "value": "26000",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": [
+          {
+            "name": "Ford Power Prod-CREW",
+            "value": "0"
+          },
+          {
+            "name": "Ford Power Prod-NONCREW",
+            "value": "0"
+          },
+          {
+            "name": "Ford Power Prod Total",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-CREW",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck-NONCREW",
+            "value": "0"
+          },
+          {
+            "name": "Michigan Truck Total",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-CREW",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT-NONCREW",
+            "value": "0"
+          },
+          {
+            "name": "PRECIOUS METALS PLANT Total",
+            "value": "0"
+          },
+          {
+            "name": "Total CREW",
+            "value": "0"
+          },
+          {
+            "name": "Total NONCREW",
+            "value": "0"
+          }
+        ]
+      },
+      {
+        "weekName": "Overrides-August-2017",
+        "weekKey": "Overrides-August-2017",
+        "value": "",
+        "spcpsValue": "",
+        "spcpsOverrideValue": "",
+        "plants": []
+      }
+    ],
+    "volumes": [
+      {
+        "market": "USA",
+        "marketVolumes": [
+          {
+            "weekName": "07/03",
+            "weekKey": "20170703",
+            "key": "",
+            "value": "5000"
+          },
+          {
+            "weekName": "07/10",
+            "weekKey": "20170710",
+            "key": "",
+            "value": "5000"
+          },
+          {
+            "weekName": "07/17",
+            "weekKey": "20170717",
+            "key": "",
+            "value": "5000"
+          },
+          {
+            "weekName": "07/24",
+            "weekKey": "20170724",
+            "key": "",
+            "value": "5000"
+          },
+          {
+            "weekName": "Total",
+            "weekKey": "Total",
+            "key": "",
+            "value": "20000"
+          },
+          {
+            "weekName": "Overrides-July-2017",
+            "weekKey": "Overrides-July-2017",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "07/31",
+            "weekKey": "20170731",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/07",
+            "weekKey": "20170807",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/14",
+            "weekKey": "20170814",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/21",
+            "weekKey": "20170821",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/28",
+            "weekKey": "20170828",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "Total",
+            "weekKey": "Total",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "Overrides-August-2017",
+            "weekKey": "Overrides-August-2017",
+            "key": "",
+            "value": "0"
+          }
+        ],
+        "channels": [
+          {
+            "name": "Fleet",
+            "key": "155",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "4000"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Retail",
+            "key": "156",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "4000"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Rental",
+            "key": "157",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "4000"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Commerical",
+            "key": "158",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "4000"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Company",
+            "key": "159",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": "1000"
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "4000"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "market": "Canada",
+        "marketVolumes": [
+          {
+            "weekName": "07/03",
+            "weekKey": "20170703",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "07/10",
+            "weekKey": "20170710",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "07/17",
+            "weekKey": "20170717",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "07/24",
+            "weekKey": "20170724",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "Total",
+            "weekKey": "Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "Overrides-July-2017",
+            "weekKey": "Overrides-July-2017",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "07/31",
+            "weekKey": "20170731",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/07",
+            "weekKey": "20170807",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/14",
+            "weekKey": "20170814",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/21",
+            "weekKey": "20170821",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/28",
+            "weekKey": "20170828",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "Total",
+            "weekKey": "Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "Overrides-August-2017",
+            "weekKey": "Overrides-August-2017",
+            "key": "",
+            "value": "0"
+          }
+        ],
+        "channels": [
+          {
+            "name": "Fleet",
+            "key": "165",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Retail",
+            "key": "166",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Rental",
+            "key": "167",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Commerical",
+            "key": "168",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Company",
+            "key": "169",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "market": "Mexico",
+        "marketVolumes": [
+          {
+            "weekName": "07/03",
+            "weekKey": "20170703",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "07/10",
+            "weekKey": "20170710",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "07/17",
+            "weekKey": "20170717",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "07/24",
+            "weekKey": "20170724",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "Total",
+            "weekKey": "Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "Overrides-July-2017",
+            "weekKey": "Overrides-July-2017",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "07/31",
+            "weekKey": "20170731",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/07",
+            "weekKey": "20170807",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/14",
+            "weekKey": "20170814",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/21",
+            "weekKey": "20170821",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "08/28",
+            "weekKey": "20170828",
+            "key": "",
+            "value": ""
+          },
+          {
+            "weekName": "Total",
+            "weekKey": "Total",
+            "key": "",
+            "value": "0"
+          },
+          {
+            "weekName": "Overrides-August-2017",
+            "weekKey": "Overrides-August-2017",
+            "key": "",
+            "value": "0"
+          }
+        ],
+        "channels": [
+          {
+            "name": "Fleet",
+            "key": "175",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Retail",
+            "key": "176",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Rental",
+            "key": "177",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Commerical",
+            "key": "178",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "name": "Company",
+            "key": "179",
+            "channelVolumes": [
+              {
+                "weekName": "07/03",
+                "weekKey": "20170703",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/10",
+                "weekKey": "20170710",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/17",
+                "weekKey": "20170717",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "07/24",
+                "weekKey": "20170724",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-July-2017",
+                "weekKey": "Overrides-July-2017",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "07/31",
+                "weekKey": "20170731",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/07",
+                "weekKey": "20170807",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/14",
+                "weekKey": "20170814",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/21",
+                "weekKey": "20170821",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "08/28",
+                "weekKey": "20170828",
+                "key": "",
+                "value": ""
+              },
+              {
+                "weekName": "Total",
+                "weekKey": "Total",
+                "key": "",
+                "value": "0"
+              },
+              {
+                "weekName": "Overrides-August-2017",
+                "weekKey": "Overrides-August-2017",
+                "key": "",
+                "value": "0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

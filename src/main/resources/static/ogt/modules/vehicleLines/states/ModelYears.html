@@ -1,0 +1,12 @@
+
+<div class="form-group">
+	<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+		| translate}} </label> <select
+		og-validation-indicator="{{'application.fields.modelyear' | translate}}"
+		name="modelYr" id="modelYr" class="form-control" required
+		ng-model='vehicleLinesCtrl.selectedModelYear'
+		ng-options="modelYr.modelYear as modelYr.modelYear for modelYr in vehicleLinesCtrl.modelYears|orderBy:['modelYear']:true"
+		ng-change="{{onModelYearChange}}">
+		<option value="" default>{{'application.dropdownDefaults.selectModelYear'| translate}}</option>
+	</select>
+</div>

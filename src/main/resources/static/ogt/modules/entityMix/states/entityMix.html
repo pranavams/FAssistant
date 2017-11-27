@@ -1,0 +1,287 @@
+<div id="content" class="container-fluid" wc-protected-resource="EntityMix:execute"
+	ng-init="entityMixCtrl.getDropDownValues()">
+	<h2>{{'application.navigation.links.administration.entityMix' | translate}}</h2>
+	<form class="well" name="entityMixForm"
+		ng-if="entityMixCtrl.dropdownValuesReceived" novalidate>
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear'
+					| translate}} </label> <select id="modelYear" name="modelYr"
+					class="form-control" ng-model='entityMixCtrl.selectedModelYear'
+					ng-options="modelYear for modelYear in entityMixCtrl.modelYears|orderBy:'-'"
+					ng-change="entityMixCtrl.getModels()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+						translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'|
+					translate}} </label> <select id="model" name="model" class="form-control"
+					ng-model="entityMixCtrl.selectedModel"
+					ng-options="model for model in entityMixCtrl.models|orderBy"
+					ng-change="entityMixCtrl.getMarkets()">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'|
+						translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="market" class="control-label">{{'application.fields.market'|
+					translate}} </label> <select id="market" name="market" class="form-control"
+					ng-model="entityMixCtrl.selectedMarket"
+					ng-options="market for market in entityMixCtrl.markets|orderBy"
+					ng-change="entityMixCtrl.getChannels()">
+					<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+						translate}}</option>
+				</select>
+			</div>
+
+			<div class="col-sm-2 form-group">
+				<label for="channel" class="control-label">{{'application.fields.channel'|
+					translate}} </label> <select id="channel" name="channel"
+					class="form-control" ng-model="entityMixCtrl.selectedChannel"
+					ng-options="channel for channel in entityMixCtrl.channels|orderBy"
+					ng-change="entityMixCtrl.getStartMonth()">
+					<option value="" default>{{'application.dropdownDefaults.selectChannel'|
+						translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="startMonth" class="control-label">{{'application.fields.startMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="startMonth"
+						ng-model="entityMixCtrl.startMonthRange.startDate"
+						is-open="entityMixCtrl.startMonthRange.isStartDateOpen"
+						datepicker-options="{minDate: entityMixCtrl.startMonthRange.minStartDate,
+                          maxDate: entityMixCtrl.startMonthRange.maxStartDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change = "entityMixCtrl.getEndMonth()" placeholder = "Select Start Month"> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="entityMixCtrl.startMonthRange.openStartDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="endMonth" class="control-label">{{'application.fields.endMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="endMonth"
+						ng-model="entityMixCtrl.endMonthRange.endDate"
+						is-open="entityMixCtrl.endMonthRange.isEndDateOpen"
+						datepicker-options="{minDate:
+                          entityMixCtrl.endMonthRange.minEndDate,
+                          maxDate: entityMixCtrl.endMonthRange.maxEndDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change="entityMixCtrl.getFamilies()" placeholder = "Select End Month">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="entityMixCtrl.endMonthRange.openEndDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 form-group">
+				<label for="family" class="control-label">
+					{{'application.fields.family' | translate}} </label> <select name="family"
+					id="family" class="form-control" multiple
+					ng-model='entityMixCtrl.selectedFamilies' ng-change="entityMixCtrl.featureRecords = entityMixCtrl.getFamilyTableRecords()">
+					<option value="ALL" default>ALL</option>
+					<option ng-repeat="option in entityMixCtrl.families"
+						value="{{option.key}}">{{option.name}}</option>
+				</select>
+			</div>
+			<div class="col-sm-1 form-group">
+				<label for="retrieve" class="control-label"></label>
+				<div ng-if="entityMixCtrl.buttonName == 'retrieve'">
+					<button id="retrieve" class="btn btn-primary btn-md entityMixButton"
+						ng-click="entityMixCtrl.getEntityMixData()">
+						<span>{{'application.buttons.retrieve' | translate}}</span>
+					</button>
+				</div>
+				<div ng-if="entityMixCtrl.buttonName == 'save'">
+					<button id="save" class="btn  btn-success btn-sm entityMixButton" ng-disabled="true">
+						<span>{{'application.buttons.save' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-1 form-group">
+			<label for="cancel" class="control-label"></label> 
+			<div ng-if = "entityMixCtrl.enableCancelButton">
+					<button id="cancel" class="btn btn-secondary btn-md entityMixButton"
+						ng-click="entityMixCtrl.cancel();">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+			</div>
+			</div>
+			<div class="col-sm-1 form-group plannedVolumeFilter">
+			<label for="applyVolumes" class="control-label"></label> 
+			<div ng-if = "entityMixCtrl.displayTable">
+				<button id="volume" class="btn btn-primary btn-md"
+					ng-click="entityMixCtrl.applyWeeklyVolumes()">
+					<span>Apply Weekly Volumes</span>
+				</button>
+			</div>
+			</div>
+			<div class="col-sm-1 plannedVolumeFilter" ng-if="entityMixCtrl.displayTable">
+				<div class="switch-field">
+					<input type="radio" id="switch_left" name="tableDisplayMode"
+						id="one" ng-value="false" ng-model="entityMixCtrl.monthlyView"
+						checked /> <label for="switch_left">Weekly</label> <input
+						type="radio" id="switch_right" name="tableDisplayMode"
+						ng-value="true" ng-model="entityMixCtrl.monthlyView" /> <label
+						for="switch_right">Monthly</label>
+				</div>
+			</div>
+			<div class="col-sm-1 plannedVolumeFilter" ng-if="entityMixCtrl.displayTable">
+				<div class="volumeMixFilter" ng-if="entityMixCtrl.displayTable">
+					<ul>
+						<li><input type="radio" id="f-option"
+							ng-model="entityMixCtrl.volumeView" name="selector"
+							value="volume"> <label for="f-option">Volume</label>
+							<div class="check volume"></div></li>
+						<li><input type="radio" id="s-option"
+							ng-model="entityMixCtrl.volumeView" name="selector" value="both">
+							<label for="s-option">Mix</label>
+							<div class="check mix">
+								<div class="inside"></div>
+							</div></li>
+					</ul>
+				</div>
+			</div>
+			</div>
+			</form>
+
+		<div id="table-data" ng-if="entityMixCtrl.displayTable" class="entityMixHeader">
+			<div class="wc-table entityMix">
+			<table class="table table-striped table-bordered tablePadding">
+				<thead>
+					<tr>
+						<th style="height:82px;" rowspan="2" class="monthRed fixed months"></th>
+						<th ng-if = "entityMixCtrl.featuresExpanded" colspan="{{ (entityMixCtrl.families.slice(1).length * 2) }}" class="monthRed months"></th>
+						<th ng-repeat="month in entityMixCtrl.months" class="monthRed"
+							colspan="{{ entityMixCtrl.monthlyView ? (entityMixCtrl.volumeView === 'both' ? 4 : 2) : (entityMixCtrl.volumeView === 'both' ? 2*entityMixCtrl.getNumWeeksForMonth(month) : 
+							entityMixCtrl.getNumWeeksForMonth(month)) }}">
+							{{ month | date: "MMMM yyyy" }}<span ng-if = "entityMixCtrl.isMonthLockedIn(month)"> Locked In</span></th>
+					</tr>
+					<tr>
+						<th style="height:51px;padding-top:22px !important;border-bottom: 0px !important" class="fixed families">
+							<em ng-hide="entityMixCtrl.featuresExpanded" class="glyphicon glyphicon-plus"  ng-click="entityMixCtrl.featuresExpanded=true"></em>
+							<em ng-show="entityMixCtrl.featuresExpanded" class="glyphicon glyphicon-minus" ng-click="entityMixCtrl.featuresExpanded=false"></em>
+							PPV
+						</th>
+						<th colspan="2" rowspan="2" ng-repeat="family in entityMixCtrl.families.slice(1)" ng-show="entityMixCtrl.featuresExpanded"> 
+							{{family.name }} 
+						</th>
+						<th ng-repeat="weekObj in entityMixCtrl.weeks" colspan="{{entityMixCtrl.volumeView === 'both' ? 2 : 1}}" 
+						ng-show="!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS'))" ng-class="weekObj.type === 'Total'? 'orange' : weekObj.type === 'SPCPS' ? 'grey' : ''">
+							<span ng-if="!weekObj.type"> {{weekObj.week | date: "MM/dd" }} </span>
+							<span ng-if="weekObj.type === 'Total'">Total</span>
+							<span ng-if="weekObj.type === 'SPCPS'">SPCPS</span>
+						</th>
+					</tr>
+					<tr>
+						<th style="height:51px;border-top: 0px !important" class="fixed families emptyfamily"></th>
+						<th ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS'))) && (entityMixCtrl.volumeView === 'both' || entityMixCtrl.volumeView === 'volume')" 
+						ng-repeat-start="weekObj in entityMixCtrl.weeks" ng-class="weekObj.type === 'Total'? 'orange' : weekObj.type === 'SPCPS' ? 'grey' : ''">Volume</th>
+						<th ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS'))) && 
+						(entityMixCtrl.volumeView === 'both')" ng-repeat-end="weekObj in entityMixCtrl.weeks" ng-class="weekObj.type === 'Total'? 'orange' : weekObj.type === 'SPCPS' ? 'grey' : ''">Mix</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="entity in entityMixCtrl.entities" 
+					ng-if="(entityMixCtrl.selectedFamilies.indexOf('ALL') !== -1) || (entityMixCtrl.selectedFamilies.indexOf(entityMixCtrl.PPVKey) !== -1)">
+						<td class="fixed families lightGrey">{{entity.PPV}}</td>
+						<td colspan="2" ng-show ="entityMixCtrl.featuresExpanded" ng-repeat="family in entityMixCtrl.families.slice(1)">{{entity[family.key]}}</td>
+						<td ng-repeat-start="weekObj in entityMixCtrl.weeks" 
+						ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS'))) && (entityMixCtrl.volumeView === 'both' || entityMixCtrl.volumeView === 'volume')"
+						ng-class="weekObj.type === 'Total'? 'total' : weekObj.type === 'SPCPS' ? 'greyFont' : 'normalFont'">
+							<span ng-if="!weekObj.type">
+								{{::entityMixCtrl.getVolumeForWeek(entity, weekObj).volume | number}}
+							</span>
+							<span ng-if="weekObj.type === 'Total'"> 
+								{{::entityMixCtrl.getTotalVolumeForEntityAndMonth(entity, weekObj) }} 
+							</span>
+							<span ng-if="weekObj.type === 'SPCPS'"> 
+								{{::entityMixCtrl.getSPCPSVolumeForEntityAndMonth(entity, weekObj).vol }} 
+							</span>
+						</td>
+						<td ng-repeat-end ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS'))) && 
+						(entityMixCtrl.volumeView === 'both')" ng-class="weekObj.type === 'Total'? 'total' : weekObj.type === 'SPCPS' ? 'greyFont' : 'normalFont'">
+							<span ng-if="!weekObj.type">
+								{{::entityMixCtrl.getVolumeForWeek(entity,weekObj).mixPercent | number: 2 }}%</span>
+							<span ng-if="weekObj.type === 'Total'">
+								{{::entityMixCtrl.getTotalMixForEntityAndMonth(entity,weekObj) }}% </span>
+							<span ng-if="weekObj.type === 'SPCPS'">
+								{{::entityMixCtrl.getSPCPSVolumeForEntityAndMonth(entity,weekObj).mix }}% </span>
+						</td>
+					</tr>
+					<!-- <tr ng-hide=""> <td>Loading More Data </td></tr> -->
+					<tr class="total"
+					ng-if="(entityMixCtrl.selectedFamilies.indexOf('ALL') !== -1) || (entityMixCtrl.selectedFamilies.indexOf(entityMixCtrl.PPVKey) !== -1)">
+						<td class="fixed familiesTotal orange" >Total</td>
+						<td ng-show = "entityMixCtrl.featuresExpanded" colspan="{{ (entityMixCtrl.families.slice(1).length * 2) }}" class="orange"></td>
+						<td ng-repeat-start="weekObj in entityMixCtrl.weeks" ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS')))
+						&& (entityMixCtrl.volumeView === 'both' || entityMixCtrl.volumeView === 'volume')" ng-class="weekObj.type === 'Total'? 'total' : weekObj.type === 'SPCPS' ? 'grey' : 'normalFont'">
+							<span ng-if="!weekObj.type">
+								{{::entityMixCtrl.getTotalVolumeForWeek(weekObj) | number}} </span>
+							<span ng-if="weekObj.type === 'Total'"> 
+								{{::entityMixCtrl.getTotalVolumeForMonth(weekObj) | number}} </span>
+							<span ng-if="weekObj.type === 'SPCPS'"> 
+								{{::entityMixCtrl.getSPCPSVolumeForMonth(weekObj) | number}} </span>
+						</td>
+						<td ng-repeat-end ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS'))) &&
+						(entityMixCtrl.volumeView === 'both')" ng-class="weekObj.type === 'Total'? 'total' : weekObj.type === 'SPCPS' ? 'grey' : 'normalFont'">
+							<span ng-if="!weekObj.type"> 
+								{{::entityMixCtrl.getTotalVolumeForWeek(weekObj) === 0 ? 0 : 100 }}% </span>
+							<span ng-if="weekObj.type === 'Total'"> 
+								{{::entityMixCtrl.getTotalVolumeForMonth(weekObj) === 0 ? 0 : 100 }}% </span>
+							<span ng-if="weekObj.type === 'SPCPS'"> 
+								{{::entityMixCtrl.getSPCPSVolumeForMonth(weekObj) === 0 ? 0 : 100 }}% </span>	
+						</td>
+					</tr>
+					<tr ng-repeat="featureObj in entityMixCtrl.featureRecords" ng-class="featureObj.type ? 'total' : 'lightGrey'">
+                		<td ng-class="featureObj.type ? 'fixed familiesTotal orange' : 'fixed families lightGrey'">
+                			<span ng-if="!featureObj.type">{{featureObj.family}} - {{featureObj.feature}}</span>
+                			<span ng-if="featureObj.type">{{featureObj.type}}</span>
+                		</td>
+                		<td colspan="2"  ng-repeat="family in entityMixCtrl.families.slice(1)" ng-show ="entityMixCtrl.featuresExpanded">
+                			<span ng-if="!featureObj.type && family.name == featureObj.family">{{featureObj.feature}}</span>
+                			<span ng-if="featureObj.type && family.name == featureObj.family">{{featureObj.type}}</span>
+                		</td>
+                		<td ng-repeat-start="weekObj in entityMixCtrl.weeks" ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS')))
+                        && (entityMixCtrl.volumeView === 'both' || entityMixCtrl.volumeView === 'volume')" ng-class="weekObj.type === 'Total'? 'total' : weekObj.type === 'SPCPS' ? 'greyFont' : 'normalFont'"> 
+                            <span ng-if="!weekObj.type && !featureObj.type"> {{ entityMixCtrl.getFeatureVolume(featureObj.familyKey, featureObj.feature, weekObj) | number}} </span>
+                            <span ng-if="weekObj.type === 'Total' && !featureObj.type">{{ entityMixCtrl.getTotalVolumeForFeatureAndMonth(featureObj.familyKey, featureObj.feature, weekObj) | number}}</span>
+                            <span ng-if="!weekObj.type && featureObj.type"> {{ entityMixCtrl.getTotalVolumeForWeek(weekObj) | number}} </span>
+							<span ng-if="weekObj.type === 'Total' && featureObj.type"> {{ entityMixCtrl.getTotalVolumeForMonth(weekObj) | number}} </span>
+							<span ng-if="weekObj.type === 'SPCPS' && !featureObj.type"> {{ entityMixCtrl.getSPCPSVolumeForFeatureAndMonth(featureObj.familyKey, featureObj.feature, weekObj) | number}} </span>
+							<span ng-if="weekObj.type === 'SPCPS' && featureObj.type"> {{ entityMixCtrl.getSPCPSVolumeForMonth(weekObj) | number}} </span>
+                        </td>
+                        <td ng-repeat-end ng-show="(!entityMixCtrl.monthlyView || (entityMixCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='SPCPS')))
+                        && (entityMixCtrl.volumeView === 'both')" ng-class="weekObj.type === 'Total'? 'total' : weekObj.type === 'SPCPS' ? 'greyFont' : 'normalFont'">
+                            <span ng-if="!weekObj.type && !featureObj.type"> {{ entityMixCtrl.getFeatureMixes(featureObj.familyKey, featureObj.feature, weekObj) }}% </span>
+                            <span ng-if="weekObj.type === 'Total' && !featureObj.type"> {{ entityMixCtrl.getTotalMixForFeatureAndMonth(featureObj.familyKey, featureObj.feature, weekObj) }}% </span>
+                            <span ng-if="!weekObj.type && featureObj.type">{{ entityMixCtrl.getTotalVolumeForWeek(weekObj) === 0 ? 0 : 100 }}% </span>
+							<span ng-if="weekObj.type === 'Total' && featureObj.type"> {{ entityMixCtrl.getTotalVolumeForMonth(weekObj) === 0 ? 0 : 100 }}% </span>
+							<span ng-if="weekObj.type === 'SPCPS' && !featureObj.type"> {{ entityMixCtrl.getSPCPSMixForFeatureAndMonth(featureObj.familyKey, featureObj.feature, weekObj) }}% </span>
+							<span ng-if="weekObj.type === 'SPCPS' && featureObj.type"> {{::entityMixCtrl.getSPCPSVolumeForMonth(weekObj) === 0 ? 0 : 100 }}% </span>
+                        </td>
+                	</tr>
+				</tbody>
+			</table>
+		</div>
+		</div>
+	<br />
+
+
+</div>

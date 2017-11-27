@@ -1,0 +1,70 @@
+[
+	{
+		"label": "Home",
+		"state": "ogt-ui-home",
+		"protected": ""
+	},
+	{
+		"label": "Product Administration",
+		"secondaryNav": [
+			{
+				"label": "Model Mapping",
+				"state": "model-mapping",
+				"protected": "ModelMappings:execute"
+			},
+			{
+				"label": "WERS-Entity Mapping",
+				"state": "wers-entity-mappings",
+				"protected": "WERSEntityMapping:execute"
+			},
+			{
+				"label": "Entity-Entity Mapping",
+				"state": "entity-mapping-list",
+				"protected": "EntityEntityMapping:execute"
+			},
+			{
+				"label": "Manage Families",
+				"state": "manage-Families",
+				"protected": "ManageFamilies:execute"
+			}
+		],
+		"protected": "ProductAdministration:execute"
+	},
+	{
+		"label": "Product Manager",
+		"secondaryNav": [
+			{
+				"label": "Rendition Proposal",
+				"state": "rendition-proposal",
+				"protected": "RenditionProposal:execute"
+			},
+			{
+				"label": "View Models",
+				"state": "view-models",
+				"protected": "ViewModels:execute"
+			},
+			{
+				"label": "Model Settings",
+				"state": "model-settings",
+				"protected": "ModelSettings:execute"
+			}
+		],
+		"protected": "ProductManager:execute"
+	},
+	{
+		"label": "Manage Market Jobs",
+		"secondaryNav": [
+			{
+				"label": "Create Jobs",
+				"state": "create-market-jobs",
+				"protected": "ManageMarketJobs:execute"
+			},
+			{
+				"label": "Search Jobs",
+				"state": "manage-market-jobs",
+				"protected": "ManageMarketJobs:execute"
+			}
+		],
+		"protected": "ManageMarketJobs:execute"
+	}
+]

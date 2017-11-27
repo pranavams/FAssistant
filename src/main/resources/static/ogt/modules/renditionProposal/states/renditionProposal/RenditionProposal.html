@@ -1,0 +1,544 @@
+<div id="content" wc-protected-resource="RenditionProposal:execute"
+	class="container-fluid">
+	<h2>{{'application.navigation.links.administration.renditionproposal'
+		| translate}}</h2>
+	<hr />
+	<form class="well" id="homeForm" name="homeForm" novalidate>
+		<div ng-if="renditionProposalCtrl.isDisplayTabs == true">
+			<div ng-if="renditionProposalCtrl.isCommited == false">
+
+				<h3>Optimised Order Rendition Workflow for {{market}} -
+					{{renditionProposalCtrl.productionMonth}} |
+					{{renditionProposalCtrl.currentTabTitle}}</h3>
+			</div>
+
+			<div ng-if="renditionProposalCtrl.isCommited == true">
+
+				<h3>Committed Order Rendition Proposal for {{market}} -
+					{{renditionProposalCtrl.productionMonth}}</h3>
+			</div>
+		</div>
+
+		<!-- state-change-rendition -->
+		<div>
+			<div class="row">
+				<div class="col-xs-2">
+					<div class="form-group">
+						<label for="market" class="control-label">{{'application.fields.market'
+							| translate}} </label> <select
+							og-validation-indicator="{{'application.fields.market' | translate}}"
+							name="market" id="market" class="form-control" required
+							ng-model='renditionProposalCtrl.selectedMarket'
+							ng-options="market.key as market.name for market in renditionProposalCtrl.markets | orderBy:'name'"
+							ng-change="renditionProposalCtrl.loadModels()">
+							<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+								translate}}</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="col-xs-2">
+
+					<div class="form-group">
+						<label for="vehicleLine" class="control-label">{{'application.fields.model'
+							| translate}} </label> <select
+							og-validation-indicator="{{'application.fields.model' | translate}}"
+							name="vehicleLine" id="vehicleLine" class="form-control" required
+							ng-model='renditionProposalCtrl.selectedModel'
+							ng-options="model.key as model.name for model in renditionProposalCtrl.models | orderBy:'name'"
+							ng-change="renditionProposalCtrl.loadModelYears()">
+							<option value="" default>{{'application.dropdownDefaults.selectModel'|
+								translate}}</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="col-xs-2">
+					<div class="form-group">
+						<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+							| translate}} </label> <select name="modelYr" id="modelYr"
+							class="form-control" required
+							ng-model='renditionProposalCtrl.selectedModelYear'
+							ng-options="modelYr.modelYear as modelYr.modelYear for modelYr in renditionProposalCtrl.modelYears|orderBy:['modelYear']:true"
+							ng-change="renditionProposalCtrl.loadContent(renditionProposalCtrl.selectedModelYear); renditionProposalCtrl.onClickCurrentTab();">
+							<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+								translate}}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-xs-6"
+					ogt-protected-resource="RenditionProposal:execute_">
+					<p></p>
+					<div ng-if="renditionProposalCtrl.enableUnlockDownload == false"
+						class="pull-right">
+						<p></p>
+						<button type="button" class="btn  btn-primary btn-md"
+							ui-sref="rendition-entity-mapping">Mappings</button>
+						<button type="button"
+							ng-disabled="renditionProposalCtrl.saveOverridesDisabled"
+							class="btn  btn-primary btn-md"
+							ng-click="renditionProposalCtrl.onClickSaveOverrides()">Save
+							Overrides</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div ng-if="renditionProposalCtrl.isDisplayTabs == true">
+			<div ng-if="renditionProposalCtrl.enableUnlockDownload == false"
+				class="row form-actions">
+				<div class="pull-left col-xs-5">
+					<div id="tabs" class="btn-group">
+						<!-- ng-disabled="renditionProposalCtrl.disableRenditionTabs" -->
+						<button ng-repeat="tab in renditionProposalCtrl.tabs"
+							class="btn btn-primary text-left"
+							ng-class="{isActive:renditionProposalCtrl.isActiveTab(tab.title)}"
+							ng-click="renditionProposalCtrl.onClickTab(tab); renditionProposalCtrl.checkStatus();">
+							{{tab.title}}
+							<!--  og-tab-change-modal="{{tab}}" -->
+						</button>
+					</div>
+				</div>
+				<div class="row col-xs-3">
+					<div class="form-horizontal gstform-group pull-left">
+						<table>
+							<tr>
+
+								<td style="width: 100%">
+									<p /> <label for="jobStatus" class="control-label">{{'application.fields.jobStatus'
+										| translate}} | {{renditionProposalCtrl.jobStatus}} </label>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="row col-xs-3 ">
+					<div ng-if="renditionProposalCtrl.showOrdersToGenerate"
+						class="form-horizontal gstform-group  pull-right">
+						<table>
+							<tr>
+								<td style="width: 55%"><label for="totalOrders"
+									class="control-label">{{'application.fields.totalOrders'
+										| translate}} </label></td>
+								<td style="width: 25%" class="input-group col-xs-2">
+									<div ng-if="isJobRunning == true">
+										<!-- <label
+									for="vehicles" class="control-label">&nbsp; {{renditionProposalCtrl.totalOrdersToGenerate}}</label> -->
+										<input class="form-control" type="text"
+											ng-model="renditionProposalCtrl.totalOrdersToGenerate"
+											ng-change="renditionProposalCtrl.onChangeTotalOrdersToGenerate()" 
+											disabled />
+									</div>
+									<div ng-if="isJobRunning == false">
+										<input class="form-control" type="text"
+											number-only-validator="_____"
+											ng-model="renditionProposalCtrl.totalOrdersToGenerate"
+											ng-change="renditionProposalCtrl.onChangeTotalOrdersToGenerate()"  ng-model-options="{updateOn: 'keyup'}"
+											ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE@disable"
+											disabled />
+									</div>
+								</td>
+								<td style="width: 20%"><label for="vehicles"
+									class="control-label">&nbsp;{{'application.fields.vehicles'
+										| translate}} </label></td>
+								<!-- 	<td style="width: 30%"> -->
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div
+					ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE">
+					<div ng-if="renditionProposalCtrl.showSubmitJob == true">
+						<div class="col-xs-1  pull-right">
+							<div ng-if="toggle==true">
+								<button ng-model="button" class="btn  btn-success btn-sm"
+									ng-disabled="renditionProposalCtrl.submitJobDisabled"
+									ng-click="renditionProposalCtrl.displayRenditionModal();renditionProposalCtrl.onClickTab(renditionProposalCtrl.presentTabSelected);">Submit
+									Job</button>
+							</div>
+							<div ng-if="toggle==false">
+								<button ng-model="button" class="btn  btn-success btn-sm"
+									ng-click="renditionProposalCtrl.checkStatus()">Check
+									status</button>
+							</div>
+						</div>
+					</div>
+					<div
+						ng-if="renditionProposalCtrl.showCommitButton == true && 	toggle  == true">
+						<!--  ng-disabled="renditionProposalCtrl.disableCommitBtn" -->
+						<div class="col-xs-1  pull-right">
+							<button ng-model="button" class="btn  btn-success btn-sm"
+								ng-click="renditionProposalCtrl.displayConfirmDialog()">COMMIT</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 	<div id="tab"  class="row form-actions" ng-include="renditionProposalCtrl.currentTab"></div> -->
+			<div id="tab" class="row form-actions">
+				<div class="row">
+					<div wc-responsive-table data="proposals"
+						data-table-name="currentstate" row-key="ruid" pagination-enabled
+						responsive-view="list" id="list-currentstate"
+						class="col-xs-12 wc-table"
+						ng-model="renditionProposalCtrl.vehiclesToUpdate">
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th wc-column-sort="entityid" wc-column-sort-default="asc">{{'application.fields.entityid'
+										| translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="entityid" />
+									</th>
+									<th wc-column-sort="dbpid">{{'application.fields.dbpid' |
+										translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="dbpid" />
+									</th>
+									<th wc-column-sort="modelyear">{{'application.fields.modelyear'
+										| translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="modelyear" />
+									</th>
+									<th wc-column-sort="engine">{{'application.fields.engine'
+										| translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="engine" />
+									</th>
+									<th wc-column-sort="body">{{'application.fields.body' |
+										translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="body" />
+									</th>
+									<th wc-column-sort="derivative">{{'application.fields.derivative'
+										| translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="derivative" />
+									</th>
+									<th wc-column-sort="svp">{{'application.fields.svp' |
+										translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="svp" />
+									</th>
+									<th wc-column-sort="transmission">{{'application.fields.transmission'
+										| translate}} <input class="form-control input-sm" type="text"
+										wc-column-filter="transmission" />
+									</th>
+									<th ng-show="renditionProposalCtrl.currentStateCols"
+										wc-column-sort="weightedsalesmix">{{'application.fields.weightedsales'
+										| translate}} <!-- 	<input class="form-control input-sm" type="text"
+						wc-column-filter="weightedsalesmix" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.currentStateCols"
+										wc-column-sort="unweightedsalesmix">{{'application.fields.unweightedsales'
+										| translate}} <!-- <input class="form-control input-sm" type="text"
+						wc-column-filter="unweightedsalesmix" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.currentStateCols"
+										wc-column-sort="currentinventorymix">{{'application.fields.currentinventory'
+										| translate}} <!-- <input class="form-control input-sm" type="text"
+						wc-column-filter="currentinventorymix" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.currentStateCols"
+										wc-column-sort="projectedinventorymix">{{'application.fields.projectedinventory'
+										| translate}} <!-- 	<input class="form-control input-sm" type="text"
+						wc-column-filter="projectedinventorymix" /> -->
+									</th>
+
+									<th ng-show="renditionProposalCtrl.overridesCols"
+										wc-column-sort="weightedsalesmix">{{'application.fields.weightedsales'
+										| translate}}</th>
+								
+									<th ng-show="renditionProposalCtrl.overridesCols"
+										wc-column-sort="weightedsalesmixoverride">{{'application.fields.weightedsalesoverride'
+										| translate}}</th>
+									<th ng-show="renditionProposalCtrl.overridesCols"
+										wc-column-sort="reason">{{'application.fields.reason' |
+										translate}}</th>
+									<th ng-show="renditionProposalCtrl.overridesCols"
+										ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE"></th>
+									<th ng-show="renditionProposalCtrl.overridesCols"
+										wc-column-sort="modifiedsales">{{'application.fields.modifiedsales'
+										| translate}}</th>
+
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										wc-column-sort="modifiedsales">{{'application.fields.modifiedsales'
+										| translate}}</th>
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										wc-column-sort="ordermix">{{'application.fields.ordermix'
+										| translate}}</th>
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										wc-column-sort="orderstogenerate">{{'application.fields.orderstogenerate'
+										| translate}}</th>
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										wc-column-sort="ordermixoverride">{{'application.fields.ordermixoverride'
+										| translate}}</th>
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										wc-column-sort="reason">{{'application.fields.reason' |
+										translate}}</th>
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE"></th>
+									<th ng-show="renditionProposalCtrl.optimisationCols"
+										wc-column-sort="newinventory">{{'application.fields.newinventory'
+										| translate}}</th>
+
+									<th ng-show="renditionProposalCtrl.proposalCols"
+										wc-column-sort="modifiedsales">{{'application.fields.modifiedsales'
+										| translate}} <!-- <input class="form-control input-sm" type="text"
+						wc-column-filter="modifiedsales" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.proposalCols"
+										wc-column-sort="ordermix">{{'application.fields.ordermix'
+										| translate}} <!-- <input class="form-control input-sm" type="text"
+						wc-column-filter="ordermix" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.proposalCols"
+										wc-column-sort="orderstogenerate">{{'application.fields.orderstogenerate'
+										| translate}} <!-- 	<input class="form-control input-sm" type="text"
+						wc-column-filter="orderstogenerate" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.proposalCols"
+										wc-column-sort="newinventory">{{'application.fields.newinventory'
+										| translate}} <!-- 	<input class="form-control input-sm" type="text"
+						wc-column-filter="newinventory" /> -->
+									</th>
+									<th ng-show="renditionProposalCtrl.proposalCols"
+										wc-column-sort="overridesummary">{{'application.fields.overridesummary'
+										| translate}} <!-- 	<input class="form-control input-sm" type="text"
+						wc-column-filter="overridesummary" /> -->
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+
+									<td ng-class="row.colorRepresentationType">{{row.entityid}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.dbpid}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.modelyear}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.engine}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.body}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.derivative}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.svp}}</td>
+									<td ng-class="row.colorRepresentationType">{{row.transmission}}</td>
+									<td ng-class="row.colorRepresentationType"
+										ng-show="$parent.$parent.renditionProposalCtrl.currentStateCols">{{row.weightedsalesmix
+										| percentage}}</td>
+									<td ng-class="row.colorRepresentationType"
+										ng-show="$parent.$parent.renditionProposalCtrl.currentStateCols">{{row.unweightedsalesmix
+										| percentage}}</td>
+									<td ng-class="row.colorRepresentationType"
+										ng-show="$parent.$parent.renditionProposalCtrl.currentStateCols">{{row.currentinventorymix
+										| percentage}}</td>
+									<td ng-class="row.colorRepresentationType"
+										ng-show="$parent.$parent.renditionProposalCtrl.currentStateCols">{{row.projectedinventorymix
+										| percentage}}</td>
+
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.overridesCols"
+										ng-class="row.colorRepresentationType">{{row.weightedsalesmix
+										| percentage}}</td>
+									
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.overridesCols"
+										ng-class="row.colorRepresentationType">
+										<div ng-show="$parent.$parent.currentModelYear == row.modelyear && !$parent.$parent.isJobRunning">
+											<input  ng-style="$parent.$parent.renditionProposalCtrl.isValueChanged('WEIGHTED_SALES',row.ruid)"
+											 ng-change="$parent.$parent.renditionProposalCtrl.populatedOverrides('WEIGHTED_SALES',row.weightedsalesmixoverride,row.weightedsalesmixoverridereason,row.ruid);"
+										 id="{{row.entityid}}textOverrides" class="form-control input-sm" type="text" 
+												placeholder="__.__"  digit-decimal-validator="__.__"
+												ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE@disable"
+												ng-model="row.weightedsalesmixoverride" ng-model-options="{updateOn: 'keyup'}" disabled/>
+										</div>
+										<div ng-show="$parent.$parent.currentModelYear != row.modelyear || $parent.$parent.isJobRunning">
+												{{row.weightedsalesmixoverride}}
+										</div>
+									</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.overridesCols"
+										ng-class="row.colorRepresentationType" class="col-hide">
+										<div ng-show="$parent.$parent.currentModelYear == row.modelyear && !$parent.$parent.isJobRunning">
+											<div class="form-group">
+											<div id="{{row.entityid}}overrideReasondiv" ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE">
+												 <select name="overrideReason"  ng-style="$parent.$parent.renditionProposalCtrl.isValueChanged('WEIGHTED_SALES',row.ruid)"
+													id="{{row.entityid}}overrideReason" class="form-control input-sm" 
+													ng-model='row.weightedsalesmixoverridereason' ng-change="$parent.$parent.renditionProposalCtrl.populatedOverrides('WEIGHTED_SALES',row.weightedsalesmixoverride,row.weightedsalesmixoverridereason,row.ruid);"
+													ng-options="reason.key as reason.value for reason  in $parent.$parent.renditionProposalCtrl.reasons">
+
+												</select>
+											</div>	
+											</div>
+										</div>
+										<div ng-show="$parent.$parent.currentModelYear != row.modelyear || $parent.$parent.isJobRunning">
+												{{row.weightedsalesmixoverridereason}}
+										</div>
+									</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.overridesCols"
+										ng-class="row.colorRepresentationType" class="col-hide"
+										ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE">
+										<div
+											ng-show="$parent.$parent.currentModelYear == row.modelyear">
+											<div id="showEditPenWrite"
+												ng-hide="$parent.$parent.isJobRunning">
+												<div
+													ng-show="$parent.$parent.renditionProposalCtrl.showRevertClear('REVERT','WEIGHTED_SALES',row.ruid)">
+													<span class="show-now hidden-xs"> <a href=""
+														ng-click="$parent.$parent.renditionProposalCtrl.resetOverrides('WEIGHTED_SALES',row.ruid)">Revert</a>
+													</span>
+												</div>
+
+												<div
+													ng-show="$parent.$parent.renditionProposalCtrl.showRevertClear('CLEAR','WEIGHTED_SALES',row.ruid)">
+													<span class="show-now hidden-xs"> <a href=""
+														ng-click="$parent.$parent.renditionProposalCtrl.clearOverrides('WEIGHTED_SALES',row.ruid)">Clear</a>
+													</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.overridesCols"
+										ng-class="row.colorRepresentationType">{{
+										row.modifiedsalesmix | percentage}}</td>
+
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType">{{row.modifiedsalesmix
+										| percentage}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType">{{row.ordermix |
+										percentage}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType">{{row.orderstogenerate}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType">
+										<div ng-show="$parent.$parent.currentModelYear == row.modelyear && !$parent.$parent.isJobRunning">
+										<div>
+											<input ng-style="$parent.$parent.renditionProposalCtrl.isValueChanged('ORDER_MIX',row.ruid)" ng-class="{'placeholder': row.ordermixoverride== '00.00'}"
+											ng-change="$parent.$parent.renditionProposalCtrl.populatedOverrides('ORDER_MIX', row.ordermixoverride,row.ordermixoverridereason,row.ruid);"
+											 class="form-control input-sm" type="text" id='{{row.entityid}}textOptimisation'
+												placeholder="__.__" digit-decimal-validator="__.__"  ng-model-options="{updateOn: 'keyup'}"
+												ng-model="row.ordermixoverride" 
+												ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE@disable" disabled/>
+										</div>
+										</div>
+										<div ng-show="$parent.$parent.currentModelYear != row.modelyear || $parent.$parent.isJobRunning">
+												{{row.ordermixoverride}}
+										</div>
+									</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType" class="col-hide">
+										<div  ng-show="$parent.$parent.currentModelYear == row.modelyear && !$parent.$parent.isJobRunning">
+										<div ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE">
+											<span> <select name="overrideReason" ng-style="$parent.$parent.renditionProposalCtrl.isValueChanged('ORDER_MIX',row.ruid)"
+												id="overrideReason" class="form-control input-sm"
+												ng-model='row.ordermixoverridereason' ng-change="$parent.$parent.renditionProposalCtrl.populatedOverrides('ORDER_MIX', row.ordermixoverride,row.ordermixoverridereason,row.ruid);"
+												ng-options="reason.key as reason.value for reason  in $parent.$parent.renditionProposalCtrl.reasons"
+												>
+											</select>
+											</span>
+										</div>
+										</div>
+										<div ng-show="$parent.$parent.currentModelYear != row.modelyear || $parent.$parent.isJobRunning">
+												{{row.ordermixoverridereason}}
+										</div>
+									</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType" class="col-hide"
+										ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{$parent.$parent.selectedMarket}}:WRITE">
+										<div ng-show="$parent.$parent.currentModelYear == row.modelyear">
+											<div id="showEditPenWrite"	ng-hide="$parent.$parent.isJobRunning">
+												<div ng-show="$parent.$parent.renditionProposalCtrl.showRevertClear('REVERT','ORDER_MIX',row.ruid)">
+													<span class="show-now hidden-xs"> <a href=""
+														ng-click="$parent.$parent.renditionProposalCtrl.resetOverrides('ORDER_MIX',row.ruid)">Revert</a>
+													</span>
+												</div>
+										
+												<div ng-show="$parent.$parent.renditionProposalCtrl.showRevertClear('CLEAR','ORDER_MIX',row.ruid)">
+													<span class="show-now hidden-xs"> <a href=""
+														ng-click="$parent.$parent.renditionProposalCtrl.clearOverrides('ORDER_MIX',row.ruid)">Clear</a>
+													</span>
+												</div>
+											</div>
+										</div>
+									</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.optimisationCols"
+										ng-class="row.colorRepresentationType">{{row.newinventorymix
+										| percentage}}</td>
+
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.proposalCols"
+										ng-class="row.colorRepresentationType">{{::row.modifiedsalesmix
+										| percentage}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.proposalCols"
+										ng-class="row.colorRepresentationType">{{::row.ordermix |
+										percentage}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.proposalCols"
+										ng-class="row.colorRepresentationType">{{::row.orderstogenerate}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.proposalCols"
+										ng-class="row.colorRepresentationType">{{::row.newinventorymix
+										| percentage}}</td>
+									<td
+										ng-show="$parent.$parent.renditionProposalCtrl.proposalCols"
+										ng-class="row.colorRepresentationType">{{::row.overridessummary}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div ng-show="renditionProposalCtrl.proposalCols"
+							class="row form-actions">
+							<div class="col-xs-1">
+								<button ng-model="button" class="btn  btn-success btn-md"
+									ng-click="renditionProposalCtrl.JSONToCSVConvertor('proposals','true')">Download
+								</button>
+							</div>
+							<div
+								ng-if="renditionProposalCtrl.enableUnlockDownload == true"
+								class="col-xs-1">
+								<button ng-model="button" class="btn  btn-success btn-md"
+									ogt-protected-resource="RenditionProposal:execute_{{$parent.$parent.renditionProposalCtrl.selectedBusinessProcess}}:{{$parent.$parent.renditionProposalCtrl.selectedMarketGroup}}:{{renditionProposalCtrl.selectedMarket}}:WRITE"
+									ng-click="renditionProposalCtrl.unlockProposal()">Unlock</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row form-horizontal gstform-group  pull-right">
+				<br />
+				<table>
+					<tr>
+						<td style="width: 30%"></td>
+
+						<td style="width: 12%">
+							<div class="colorbox NotOrderable"></div>
+							<div style="line-height: 3">
+								<span> Not orderable </span>
+							</div>
+						</td>
+						<td style="width: 9%"><div class="colorbox Mapped"></div>
+							<div style="line-height: 3">
+								<span>Mapped</span>
+							</div></td>
+						<td style="width: 20%">
+							<div class="colorbox BelowThreshold"></div>
+							<div style="line-height: 3">
+								<span> Below Threshold (
+									{{renditionProposalCtrl.mixThreshold}}% )</span>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 	<div id="tab" ng-if="renditionProposalCtrl.isDisplayTabs == true"
+			ng-include="renditionProposalCtrl.currentTab"></div> -->
+	</form>
+
+</div>

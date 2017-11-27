@@ -1,0 +1,43 @@
+<header role="banner">
+    <div class="app-branding row align-middle hidden-xxs">
+        <div class="col-sm-10">
+            <div class="media">
+                <a class="pull-left" href="#/">
+                	<img class="media-object logo" src="webCore/assets/image/Ford-Oval.png" alt="Ford Oval"/>
+                </a>
+                <div class="media-body">
+                    <a class="media-heading" href="#/">{{'application.title' | translate}}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-2 text-right">
+            <ul class="list-group text-right">
+                <li class="list-group-item">
+                   <span class="welcome-text">{{'application.welcomePhrase' | translate:ogtCtrl.userInformation}}</span>
+                </li>
+                <li class="list-group-item data-group">
+                    <span class="list-group-item-heading pull-left text-right">Language: </span>
+					<span class="list-group-item-text pull-right text-left">
+						<a id="language" href="javascript:;" ng-click="ogtCtrl.selectLanguage()">English</a>
+					</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="navbar navbar-default visible-xxs">
+        <div class="media navbar-brand col-xs-9">
+            <a class="pull-left" href="#/"> <img class="media-object logo"
+                                                 src="webCore/assets/image/Ford-Oval.png"
+                                                 alt="Ford Oval"/>
+            </a>
+            <a href="#{{ogtCtrl.$location.path()}}#content" class="nav-global-skip">Skip to Content</a>
+
+            <div class="media-body">
+                <a class="media-heading" href="#/">{{'application.shortTitle' | translate}}</a>
+            </div>
+        </div>
+    </div>
+
+</header>

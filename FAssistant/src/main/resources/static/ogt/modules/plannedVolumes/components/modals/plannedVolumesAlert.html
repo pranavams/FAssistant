@@ -1,0 +1,25 @@
+<div class="modal-header">
+	<h2>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="plannedVolAlertCtrl.reject()">&times;</button>
+	</h2>
+	<h2 class="modal-title">Alert</h2>
+</div>
+
+<div ng-if="plannedVolAlertCtrl.type === 'Apply pattern'" class="modal-body">
+	<h4>
+	You are about to apply the Preference Pattern percentages on the SPCPS Volumes
+	for the horizon {{plannedVolAlertCtrl.startMonth | date: 'MMM-yyyy'}} - {{plannedVolAlertCtrl.endMonth | date: 'MMM-yyyy'}}
+	</h4>
+</div>
+
+<div ng-if="plannedVolAlertCtrl.type === 'Derive Entity Volume'" class="modal-body">
+	<h4>
+	Entity Volumes will be derived for the horizon {{plannedVolAlertCtrl.startHorizon | date: 'MMM-yyyy'}} - {{plannedVolAlertCtrl.endHorizon | date: 'MMM-yyyy'}}
+	and will be replaced with existing Entity Volumes, if any. This may take a while...
+	</h4>
+</div>
+
+<div class="modal-footer text-center">
+	<button id="modal-submit" class="btn btn-primary" ng-click="plannedVolAlertCtrl.resolve()">Go Ahead</button>
+	<button id="modal-cancel" class="btn btn-secondary" ng-click="plannedVolAlertCtrl.reject()">Cancel</button>
+</div>

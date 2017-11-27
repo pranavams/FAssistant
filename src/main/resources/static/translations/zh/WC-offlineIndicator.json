@@ -1,0 +1,6 @@
+{
+    "offlineIndicator": {
+        "retryConnection": "Check your connection.",
+        "offlineMessage": "Application is offline. Some functions may not be available."
+    }
+}

@@ -1,0 +1,179 @@
+<div id="content"
+	class="container-fluid" ng-init = "patternCtrl.getDropdownValues()">
+	<h2>{{patternCtrl.buttonName === 'save'? 'application.navigation.links.administration.preferencePatternEditMode' : 'application.navigation.links.administration.preferencePattern' | translate}}</h2>
+	<hr />
+	<form class="well" name="preferencePatternForm"
+		ng-if="isDataReceivedFromOgm == true" novalidate>
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear'
+					| translate}} </label> <select id="modelYear" name="modelYr"
+					class="form-control"
+					ng-model='patternCtrl.selectedModelYear'
+					ng-options="modelYr.modelYear as modelYr.modelYear for modelYr in patternCtrl.modelYears|orderBy:'-'"
+					ng-change="patternCtrl.loadModels()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+						translate}}</option>
+				</select>
+			</div>
+
+			<div class="col-sm-2 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'|
+					translate}} </label> <select id="model" name="model" class="form-control"
+					ng-model="patternCtrl.selectedModel"
+					ng-options="model.key as model.name for model in patternCtrl.models|orderBy:'name'"
+					ng-change="patternCtrl.getStartMonthsHorizon();">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'|
+						translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="startMonth" class="control-label">{{'application.fields.startMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="startMonth"
+						ng-model="patternCtrl.startMonthRange.startDate"
+						is-open="patternCtrl.startMonthRange.isStartDateOpen"
+						datepicker-options="{minDate:
+                          patternCtrl.startMonthRange.minStartDate,
+                          maxDate: patternCtrl.startMonthRange.maxStartDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false"
+						ng-change="patternCtrl.getEndMonthsHorizon()" placeholder = "Select Start Month"> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="patternCtrl.startMonthRange.openStartDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+				<!-- <select id="startMonth" name="startMonth"
+					class="form-control"
+					ng-model='patternCtrl.selectedStartMonth'
+					ng-options="month.key as month.name for month in patternCtrl.startMonths"
+					ng-change="patternCtrl.loadEndMonths()">
+					<option value="" default>{{'application.dropdownDefaults.selectStartMonth'|
+						translate}}</option>
+				</select> -->
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="endMonth" class="control-label">{{'application.fields.endMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="endMonth"
+						ng-model="patternCtrl.endMonthRange.endDate"
+						is-open="patternCtrl.endMonthRange.isEndDateOpen"
+						datepicker-options="{minDate:
+                          patternCtrl.endMonthRange.minEndDate,
+                          maxDate: patternCtrl.endMonthRange.maxEndDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change="patternCtrl.loadButtons()" placeholder = "Select End Month">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="patternCtrl.endMonthRange.openEndDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+				<!-- <select id="endMonth" name="endMonth"
+					class="form-control"
+					ng-model='patternCtrl.selectedEndMonth'
+					ng-options="month.key as month.name for month in patternCtrl.endMonths"
+					ng-change="patternCtrl.loadButtons()">
+					<option value="" default>{{'application.dropdownDefaults.selectEndMonth'|
+						translate}}</option>
+				</select> -->
+			</div>
+			
+			<div class="col-sm-2 form-group"></div>
+			<div class="col-sm-1 form-group">
+			<label for="retrieve" class="control-label"></label> 
+			<div ng-if = "patternCtrl.buttonName == 'retrieve'">
+				<button id="retrieve" class="btn btn-primary btn-md" ng-click="patternCtrl.loadPatterns()">
+					<span>{{'application.buttons.retrieve' | translate}}</span>
+				</button>
+			</div>
+			<div ng-if = "patternCtrl.isDisplayPattern &&  patternCtrl.buttonName == 'edit'" >
+					<button id="edit" class="btn btn-primary btn-md" ng-click="patternCtrl.buttonName = 'save'">
+						<span>{{'application.buttons.edit' | translate}}</span>
+					</button>
+			</div>
+			<div ng-if = "patternCtrl.buttonName == 'save'">
+					<button id="save" class="btn  btn-success btn-sm" ng-disabled = "patternCtrl.errorStack.length !== 0" ng-click="patternCtrl.savePatterns()">
+						<span>{{'application.buttons.save' | translate}}</span>
+					</button>
+			</div>
+			</div>
+			<div class="col-sm-1 form-group">
+			<label for="cancel" class="control-label"></label> 
+			<div ng-if = "patternCtrl.enableCancelButton">
+					<button id="cancel" class="btn btn-secondary btn-md"
+						ng-click="patternCtrl.cancel();">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+			</div>
+			</div>
+		
+		</div>
+	</form>
+	
+	<br/>
+	<div ondragstart="return false;" ondrop="return false;" ng-show ="patternCtrl.isDisplayPattern" class="row">
+        <div id="tab" class="row form-actions preferencePatternHeader">
+           <div class="wc-table preferencePattern">
+               <table class="table table-striped table-bordered tablePadding">
+                  <thead>
+                         <tr>
+	                        <th class="blue fixed market" style="height:{{41*patternCtrl.marketRowspan}}px;padding-top: {{(41*patternCtrl.marketRowspan)/2}}px !important" rowspan = "{{patternCtrl.marketRowspan}}"> Market </th>
+	                        <th class="red fixed months"> Months </th>
+	                        <th class="red" ng-repeat = "month in patternCtrl.months" colspan = "{{month.colspan}}"> {{month.name}} </th>
+	                     </tr>
+                         <tr>
+                            <th class="blue fixed weeks"> Weeks </th>
+                            <th ng-repeat="week in patternCtrl.operatingPlan" ng-class = "week.endOfMonth ? 'oplanOrange' : 'blue'" 
+                             	   rowspan = "{{week.rowspan}}">
+	                           	<div ng-show = "week.endOfMonth">{{week.opPlanWrapper.value | number}}</div>
+	                           	<div ng-hide = "week.endOfMonth">{{week.opPlanWrapper.weekName}}</div>
+                            </th>
+                         </tr>
+                         <tr >
+                            <th class="orange fixed oplan"> Operating Plan </th>
+                            <th class="orange oplan preferenceFont" ng-repeat="opPlan in patternCtrl.operatingPlan track by $index" ng-if="opPlan.endOfMonth == false"> {{opPlan.opPlanWrapper.value | number}} </th>
+                         </tr>
+                         <tr ng-repeat = "(rowIndex,plant) in patternCtrl.plants">
+                         	<th class="crewHeader" title="{{plant.name}}" ng-style = "{'background-color' : plant.editable ? '#837E7C' : '#ffcc99','color':plant.editable ? '#fff' : '#000'}">{{plant.displayName}}</th>
+                         	<th ng-repeat = "(columnIndex,plantCell) in plant.volumeAcrossWeeks"
+                         		ng-class = "plantCell.editable ? 'white' : 'orange'" class="blueFont">
+                         		<div>
+                         			<input ng-if = "patternCtrl.buttonName == 'save' && plantCell.editable" ng-class="{ myBlur: blur }" onfocus="this.select();"  min="0" maxlength = "6" onKeyPress="return event.charCode >= 48 && event.charCode <= 57"
+                         			class = "pref-input-sm blueFont" type="text" id = "{{rowIndex}}{{columnIndex}}{{plantCell.uniquePlantVolume.value}}Volume"
+                         			ng-model = "plantCell.uniquePlantVolume.value" ng-model-options="{updateOn: 'keyup'}" ng-change="blur=true;patternCtrl.calculateTotalPlantVolumeForAMonth(rowIndex,columnIndex)" numbers-only number-only-validator></input>
+                         		</div>
+                         		<div ng-hide = "plantCell.editable && patternCtrl.buttonName == 'save'">{{plantCell.uniquePlantVolume.value | number}}</div>
+                         	</th>
+                         </tr>
+                  </thead>
+                  <tbody>
+                         <tr ng-repeat="(rowIndex,channel) in patternCtrl.patterns">
+                         	<td class="blue fixed markets"  style="height:{{41*channel.rowspan}}px;padding-top: {{(41*channel.rowspan)/2}}px !important" ng-if="channel.marketFlag" rowspan = "{{channel.rowspan}}"> {{channel.market}} </td>
+                            <td class="fixed channels" >{{channel.channelWrapper.name}}</td>
+                            <td ng-repeat="(columnIndex,channelCell) in channel.channelWrapper.allocationPercentage" class="preferenceFont"
+                                ng-class = "channelCell.editable ? 'green' : 'orange'">
+								<div>
+									<input ng-if = "patternCtrl.buttonName == 'save' && channelCell.editable" ng-disabled = "(!channelCell.hasOpPlan || channelCell.lockedInPeriod)" ng-class="{ myBlur: blur }" onfocus="this.select();" min="0" maxlength = "3" onKeyPress="return event.charCode >= 48 && event.charCode <= 57"
+							 		class = "pref-input-sm" ng-style = "{'background-color' : (channelCell.hasOpPlan && channelCell.lockedInPeriod === false) ? '' : '#ccccb3' }" type="text" id = "{{rowIndex}}{{columnIndex}}{{channelCell.allocation}}percent" value="{{channelCell.uniqueChannelVolume.value | percentage}}"
+									ng-model = "channelCell.uniqueChannelVolume.value" ng-model-options="{updateOn: 'keyup'}" ng-change="blur=true;patternCtrl.calculateTotalChannelPercentForAMonth(rowIndex,columnIndex)" numbers-only number-only-validator></input>
+								</div>
+								<div ng-hide = "channelCell.editable && patternCtrl.buttonName == 'save'" ng-style = "channelCell.wrongAllocation ? patternCtrl.checkErrors(rowIndex,columnIndex,true) : patternCtrl.checkErrors(rowIndex,columnIndex,false)"> {{channelCell.uniqueChannelVolume.value | percentage}} </div> 
+							</td>
+						 </tr>
+				  </tbody>
+			   </table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,165 @@
+<div id="content" wc-protected-resource="WERSEntityMapping:execute" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.wersEntityMappings' | translate}}</h2>
+	<hr />
+	<form class="well" name="wersEntityMappingForm" ng-if="isDataReceivedFromOgm == true" novalidate >
+		<div class="row">
+			<div class="col-sm-4 form-group">
+				<label for="market" class="control-label">{{'application.fields.market'| translate}} </label> 
+				<select id="market" name="market" class="form-control"
+					ng-model="wersEntityMappingCtrl.selectedMarket"
+					ng-options="market.key as market.name for market in wersEntityMappingCtrl.markets|orderBy:'name'"
+					ng-change="wersEntityMappingCtrl.loadModels();wersEntityMappingCtrl.hideWersEntityMappings();">
+					<option value="" default>{{'application.dropdownDefaults.selectMarket'| translate}}</option>
+				</select>
+			</div>
+		
+			<div class="col-sm-4 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'| translate}} </label> 
+				<select id="model" name="model" class="form-control" 
+					ng-model="wersEntityMappingCtrl.selectedModel"
+					ng-options="model.key as model.name for model in wersEntityMappingCtrl.models|orderBy:'name'"
+					ng-change="wersEntityMappingCtrl.loadModelYears();wersEntityMappingCtrl.hideWersEntityMappings();">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'| translate}}</option>
+				</select>
+			</div>
+		
+			<div class="col-sm-4 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear' | translate}} </label> 
+				<select id="modelYear" name="modelYr" class="form-control"
+					ng-model='wersEntityMappingCtrl.selectedModelYear'
+					ng-options="modelYr as modelYr for modelYr in wersEntityMappingCtrl.modelYears|orderBy:'-modelYr'"
+					ng-change="wersEntityMappingCtrl.loadWersEntityMappings()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'| translate}}</option>
+				</select>
+			</div>
+		</div>
+	</form>	
+	
+	<div ng-if="wersEntityMappingCtrl.isDisplayMappings">
+		<fieldset class="mapping-border">
+			<legend class="mapping-border">Mappings</legend>
+			<div class="row">
+				<div class="col-sm-8 form-group">
+					<label for="wersCodeDesc" class="control-label">{{'application.fields.wersCodeDesc'| translate}} </label>
+					<button class = "pull-right btn btn-primary btn-sm" style="margin-top:0px" ng-click = "clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="wers" class = "form-control pull-right" ng-model= "wersEntityMappingCtrl.search.wersQuery" type = "text"
+						 ng-keyup = "keyedIn('wers')" style="width:20%; height:25px" placeholder="Search">
+    					<span ng-if = "wersEntityMappingCtrl.typeWers=='typed'" class="glyphicon glyphicon-remove remove" ng-click="clearSearch('wers')"></span>
+					<select id="wersCodeDesc" name="wersCodeDesc" class="form-control selectBoxHorizontalScorll" size="10" style="height:260px"
+						ng-model="wersEntityMappingCtrl.selectedUnmappedWers"
+						ng-options="wersCodeDescObj as wersCodeDescObj.info for wersCodeDescObj 
+													in wersEntityMappingCtrl.unmappedWers|orderBy:['wersDesc']:false | filter:{info:wersSearch}">
+					<option ng-if="!wersEntityMappingCtrl.selectedUnmappedWers" style="display:none" value=""></option>
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-3 form-group addMappingBtn pull-right">
+					<button id="addMapping" class="btn btn-primary btn-md" ogt-protected-resource="WERSEntityMapping:execute_{{wersEntityMappingCtrl.businessProcess}}:{{wersEntityMappingCtrl.marketGroup}}:{{wersEntityMappingCtrl.selectedMarket}}:WRITE" ng-click="wersEntityMappingCtrl.addMappings()">
+							<span class="glyphicon glyphicon-plus"></span>&nbsp;
+							<span>{{'application.buttons.addMapping' | translate}}</span> 
+					</button>
+			</div>
+			<div class ="row">
+				<div class="col-sm-8 form-group">
+					<label for="entityDesc" class="control-label">{{'application.fields.entityDesc'| translate}} </label>
+					<button class = "pull-right btn btn-primary btn-sm" style="margin-top:0px" ng-click = "clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="entity" class = "form-control pull-right" ng-model= "wersEntityMappingCtrl.search.entityQuery" type = "text"
+						 ng-keyup = "keyedIn('entity')" style="width:20%; height:25px" placeholder="Search"/>
+						 <span ng-if = "wersEntityMappingCtrl.typeEntity=='typed'" class="glyphicon glyphicon-remove remove" ng-click="clearSearch('entity')"></span>
+					<select  id="entityDesc" name="entityDesc" class="form-control selectBoxHorizontalScorll" size="10" style="height:260px"
+						ng-model="wersEntityMappingCtrl.selectedUnmappedEntity"
+						ng-options="entityDescObj as entityDescObj.info for entityDescObj 
+													in wersEntityMappingCtrl.unmappedEntities|orderBy:['entityDesc']:false |filter:{info:entitySearch}">
+						 <option ng-if="!wersEntityMappingCtrl.selectedUnmappedEntity" style="display:none" value=""></option>
+					</select>
+				</div>
+			</div>
+				
+			<div class="panel-group" id="accordionManual" style="margin-bottom:2px;margin-top:10px;">
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordionManual" href="#manualMappingList">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.manualMappingList' | translate}} 
+							</span>
+						</h4>
+					</div>
+					<div id="manualMappingList" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row form-group col-sm-15" style="padding-left: 20px">
+								<div class="checkbox" ng-repeat="mappingObj in wersEntityMappingCtrl.manualMappedEntities">
+									<label>
+										<input type="checkbox" value="{{mappingObj}}" 
+											ng-model="wersEntityMappingCtrl.selectedCheckBoxObjsInManualMapped[mappingObj.value]">{{mappingObj.value}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="col-sm-12 text-left">
+					<button id="remove-mappings" class="btn btn-danger btn-md" ogt-protected-resource="WERSEntityMapping:execute_{{wersEntityMappingCtrl.businessProcess}}:{{wersEntityMappingCtrl.marketGroup}}:{{wersEntityMappingCtrl.selectedMarket}}:WRITE" ng-click="wersEntityMappingCtrl.removeManualMappings();">
+						<span class="glyphicon glyphicon-trash"></span>&nbsp;
+						<span>{{'application.buttons.deleteManualMappings' | translate}}</span>
+						
+					</button>
+				</div>
+			</div>
+			
+			<div class="panel-group" id="accordionAuto" style="margin-bottom:2px; margin-top:20px;">
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordionAuto" href="#autoMappedList">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.autoMappingList' | translate}} 
+							</span>
+						</h4>
+					</div>
+					<div id="autoMappedList" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row form-group col-sm-15" style="padding-left: 20px">
+								<div class="checkbox" ng-repeat="mappingObj in wersEntityMappingCtrl.autoMappedEntities">
+									<label>
+										<input type="checkbox" value="{{mappingObj}}" 
+											ng-model="wersEntityMappingCtrl.selectedCheckBoxObjsInAutoMapped[mappingObj.value]">{{mappingObj.value}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="row">
+				<div class="col-sm-12 text-left">
+					<button id="remove-mappings" class="btn btn-danger btn-md" ogt-protected-resource="WERSEntityMapping:execute_{{wersEntityMappingCtrl.businessProcess}}:{{wersEntityMappingCtrl.marketGroup}}:{{wersEntityMappingCtrl.selectedMarket}}:WRITE" ng-click="wersEntityMappingCtrl.removeAutoMappings();">
+						<span class="glyphicon glyphicon-trash"></span>&nbsp;
+						<span>{{'application.buttons.deleteAutoMappings' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6 text-right">
+					<button id="save-mappings" class="btn btn-primary btn-md" ogt-protected-resource="WERSEntityMapping:execute_{{wersEntityMappingCtrl.businessProcess}}:{{wersEntityMappingCtrl.marketGroup}}:{{wersEntityMappingCtrl.selectedMarket}}:WRITE" ng-click="wersEntityMappingCtrl.saveMappings();">
+						<span class="glyphicon glyphicon-floppy-save"></span>&nbsp;
+						<span>{{'application.buttons.saveMappings' | translate}}</span>
+					</button>
+				</div>
+				<div class="col-sm-6 text-left">
+					<button id="cancel-mappings" class="btn btn-secondary btn-md" ng-click="wersEntityMappingCtrl.cancel();wersEntityMappingCtrl.loadWersEntityMappings()">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	
+</div>

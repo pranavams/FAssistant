@@ -1,0 +1,996 @@
+{
+	"markets": [
+	{
+		"key": "CAN",
+		"name": "Canada",
+		"models": [
+		{
+			"key": "C-MAX",
+			"name": "C-MAX",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "140"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "288"
+			}]
+		},
+		{
+			"key": "Continental",
+			"name": "Continental",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "41"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "274"
+			}]
+		},
+		{
+			"key": "Econoline",
+			"name": "Econoline",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "369"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "40"
+			}]
+		},
+		{
+			"key": "Edge",
+			"name": "Edge",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "21"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "6"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "289"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "137"
+			}]
+		},
+		{
+			"key": "Escape",
+			"name": "Escape",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "336"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "347"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "164"
+			}]
+		},
+		{
+			"key": "Expedition",
+			"name": "Expedition",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "62"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "122"
+			}]
+		},
+		{
+			"key": "Explorer",
+			"name": "Explorer",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "247"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "242"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "143"
+			}]
+		},
+		{
+			"key": "F-150",
+			"name": "F-150",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "184"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "241"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "253"
+			}]
+		},
+		{
+			"key": "F-250-550",
+			"name": "F-250-550",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "96"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "205"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "235"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "269"
+			}]
+		},
+		{
+			"key": "F-650/F-750",
+			"name": "F-650/F-750",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "264"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "303"
+			}]
+		},
+		{
+			"key": "Fiesta",
+			"name": "Fiesta",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "374"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "82"
+			}]
+		},
+		{
+			"key": "Flex",
+			"name": "Flex",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "351"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "385"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "28"
+			}]
+		},
+		{
+			"key": "Focus",
+			"name": "Focus",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "332"
+			}]
+		},
+		{
+			"key": "Fusion",
+			"name": "Fusion",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "223"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "163"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "150"
+			}]
+		},
+		{
+			"key": "MKC",
+			"name": "MKC",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "101"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "114"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "178"
+			}]
+		},
+		{
+			"key": "MKT",
+			"name": "MKT",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "89"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "141"
+			}]
+		},
+		{
+			"key": "MKX",
+			"name": "MKX",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "121"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "112"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "45"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "34"
+			}]
+		},
+		{
+			"key": "MKZ",
+			"name": "MKZ",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "24"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "281"
+			}]
+		},
+		{
+			"key": "Mustang",
+			"name": "Mustang",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "200"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "154"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "263"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "273"
+			}]
+		},
+		{
+			"key": "Navigator",
+			"name": "Navigator",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "32"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "135"
+			}]
+		},
+		{
+			"key": "Taurus",
+			"name": "Taurus",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "343"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "193"
+			}]
+		},
+		{
+			"key": "Transit",
+			"name": "Transit",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "395"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "240"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "52"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "59"
+			}]
+		}]
+	},
+	{
+		"key": "MEX",
+		"name": "Mexico",
+		"models": [{
+			"key": "C-MAX",
+			"name": "C-MAX",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "504"
+			}]
+		},
+		{
+			"key": "Continental",
+			"name": "Continental",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "502"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "563"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "384"
+			}]
+		},
+		{
+			"key": "Edge",
+			"name": "Edge",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "168"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "249"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "230"
+			}]
+		},
+		{
+			"key": "Expedition",
+			"name": "Expedition",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "179"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "54"
+			}]
+		},
+		{
+			"key": "Explorer",
+			"name": "Explorer",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "325"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "236"
+			}]
+		},
+		{
+			"key": "F-150",
+			"name": "F-150",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "216"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "64"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "79"
+			}]
+		},
+		{
+			"key": "F-250-550",
+			"name": "F-250-550",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "204"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "232"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "270"
+			}]
+		},
+		{
+			"key": "Fiesta",
+			"name": "Fiesta",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "375"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "17"
+			}]
+		},
+		{
+			"key": "Focus",
+			"name": "Focus",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "501"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "42"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "371"
+			}]
+		},
+		{
+			"key": "Fusion",
+			"name": "Fusion",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "560"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "319"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "328"
+			}]
+		},
+		{
+			"key": "MKC",
+			"name": "MKC",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "566"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "295"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "107"
+			}]
+		},
+		{
+			"key": "MKX",
+			"name": "MKX",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "503"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "562"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "379"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "244"
+			}]
+		},
+		{
+			"key": "MKZ",
+			"name": "MKZ",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "558"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "278"
+			}]
+		},
+		{
+			"key": "Mustang",
+			"name": "Mustang",
+			"modelYears": [{
+				"modelYear": "2015",
+				"businessKey": "272"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "559"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "197"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "130"
+			}]
+		},
+		{
+			"key": "Navigator",
+			"name": "Navigator",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "561"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "373"
+			}]
+		},
+		{
+			"key": "Police",
+			"name": "Police",
+			"modelYears": [{
+				"modelYear": "2018",
+				"businessKey": "68"
+			}]
+		},
+		{
+			"key": "Taurus",
+			"name": "Taurus",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "564"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "565"
+			}]
+		},
+		{
+			"key": "Transit",
+			"name": "Transit",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "175"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "233"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "294"
+			}]
+		}]
+	},
+	{
+		"key": "USA",
+		"name": "USA",
+		"models": [{
+			"key": "C-MAX",
+			"name": "C-MAX",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "438"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "443"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "402"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "812"
+			}]
+		},
+		{
+			"key": "Continental",
+			"name": "Continental",
+			"modelYears": [{
+				"modelYear": "2017",
+				"businessKey": "419"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "454"
+			}]
+		},
+		{
+			"key": "Econoline",
+			"name": "Econoline",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "404"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "408"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "428"
+			}]
+		},
+		{
+			"key": "Edge",
+			"name": "Edge",
+			"modelYears": [{
+				"modelYear": "2015",
+				"businessKey": "494"
+			},
+			{
+				"modelYear": "2016",
+				"businessKey": "442"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "449"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "465"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "460"
+			}]
+		},
+		{
+			"key": "Escape",
+			"name": "Escape",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "426"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "412"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "450"
+			}]
+		},
+		{
+			"key": "Expedition",
+			"name": "Expedition",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "446"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "452"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "439"
+			}]
+		},
+		{
+			"key": "Explorer",
+			"name": "Explorer",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "462"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "467"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "398"
+			}]
+		},
+		{
+			"key": "F-150",
+			"name": "F-150",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "440"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "451"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "399"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "403"
+			}]
+		},
+		{
+			"key": "F-250-550",
+			"name": "F-250-550",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "417"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "431"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "470"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "463"
+			}]
+		},
+		{
+			"key": "F-650/F-750",
+			"name": "F-650/F-750",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "429"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "436"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "418"
+			}]
+		},
+		{
+			"key": "Fiesta",
+			"name": "Fiesta",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "456"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "409"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "432"
+			}]
+		},
+		{
+			"key": "Flex",
+			"name": "Flex",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "464"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "435"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "405"
+			}]
+		},
+		{
+			"key": "Focus",
+			"name": "Focus",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "466"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "437"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "406"
+			}]
+		},
+		{
+			"key": "Fusion",
+			"name": "Fusion",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "459"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "457"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "447"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "430"
+			}]
+		},
+		{
+			"key": "MKC",
+			"name": "MKC",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "407"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "400"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "425"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "422"
+			}]
+		},
+		{
+			"key": "MKS",
+			"name": "MKS",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "415"
+			}]
+		},
+		{
+			"key": "MKT",
+			"name": "MKT",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "413"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "420"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "434"
+			}]
+		},
+		{
+			"key": "MKX",
+			"name": "MKX",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "423"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "401"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "445"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "453"
+			}]
+		},
+		{
+			"key": "MKZ",
+			"name": "MKZ",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "433"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "448"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "458"
+			}]
+		},
+		{
+			"key": "Mustang",
+			"name": "Mustang",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "414"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "410"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "468"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "427"
+			}]
+		},
+		{
+			"key": "Navigator",
+			"name": "Navigator",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "557"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "469"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "455"
+			}]
+		},
+		{
+			"key": "Taurus",
+			"name": "Taurus",
+			"modelYears": [{
+				"modelYear": "2016",
+				"businessKey": "411"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "416"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "461"
+			}]
+		},
+		{
+			"key": "Transit",
+			"name": "Transit",
+			"modelYears": [{
+				"modelYear": "2015",
+				"businessKey": "811"
+			},
+			{
+				"modelYear": "2016",
+				"businessKey": "424"
+			},
+			{
+				"modelYear": "2017",
+				"businessKey": "421"
+			},
+			{
+				"modelYear": "2018",
+				"businessKey": "444"
+			},
+			{
+				"modelYear": "2019",
+				"businessKey": "441"
+			}]
+		}]
+	}]
+}

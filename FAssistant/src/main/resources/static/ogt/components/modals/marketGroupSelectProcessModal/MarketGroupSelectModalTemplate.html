@@ -1,0 +1,40 @@
+<div class="modal-header">
+	<h1 class="modal-title">Please select Business Process and Market Group</h1>
+</div>
+
+<div class="modal-body">
+	<div class="row">
+	<div class="col-xs-1">
+	</div>
+		<div class="col-xs-5">
+			<div class="form-group">
+			
+						<label for="region" class="control-label">Select Business Process: </label> <select
+					name="region" id="region" class="form-control" required
+					ng-model='marketGroupSelectModalCtrl.selectedBusiness'
+					ng-options="business.key as business.name for business in marketGroupSelectModalCtrl.business|orderBy:'name'"
+					ng-change="marketGroupSelectModalCtrl.loadMarketGroup()">
+			 		<option value="" default>Select Business Process</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-xs-5">
+			<div class="form-group">
+			
+				<label for="market" class="control-label">Select Market Group: </label> <select
+					name="market" id="market" class="form-control" required
+					ng-options="markets.key as markets.name for markets in marketGroupSelectModalCtrl.markets|orderBy:'name'"
+					ng-model='marketGroupSelectModalCtrl.selectedMarketGroup'
+					ng-change="marketGroupSelectModalCtrl.resolve()">
+					<option value="" default>Select Market Group</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-xs-1">
+	</div>
+	</div>
+</div>
+
+<div class="modal-footer text-center">
+	
+</div>

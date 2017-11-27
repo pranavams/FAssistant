@@ -1,0 +1,197 @@
+<div id="content" wc-protected-resource="{{manageMarketJobsCtrl.protectedResource}}" class="container-fluid">
+	<h1></h1>
+	<h2>{{'application.navigation.links.administration.searchMarketJobs' | translate}}</h2>
+	<hr />
+<form class="well" role="form" name="listJobForm" novalidate>
+		<p>{{'application.fields.selectmarketVehicleLineModel' | translate}}
+</p>
+<div class="row">
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="marketId" class="control-label">{{'application.fields.market'|
+				translate}} </label> <select ng-model="manageMarketJobsCtrl.selectedMarket"
+				ng-options="market.key as market.name for market in manageMarketJobsCtrl.markets"
+				ng-change="manageMarketJobsCtrl.loadModels(); manageMarketJobsCtrl.processDateJobStatusforMarket();"
+				id="marketId" name="market" class="form-control"
+				og-validation-indicator="{{'application.fields.market' | translate}}"
+				required>
+				<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+					translate}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="vehicleLine" class="control-label">{{'application.fields.model'|
+				translate}} </label> <select
+				og-validation-indicator="{{'application.fields.model' | translate}}"
+				id="vehicleLine" class="form-control"
+				ng-model="manageMarketJobsCtrl.selectedModel"
+				ng-options="model.key as model.name for model in manageMarketJobsCtrl.models"
+				name="model" ng-change="manageMarketJobsCtrl.loadModelYears();">
+				<option value="" default>{{'application.dropdownDefaults.selectModel'|
+					translate}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+				| translate}} </label> <select
+				og-validation-indicator="{{'application.fields.modelyear' | translate}}"
+				id="modelYr" name="modelYr" class="form-control"
+				ng-model='manageMarketJobsCtrl.selectedModelYear'
+				ng-options="modelYr.modelYear as modelYr.modelYear for modelYr in manageMarketJobsCtrl.modelYears|orderBy:['modelYear']:true"
+				ng-change="manageMarketJobsCtrl.loadContent()">
+				<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+					translate}}</option>
+			</select>
+		</div>
+
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="processMonth" class="control-label">{{'application.fields.processDate'
+				| translate}} </label> <select 
+				og-validation-indicator="{{'application.fields.processDate' | translate}}"
+				id="processMonth" name="processMonth" class="form-control" required
+				ng-model='manageMarketJobsCtrl.processMonth'
+				ng-options="processMonth for processMonth in manageMarketJobsCtrl.processMonths"
+				ng-change="manageMarketJobsCtrl.displayDataTable();">
+				<option value="" default>{{'application.dropdownDefaults.selectProcessMonth'| translate}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="processType" class="control-label">{{'application.fields.processType'
+				| translate}} </label> <select
+				og-validation-indicator="{{'application.fields.processType' | translate}}"
+				id="processType" name="processType" class="form-control" required
+				ng-model='manageMarketJobsCtrl.processType'
+				ng-options="marketCode.code as marketCode.name for marketCode in manageMarketJobsCtrl.processTypes">
+			</select>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="jobStatus" class="control-label">{{'application.fields.jobStatus'
+				| translate}} </label> <select
+				og-validation-indicator="{{'application.fields.jobStatus' | translate}}"
+				id="jobStatus" name="jobStatus" class="form-control" multiple
+				ng-model='manageMarketJobsCtrl.jobStatus'>
+				<option value="All">All</option>
+				<option ng-repeat="jobStatus in manageMarketJobsCtrl.jobStatusList"
+					value="{{jobStatus}}">{{jobStatus}}</option>
+			</select>
+		</div>
+	</div>
+</div>
+<div class="row form-actions">
+	<div class="col-xs-6 text-right">
+		<button class="btn btn-primary-default" wc-continue-if-valid
+			ng-click="manageMarketJobsCtrl.searchMarketJobs()">{{'application.buttons.search'
+			| translate}}</button>
+	</div>
+	<div class="col-xs-6 text-left">
+		<button class="btn btn-secondary"
+			ng-click="manageMarketJobsCtrl.clearMarketJobs(); manageMarketJobsCtrl.clearSelectedModelValues();">{{'application.buttons.clear'
+			| translate}}</button>
+	</div>
+</div>
+
+<div ng-if="manageMarketJobsCtrl.isDisplayDataTable">
+			<div og-responsive-table
+				data="jobStatusMappings"
+				data-table-name="manage-market" row-key="uniqueKey"
+				pagination-enabled responsive-view="list"
+				id="jobStatus-mapping-table" class="col-xs-12 wc-table" ng-model="manageMarketJobsCtrl.vehiclesToUpdate">
+				<table class="table table-striped table-bordered table-condensed">
+					<thead>
+						<tr>
+						<th class="text-center">Actions</th>
+							<th wc-column-sort="market" wc-column-sort-default="asc">{{'application.fields.market'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="market" />
+							</th>
+							<th wc-column-sort="model" wc-column-sort-default="asc">{{'application.fields.model'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="model" />
+							</th>
+							<th wc-column-sort="modelYear">{{'application.fields.modelyear' |
+								translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="modelYear" />
+							</th>
+							<th wc-column-sort="processDate">{{'application.fields.processDate'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="processDate" />
+							</th>
+							<th wc-column-sort="processType">{{'application.fields.processType' |
+								translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="processType" />
+							</th>
+							<th wc-column-sort="user">{{'application.fields.userId'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="user" />
+							</th>
+							<th wc-column-sort="startDate">{{'application.fields.startDate'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="startDate" />
+							</th>
+							<th wc-column-sort="endDate">{{'application.fields.endDate'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="endDate" />
+							</th>
+							<th wc-column-sort="hpcjobid">{{'application.fields.hpcjobid'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="hpcjobid" />
+							</th>
+							<th wc-column-sort="status">{{'application.fields.jobStatus'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="status" />
+							</th>
+							<th wc-column-sort="hpcStatus">{{'application.fields.hpcStatus'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="hpcStatus" />
+							</th>
+						</tr>
+					</thead> 
+					<tbody>
+						<tr>
+							
+							<td>
+							<div ng-show="$parent.$parent.manageMarketJobsCtrl.isAuthorizedLink">
+								<div ng-show="(((row.status == 'SUBMITTED' || row.status == 'INPROCESS') && row.jobcomment == 'Job has been submitted to HPC' && row.hpcjobid != 'null' && row.endDate == 'null') || (row.hpcjobid == '-'))">
+								<a ng-click="$parent.$parent.status(row.sessionId,row.ruid)">Status</a>| <a ng-click="$parent.$parent.abort(row.sessionId,row.ruid)">Abort</a>
+								</div> 
+								<div ng-hide="row.startDate =='null' || row.endDate == 'null' || row.status=='null' || (row.startDate != 'null' && (row.status == 'INPROCESS' || row.status == 'SUBMITTED'))">
+								<a ng-click="$parent.$parent.rerun(row.sessionId,row.ruid)">Rerun</a>
+							</div>
+							<div ng-hide="$parent.$parent.manageMarketJobsCtrl.isAuthorizedLink">Status|Abort|Rerun </div>
+							</td>
+							<td>{{row.market}}</td>
+							<td>{{row.model}}</td>
+							<td>{{row.modelYear}}</td>
+							<td>{{row.processDate}}</td>
+							<td>{{row.processType}}</td>
+							<td>{{row.user}}</td>
+							<td>{{row.startDate}}</td>
+							<td>{{row.endDate}}</td>
+							<td>{{row.hpcjobid}}</td>
+							<td>{{row.status}}</td>
+							<td>{{row.hpcStatus}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+	</form>
+	</div>
+

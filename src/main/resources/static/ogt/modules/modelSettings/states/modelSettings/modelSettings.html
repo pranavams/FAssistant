@@ -1,0 +1,191 @@
+<div id="content" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.modelSettings' | translate}}</h2>
+	<hr />
+	<form class="well" name="modelSettingsForm" novalidate role="form" ng-show="isDataReceivedFromOgm == true">
+		<div class="row">
+			<div class="col-sm-4 form-group">
+				<label for="market" class="control-label">{{'application.fields.market' | translate}} </label> 
+				<select id="market" name="market" class="form-control"
+					og-validation-indicator="{{'application.fields.market' | translate}}" required
+					ng-model='modelSettingsCtrl.selectedMarket'
+					ng-options="market.key as market.name for market  in modelSettingsCtrl.vehicleLines | orderBy:'name'"
+					ng-change="modelSettingsCtrl.isDropdownValuesChanged = true;modelSettingsCtrl.loadModels()">
+					<option value="" default>{{'application.dropdownDefaults.selectMarket'| translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-4 form-group">
+				<label for="model" class="control-label">{{'application.fields.model' | translate}} :</label>
+				<select id="model" name="model" class="form-control"
+					og-validation-indicator="{{'application.fields.model' | translate}}" required
+					ng-model="modelSettingsCtrl.selectedModel"
+					ng-change="modelSettingsCtrl.loadModelYears();">
+					<option ng-if="(modelSettingsCtrl.selectedMarket === undefined || modelSettingsCtrl.selectedMarket === '')" value="" default>
+						{{'application.dropdownDefaults.selectModel'| translate}}</option>
+					<option ng-if="!(modelSettingsCtrl.selectedMarket === undefined || modelSettingsCtrl.selectedMarket === '')" value="ALL" default>
+						{{'application.dropdownDefaults.all'| translate}}</option>
+					<option ng-repeat="model in modelSettingsCtrl.models" value="{{model.key}}">{{model.name}}</option>
+				
+				</select>
+			</div>
+			<div class="col-sm-4 form-group">
+				<label for="modelYr" class="control-label">{{'application.fields.modelyear' | translate}} :</label>
+				<select id="modelYr" name="modelYr" class="form-control"
+					og-validation-indicator="{{'application.fields.modelyear' | translate}}" required
+					ng-model='modelSettingsCtrl.selectedModelYear'
+					ng-change="modelSettingsCtrl.isDropdownValuesChanged = true;modelSettingsCtrl.loadModelSettings()">
+					<option ng-if="(modelSettingsCtrl.selectedModel === undefined || modelSettingsCtrl.selectedModel === '')" value="" default>
+						{{'application.dropdownDefaults.selectModelYear'| translate}}</option>
+					<option ng-if="!(modelSettingsCtrl.selectedModel === undefined || modelSettingsCtrl.selectedModel === '')" value="ALL" default>
+						{{'application.dropdownDefaults.all'| translate}}</option>
+					<option ng-repeat="modelYr in modelSettingsCtrl.modelYears" value="{{modelYr}}">{{modelYr}}</option>
+				</select>
+			</div>
+		</div>
+		
+		<div ng-show="modelSettingsCtrl.displayModelMarketSettings">
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordion" href="#marketSettings">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.marketsettings' | translate}} 
+							</span>
+						</h4>
+					</div>
+					<div id="marketSettings" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-2 form-group">
+									<label for="salesHorizon" class="control-label">{{'application.fields.saleshorizon' | translate}}:</label>
+								</div>
+								<div class="col-sm-2 form-group">
+									<select id="salesHorizon" name="salesHorizon" class="form-control" ng-model="salesHorizon" ng-disabled="linkStatus"
+										ng-options="mnth as mnth for mnth in modelSettingsCtrl.months" 
+										og-validation-indicator="{{'application.fields.saleshorizon'| translate}}" required>
+										<option value="" default>Select</option>
+									</select>
+								</div>
+								<div class="col-sm-6 form-group">
+									{{'application.fields.months' | translate}}
+									<a><span class="glyphicon glyphicon-info-sign" tooltip-placement="right" 
+									uib-tooltip="{{'application.tooltipInfo.salesHorizonInfo'| translate}}"></span></a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-2 form-group">
+									<label for="projectionHorizon" class="control-label">{{'application.fields.projectionhorizon' | translate}}:</label>
+								</div>
+								<div class="col-sm-2 form-group">
+									<select id="projectionHorizon" name="projectionHorizon" class="form-control" ng-model="projectionHorizon" ng-disabled="linkStatus"
+										ng-options="mnth as mnth for mnth in modelSettingsCtrl.months"
+										og-validation-indicator="{{'application.fields.projectionhorizon'| translate}}" required>
+										<option value="" default>Select</option>
+									</select>
+								</div>
+								<div class="col-sm-6 form-group">
+									{{'application.fields.months' | translate}}
+									<a><span class="glyphicon glyphicon-info-sign" tooltip-placement="right" 
+									uib-tooltip="{{'application.tooltipInfo.projectionHorizonInfo'| translate}}"></span></a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-2 form-group">
+									<label for="mixThreshold" class="control-label">{{'application.fields.mixthreshold' | translate}}:</label>
+								</div>
+								<div class="col-sm-2 form-group">
+									<input id="mixThreshold" name="mixThreshold" type="text" placeholder="_._" ng-disabled="linkStatus"
+									digit-decimal-validator="_._" class="form-control" ng-model="mixThreshold" 
+									og-validation-indicator="{{'application.fields.mixthreshold'| translate}}"  required/>
+								</div>
+								<div class="col-sm-6 form-group">
+									{{'application.fields.percent' | translate}}
+									<a><span class="glyphicon glyphicon-info-sign" tooltip-placement="right" 
+									uib-tooltip="{{'application.tooltipInfo.mixThresholdInfo'| translate}}"></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordion" href="#filterWeights">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.filterweights' | translate}} 
+							</span>
+						</h4>
+					</div>
+					<div id="filterWeights" class="panel-collapse collapse">
+						<div class="panel-body">
+							<h4>{{'application.fields.gstHeading' | translate}}</h4>
+							<div class="form-horizontal gstform-group gstWidget">
+								<table>
+									<tr>
+										<td style="width: 25%">&nbsp;&nbsp;
+											<label for="weightText" class="control-label">
+												{{'application.fields.setSelectedWeights' | translate}}
+											</label>
+										</td>
+										<td style="width: 15%" class="input-group col-sm-3">
+											<input id="weightText" name="weightText" type="text" placeholder="_._" digit-decimal-validator="_._" ng-disabled="linkStatus"
+												class="form-control" ng-model="weightMasterInput"/>
+										</td>
+										<td style="width: 15%" class="input-group-btn">
+											<button class="btn btn-primary" type="button" ng-click="modelSettingsCtrl.setMasterWeightValue();" ng-disabled="linkStatus">
+												<span>{{'application.buttons.applyWeights' | translate}}</span>
+											</button>
+										</td>
+										<td style="width: 45%" class="input-group col-sm-4">&nbsp;&nbsp;
+											<span ng-show="modelSettingsCtrl.isApplyWeightsInvalid" class="validation-text">
+												{{'conflictNotification.weightsRangeNotification' | translate}}
+											</span>
+											<span ng-show="modelSettingsCtrl.isWeightsNotApplied" class="validation-text">
+												{{'conflictNotification.selectWieghtCheckBox' | translate}}
+											</span>
+										</td>
+									</tr>
+								</table>			
+							</div>
+							<fieldset ng-disabled="linkStatus">
+							<div id="gst-salesType-table" name="gstSalesTypes" style="width:60%;" 
+								wc-data-table="{{modelSettingsCtrl.gstOverrideOptions}}" 
+								columns="modelSettingsCtrl.gstColumns"
+								column-defs="{{modelSettingsCtrl.gstColumnDefs}}" 
+								data="gstDataTableMappings"
+								check-box-col="{{modelSettingsCtrl.gstCheckBoxColPosition}}" 
+								selected-value="{{modelSettingsCtrl.gstSelectedValue}}" 
+								ng-model="modelSettingsCtrl.gstValues" >
+								<span ng-show="modelSettingsCtrl.isApplyWeightsInvalidIndividual" class="validation-text">
+									{{'conflictNotification.weightsRangeNotification' | translate}}
+								</span>
+								<table class="table table-striped table-bordered table-condensed" >
+									<thead>
+										<tr>
+											<th scope="col" class="text-center"></th>
+											<th scope="col">{{'application.fields.weightName' | translate}}</th>
+											<th scope="col">{{'application.fields.weightValue' | translate}}</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6 text-right">
+					<button id="save-vehicleSettings" class="btn btn-primary btn-md" ng-click="modelSettingsCtrl.saveSettings();" ogt-protected-resource="ModelSettings:execute_">
+						<span>{{'application.buttons.save' | translate}}</span>
+					</button>
+				</div>
+				<div class="col-sm-6 text-left">
+					<button id="cancel" class="btn btn-secondary btn-md" ng-click="modelSettingsCtrl.goToVehicleSettingsList();">
+						<span>{{'application.buttons.backToSearch' | translate}}</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

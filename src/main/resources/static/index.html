@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Ford Interactive</title>
+<style>
+.container {	position: absolute;	text-align: center;	color: black;	height: 50vh;	width: 50vw;	}
+
+/* Bottom left text */
+.bottom-left {    position: absolute;    bottom: 300px;    left: 16px; 	}
+
+/* Top left text */
+.top-left {    position: absolute;    top: 8px;    left: 16px;}
+
+/* Top right text */
+.top-right {    position: absolute;    top: 8px;    right: 16px;}
+
+/* Bottom right text */
+.bottom-right {    position: absolute;    bottom: 8px;    right: 16px;}
+
+/* Centered text */
+.centered {    position: absolute;    top: 50%;    left: 50%;    transform: translate(-50%, -50%);}
+
+#container{   display: table-cell;   vertical-align: bottom;   background-color:white; }
+
+</style>
+</head>
+<body>
+	<script src="webtrends/webtrends.load.js"></script>
+	<script src="webCore/FRF-Vendor.v1.1.0.min.js"></script>
+	<script src="webCore/FRF-webCore.v1.1.0.min.js"></script>
+
+	<script src="ogt/components/moment.js"></script>
+
+	<script src="assistant/js/logger.js"></script>
+	<script src="assistant/js/SpeechSynthesizer.js"></script>
+	<script src="assistant/js/annyang.min.js"></script>
+
+	<script src="assistant/assistantModule.js"></script>
+	<script
+		src="assistant/components/services/assistantService/AssistantService.js"></script>
+	<script src="assistant/assistantController.js"></script>
+	
+	<script type="text/javascript">
+		Logger.log("hit the Mic and ask as What is the Order count for 2017 Fiesta in London ");
+	</script>
+	
+	<div style="text-align:center; height:100vh;  width:100vw;" id="container" 
+		ng-app="assistantModule"
+		ng-controller="assistantController as ctrl"
+		ng-init="ctrl.initWebKit()">
+		<div class="bottom-left" id="txtLog" style="font-size:250%"></div>
+		<div class="right" id="header-content2"><p><img id="imgMic" src="assistant/images/mic.png" ng-click="ctrl.startRecording()"></p></div>
+	</div>
+</div>	
+</body>
+</html>

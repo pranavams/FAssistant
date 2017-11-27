@@ -1,0 +1,46 @@
+<div wc-protected-resource="ViewModels:execute" id="content" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.viewModels' | translate}}</h2>
+	<hr />
+	<form class="well" name="viewModelsForm" ng-if="viewModelsCtrl.isDataReceivedFromOgm == true">
+		<div class="row">
+			<div class="col-sm-6 form-group">
+				<label for="market" class="control-label">{{'application.fields.market' | translate}} </label> 
+				<select name="market" id="market" class="form-control"
+					ng-model="viewModelsCtrl.selectedMarket"
+					ng-options="market.marketKey as market.marketName for market in viewModelsCtrl.viewModelsListObj| orderBy:'marketName'"
+					ng-change="viewModelsCtrl.loadModelYears();">
+					<option value="" default>{{'application.dropdownDefaults.selectMarket' | translate}}</option>
+				</select>
+			</div>
+
+			<div class="col-sm-6 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear' | translate}}</label> 
+				<select name="modelYear" id="modelYear" class="form-control"
+					ng-model="viewModelsCtrl.selectedModelYear"
+					ng-options="my as my for my in modelYears"
+					ng-change="viewModelsCtrl.populateDataTable();">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear' | translate}}</option>
+				</select>
+			</div>
+		</div>
+	</form>	
+	<div ng-if="viewModelsCtrl.isDisplayDataTable == true && viewModelsCtrl.isAuthorizationComplete == true">
+		<div wc-data-table="{{viewModelsCtrl.overrideOptions}}"
+			id="view-models-table" name="viewModelsTable"
+			data="viewModelsCtrl.viewModels"
+			column-defs="{{viewModelsCtrl.columnDefs}}"
+			responsive-column-defs="{{viewModelsCtrl.responsiveColumnDefs}}"
+			columns="viewModelsCtrl.columns">
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>{{'application.fields.model' | translate}}</th>
+						<th>{{'application.fields.status' | translate}}</th>
+						<th>{{'application.fields.actions' | translate}}</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+	
+</div>

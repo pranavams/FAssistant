@@ -1,0 +1,10 @@
+---
+applications:
+  # Name of application in Cloud Foundry 
+- name: assistant
+
+  memory: 1024M
+  
+  instances: 1
+  
+  path: ./build/libs/Assistant-0.0.1.jar

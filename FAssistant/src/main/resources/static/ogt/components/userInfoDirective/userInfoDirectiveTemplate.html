@@ -1,0 +1,6 @@
+<li class="visible-xxs"><a ng-click="jabUiAppController.toggleRole()">{{'application.navigation.links.role'
+    | translate}} <span class="pull-right">{{((jabUiAppController.userInformation.role !== 'agent') ? 'application.role.customer' : 'application.role.agent') | translate:jabUiAppController.userInformation}}</span></a>
+</li>
+<li class="visible-xxs"><a ng-click="jabUiAppController.selectLanguage()">{{'application.navigation.links.language'
+    | translate}} <span class="pull-right">{{jabUiAppController.selectedLanguage.translationId | translate}}</span></a>
+</li>

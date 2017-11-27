@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header visible-xxs">
+		<button id="toggle-nav-menu-collapse" type="button" class="navbar-toggle collapsed" ng-click="toggleNavbarCollpase()" aria-expanded="false">
+			<span class="sr-only">{{'application.navigation.toggleTitle' | translate}}</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<div collapse="navbarCollapsed" class="collapse navbar-collapse" id="primary-nav">
+		<ul class="nav navbar-nav">
+			<li wc-protected-resource="{{node.protected}}" ng-repeat="node in menuData" ng-class="{dropdown:node.children}" ui-sref-active="active">
+				<a ng-click="collapseNavbar()" ng-if="!node.children" ui-sref="{{node.state | translate}}" ui-sref-opts="{reload: true, notify: true}">
+					{{node.text | translate}}
+				</a>
+				<a ng-if="node.children" role="button" aria-expanded="false" href class="dropdown-toggle" data-toggle="dropdown">
+					{{node.text | translate}}<span ng-if="node.children" class="caret"></span>
+				</a>
+				<sub-navigation-tree></sub-navigation-tree>
+			</li>
+		</ul>
+		<span ng-transclude></span></div>
+</nav>

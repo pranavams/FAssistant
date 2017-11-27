@@ -1,0 +1,86 @@
+<div id="content" wc-protected-resource="{{manageMarketJobsCtrl.protectedResource}}" class="container-fluid">
+	<h1></h1>
+	<h2>{{'application.navigation.links.administration.createMarketJobs' | translate}}</h2>
+	<hr />
+	<form class="well" role="form" name="createJobForm" novalidate>
+    <div class="row">
+			<div class="col-sm-4">
+		<div class="form-group">
+			<label for="marketId" class="control-label">{{'application.fields.market'|
+				translate}} </label> <select ng-model="manageMarketJobsCtrl.selectedMarket"
+				ng-options="market.key as market.name for market in manageMarketJobsCtrl.markets"
+				ng-change="manageMarketJobsCtrl.loadModels();"
+				id="marketId" name="market" class="form-control"
+				og-validation-indicator="{{'application.fields.market' | translate}}"
+				required>
+				<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+					translate}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="vehicleLine" class="control-label">{{'application.fields.model'|
+				translate}} </label> <select
+				og-validation-indicator="{{'application.fields.model' | translate}}" required
+				id="vehicleLine" class="form-control"
+				ng-model="manageMarketJobsCtrl.selectedModel"
+				ng-options="model.key as model.name for model in manageMarketJobsCtrl.models"
+				name="model" ng-change="manageMarketJobsCtrl.loadModelYears();">
+				<option value="" default>{{'application.dropdownDefaults.selectModel'|
+					translate}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+				| translate}} </label> <select
+				og-validation-indicator="{{'application.fields.modelyear' | translate}}" required
+				id="modelYr" name="modelYr" class="form-control"
+				ng-model='manageMarketJobsCtrl.selectedModelYear'
+				ng-options="modelYr.modelYear as modelYr.modelYear for modelYr in manageMarketJobsCtrl.modelYears|orderBy:['modelYear']:true">
+				<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+					translate}}</option>
+			</select>
+		</div>
+
+	</div>
+</div>
+		<div class="row">
+		<div class="col-sm-4"> 
+		<div  class="form-group">
+			<label for="processCurrentMonth" class="control-label">{{'application.fields.processDate' | translate}} </label>
+			<select  og-validation-indicator="{{'application.fields.processDate' | translate}}" id="processCurrentMonth"
+			 name="processCurrentMonth" class="form-control"  ng-model='manageMarketJobsCtrl.processMonth'
+			 ng-options="processCurrentMonth for processCurrentMonth in manageMarketJobsCtrl.processCurrentMonths">
+			 <option value="" default>{{'application.dropdownDefaults.selectProcessMonth'| translate}}</option>
+			</select>
+		</div>
+		</div>
+	
+	<div class="col-sm-4">
+		<div class="form-group">
+			<label for="marketCode" class="control-label">{{'application.fields.processType' | translate}} </label>
+			<select  og-validation-indicator="{{'application.fields.processType' | translate}}" name="marketCode"  
+			 id="marketCode" class="form-control" ng-model='manageMarketJobsCtrl.processType' ng-options="marketCode.code as marketCode.name for marketCode in manageMarketJobsCtrl.processTypes">
+			</select>
+		</div>
+	</div>
+		
+		</div> 
+		<div class="row form-actions">
+		<div class="col-xs-6 text-right">		
+     			<button  class="btn btn-primary-default"  ogt-protected-resource="{{manageMarketJobsCtrl.protectedResource}}_"
+     				wc-continue-if-valid  ng-click='manageMarketJobsCtrl.createMarketJob()'>{{'application.buttons.create' | translate}} </button>
+	
+			</div>
+			<div class="col-xs-6 text-left">
+				<button class="btn btn-secondary"  ng-click='manageMarketJobsCtrl.backTosearchJob()'>{{'application.buttons.backToSearch' | translate}}</button>
+			</div>
+		</div>   
+		</form>
+		</div>
+	

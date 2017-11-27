@@ -1,0 +1,133 @@
+<div id="content" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.addEditEntityMapping' | translate}}</h2>
+	<hr />
+	<form class="well" name="addEditEntityMappingsForm" novalidate role="form" ng-if="editMYCO">
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="market" class="control-label">{{'application.fields.market' | translate}} :</label>
+				{{market.name}}
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="model" class="control-label">{{'application.fields.model' | translate}} :</label>
+				{{model.name}}
+			</div>
+		</div>
+	</form>
+	<div ng-if="editMYCO">
+		<fieldset class="mapping-border">
+			<legend class="mapping-border">ModelYear Change Over Mappings</legend>
+			<div class="row">
+				<div class="col-sm-8 form-group">
+					<label for="prevModelYearEntities" class="control-label">{{'application.fields.pmyEntities'| translate}}</label>
+					<button class = "pull-right btn btn-primary btn-sm" style="margin-top:0px" ng-click = "clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="pmyQ" class = "form-control pull-right" ng-model = "entityMappingAddEditCtrl.search.pmyQuery"
+						 type = "text" ng-keyup = "keyedIn('pmyQ')" style="width:20%; height:25px" placeholder="Search"/>
+						 <span ng-if="entityMappingAddEditCtrl.typePmy=='typed'" class="glyphicon glyphicon-remove remove" ng-click="clearSearch('pmyQ')"></span>
+					<select id="prevMYEntities" name="prevMYEntities" class="form-control selectBoxHorizontalScorll" multiple size="10" style="height:260px" ng-model="entityMappingAddEditCtrl.selectedPmyEntities" 
+					ng-options='prevMYEntityObj as prevMYEntityObj.info for prevMYEntityObj in entityMappingAddEditCtrl.unmappedPmyEntities | filter:{info:pmySearch} '>
+					</select>
+				</div>
+			</div>
+			<div class="col-sm-3 form-group addMappingBtn pull-right">
+				<button id="addMapping" class="btn btn-primary btn-md" ng-disabled="entityMappingAddEditCtrl.buttonsDisabled" ng-click="entityMappingAddEditCtrl.addMappings()">
+						<span class="glyphicon glyphicon-plus"></span>&nbsp;
+						<span>{{'application.buttons.addMapping' | translate}}</span> 
+				</button>
+			</div>
+			<div class ="row">
+				<div class="col-sm-8 form-group">
+					<label for="currentModelYearEntities" class="control-label">{{'application.fields.cmyEntities'| translate}}</label>
+					<button class = "pull-right btn btn-primary btn-sm" style="margin-top:0px" ng-click = "clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="cmyQ" class = "form-control pull-right" ng-model= "entityMappingAddEditCtrl.search.cmyQuery"
+						 type = "text" ng-keyup = "keyedIn('cmyQ')" style="width:20%; height:25px" placeholder="Search"/>
+						 <span ng-if="entityMappingAddEditCtrl.typeCmy=='typed'" class="glyphicon glyphicon-remove remove" ng-click="clearSearch('cmyQ')"></span>
+					<select id="currMYEntities" name="currMYEntities" class="form-control selectBoxHorizontalScorll" size="10" style="height:260px" ng-model="entityMappingAddEditCtrl.selectedCmyEntity"
+					ng-options='currMYEntityObj as currMYEntityObj.info for currMYEntityObj in entityMappingAddEditCtrl.unmappedCmyEntities | filter:{info:cmySearch} '>
+					<option ng-if="!entityMappingAddEditCtrl.selectedCmyEntity" style="display:none" value=""></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="panel-group" id="accordionManual" style="margin-bottom:2px;margin-top:10px;">
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordionManual" href="#manualMappingList">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.manualMappedEntitiesList' | translate}}
+							</span>
+						</h4>
+					</div>
+					<div id="manualMappingList" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row form-group col-sm-15" style="padding-left: 20px">
+								<div class="checkbox" ng-repeat="mappingObj in entityMappingAddEditCtrl.manualMappedEntities">
+									<label>
+										<input type="checkbox" value="{{mappingObj}}" ng-model="entityMappingAddEditCtrl.selectedCheckBoxObjsInManualMapped[mappingObj.value]">{{mappingObj.value}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 text-left">
+					<button id="remove-mappings" class="btn btn-danger btn-md" ng-disabled="entityMappingAddEditCtrl.buttonsDisabled" ng-click="entityMappingAddEditCtrl.removeManualMappings()">
+						<span class="glyphicon glyphicon-trash"></span>&nbsp;
+						<span>{{'application.buttons.deleteManualMappings' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			
+			<div class="panel-group" id="accordionAuto" style="margin-bottom:2px;margin-top:20px;">
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordionAuto" href="#autoMappedList">
+						<h4 class="panel-title" style="color:#ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.autoMappedEntitiesList' | translate}}
+							</span>
+						</h4>
+					</div>
+					<div id="autoMappedList" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row form-group col-sm-15" style="padding-left:20px">
+								<div class="checkbox" ng-repeat="mappingObj in entityMappingAddEditCtrl.autoMappedEntities">
+									<label>
+										<input type="checkbox" value="{{mappingObj}}" 
+											ng-model="entityMappingAddEditCtrl.selectedCheckBoxObjsInAutoMapped[mappingObj.value]">{{mappingObj.value}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 text-left">
+					<button id="remove-mappings" class="btn btn-danger btn-md" ng-disabled="entityMappingAddEditCtrl.buttonsDisabled" ng-click="entityMappingAddEditCtrl.removeAutoMappings()">
+						<span class="glyphicon glyphicon-trash"></span>&nbsp;
+						<span>{{'application.buttons.deleteAutoMappings' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-6 text-right">
+					<button id="saveMappings" class="btn btn-primary btn-md" ng-click="entityMappingAddEditCtrl.saveMappings()">
+						<span class="glyphicon glyphicon-floppy-save"></span>&nbsp;
+						<span>{{'application.buttons.saveMappings' | translate}}</span>
+					</button>
+				</div>
+				<div class="col-sm-6 text-left">
+					<button id="cancel-mappings" class="btn btn-secondary btn-md" ng-click="entityMappingAddEditCtrl.cancel()">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

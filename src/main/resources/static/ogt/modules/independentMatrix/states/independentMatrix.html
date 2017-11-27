@@ -1,0 +1,129 @@
+<div id="content" class="container-fluid" wc-protected-resource="IndependentMatrix:execute"
+	ng-init="independentMatrixCtrl.getDropDownValues()">
+	<h2>{{'application.navigation.links.administration.independentMatrix' | translate}}</h2>
+	<form class="well" name="independentMatrixForm"
+		ng-if="independentMatrixCtrl.dropdownValuesReceived" novalidate>
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear'
+					| translate}} </label> <select id="modelYear" name="modelYr"
+					class="form-control" ng-model='independentMatrixCtrl.selectedModelYear'
+					ng-options="modelYear for modelYear in independentMatrixCtrl.modelYears|orderBy:'-'"
+					ng-change="independentMatrixCtrl.getModels()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+						translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'|
+					translate}} </label> <select id="model" name="model" class="form-control"
+					ng-model="independentMatrixCtrl.selectedModel"
+					ng-options="model for model in independentMatrixCtrl.models|orderBy"
+					ng-change="independentMatrixCtrl.getMarkets()">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'|
+						translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="market" class="control-label">{{'application.fields.market'|
+					translate}} </label> <select id="market" name="market" class="form-control"
+					ng-model="independentMatrixCtrl.selectedMarket"
+					ng-options="market for market in independentMatrixCtrl.markets|orderBy"
+					ng-change="independentMatrixCtrl.getChannels()">
+					<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+						translate}}</option>
+				</select>
+			</div>
+
+			<div class="col-sm-2 form-group">
+				<label for="channel" class="control-label">{{'application.fields.channel'|
+					translate}} </label> <select id="channel" name="channel"
+					class="form-control" ng-model="independentMatrixCtrl.selectedChannel"
+					ng-options="channel for channel in independentMatrixCtrl.channels|orderBy"
+					ng-change="independentMatrixCtrl.selectedChannel === null ? independentMatrixCtrl.emptyMonthsFamilies() : independentMatrixCtrl.getStartMonth()">
+					<option value="" default>{{'application.dropdownDefaults.selectChannel'|
+						translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="startMonth" class="control-label">{{'application.fields.startMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="startMonth"
+						ng-model="independentMatrixCtrl.startMonthRange.startDate"
+						is-open="independentMatrixCtrl.startMonthRange.isStartDateOpen"
+						datepicker-options="{minDate: independentMatrixCtrl.startMonthRange.minStartDate,
+                          maxDate: independentMatrixCtrl.startMonthRange.maxStartDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change = "independentMatrixCtrl.getEndMonth()" placeholder = "Select Start Month"> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="independentMatrixCtrl.startMonthRange.openStartDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="endMonth" class="control-label">{{'application.fields.endMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="endMonth"
+						ng-model="independentMatrixCtrl.endMonthRange.endDate"
+						is-open="independentMatrixCtrl.endMonthRange.isEndDateOpen"
+						datepicker-options="{minDate:
+                          independentMatrixCtrl.endMonthRange.minEndDate,
+                          maxDate: independentMatrixCtrl.endMonthRange.maxEndDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change="independentMatrixCtrl.getFamilies()" placeholder = "Select End Month">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="independentMatrixCtrl.endMonthRange.openEndDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 form-group">
+				<label for="family" class="control-label">
+					{{'application.fields.family' | translate}} </label> <select name="family"
+					id="family" class="form-control" multiple
+					ng-model='independentMatrixCtrl.selectedFamilies' ng-change="independentMatrixCtrl.featureRecords = independentMatrixCtrl.getFamilyTableRecords()">
+					<option value="ALL" default>ALL</option>
+					<option ng-repeat="option in independentMatrixCtrl.families"
+						value="{{option.key}}">{{option.name}}</option>
+				</select>
+			</div>
+			<div class="col-sm-1 form-group">
+				<label for="retrieve" class="control-label"></label>
+				<div ng-if="independentMatrixCtrl.buttonName == 'retrieve'">
+					<button id="retrieve" class="btn btn-primary btn-md independentMatrixButton"
+						ng-click="independentMatrixCtrl.getEntityMixData()">
+						<span>{{'application.buttons.retrieve' | translate}}</span>
+					</button>
+				</div>
+				<div ng-if="independentMatrixCtrl.buttonName == 'save'">
+					<button id="save" class="btn  btn-success btn-sm independentMatrixButton" ng-disabled="true">
+						<span>{{'application.buttons.save' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-1 form-group">
+			<label for="cancel" class="control-label"></label> 
+			<div ng-if = "independentMatrixCtrl.enableCancelButton">
+					<button id="cancel" class="btn btn-secondary btn-md independentMatrixButton"
+						ng-click="independentMatrixCtrl.cancel();">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+			</div>
+			</div>
+			</div>
+			</form>
+	<br />
+</div>

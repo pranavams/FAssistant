@@ -1,0 +1,14 @@
+<div ng-controller="DashboardController as dashboardCtrl" ng-init="dashboardCtrl.load()">
+	<div id="content" class="container-fluid" ng-if="dashboardCtrl.authorized === false">
+		<form class="well" name="homeForm" novalidate>
+			<h2>{{'application.fields.noAccess' | translate}}</h2>
+			<h6>
+				{{'application.fields.noAccessMsg' | translate}} 
+				<a class="control-label" href="{{'link.csps' | translate}}">
+					{{'application.fields.clickHere' | translate}}
+				</a>
+				{{'application.fields.toRequestAccess' | translate}}
+			</h6>
+		</form>
+	</div>
+</div>

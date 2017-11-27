@@ -1,0 +1,175 @@
+<div id="content" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.forecastvsmpw' | translate}}</h2>
+	<hr />
+	<form class="well" name="entityMixForm"
+		 novalidate>
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.marketgroup'
+					| translate}} </label> <input type="text" class="form-control" name="marketgroup" ng-model="forecastvsMPWCtrl.marketGroup" disabled></input>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear'
+					| translate}} </label> <select id="modelYear" name="modelYr"
+					class="form-control" ng-model='forecastvsMPWCtrl.selectedModelYear'
+					ng-options="modelYr for modelYr in forecastvsMPWCtrl.modelYears|orderBy:'-'"
+					ng-change="forecastvsMPWCtrl.onModelYearSelect()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+						translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'|
+					translate}} </label> <select id="model" name="model" class="form-control"
+					ng-model="forecastvsMPWCtrl.selectedModel"
+					ng-options="model for model in forecastvsMPWCtrl.models|orderBy"
+					ng-change="forecastvsMPWCtrl.onModelSelect()">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'|
+						translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="startMonth" class="control-label">{{'application.fields.startMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="startMonth"
+						ng-model="forecastvsMPWCtrl.startMonthRange.startDate"
+						is-open="forecastvsMPWCtrl.startMonthRange.isStartDateOpen"
+						datepicker-options="{minDate:
+                          forecastvsMPWCtrl.startMonthRange.minStartDate,
+                          maxDate: forecastvsMPWCtrl.startMonthRange.maxStartDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false"
+						ng-change="forecastvsMPWCtrl.onStartMonthSelect()" placeholder = "Select Start Month"> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="forecastvsMPWCtrl.startMonthRange.openStartDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="endMonth" class="control-label">{{'application.fields.endMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="endMonth"
+						ng-model="forecastvsMPWCtrl.endMonthRange.endDate"
+						is-open="forecastvsMPWCtrl.endMonthRange.isEndDateOpen"
+						datepicker-options="{minDate:
+                          forecastvsMPWCtrl.endMonthRange.minEndDate,
+                          maxDate: forecastvsMPWCtrl.endMonthRange.maxEndDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change="forecastvsMPWCtrl.onEndMonthSelect()" placeholder = "Select End Month">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="forecastvsMPWCtrl.endMonthRange.openEndDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+			<div class="col-sm-1 form-group">
+				<label for="retrieve" class="control-label"></label>
+				<div ng-if="forecastvsMPWCtrl.buttonName == 'retrieve'" class="retrieveButton">
+					<button id="retrieve" class="btn btn-primary btn-md"
+						ng-click="forecastvsMPWCtrl.getForecastvsMPWData()">
+						<span>{{'application.buttons.retrieve' | translate}}</span>
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-1 form-group">
+				<label for="cancel" class="control-label"></label> 
+				<div ng-if = "forecastvsMPWCtrl.enableCancelButton" class="cancelButton">
+						<button id="cancel" class="btn btn-secondary btn-md"
+							ng-click="forecastvsMPWCtrl.cancel();">
+							<span>{{'application.buttons.cancel' | translate}}</span>
+						</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-4 form-group">
+				<label for="family" class="control-label">
+					{{'application.fields.family' | translate}} </label> <select name="family"
+					id="family" class="form-control" multiple
+					ng-model='forecastvsMPWCtrl.selectedFamilies' ng-change="forecastvsMPWCtrl.selectedFamiliesAndFeatures = forecastvsMPWCtrl.getFeaturesRecords(forecastvsMPWCtrl.getSelectedFamiliesAndFeatures())">
+					<option value="ALL" default>ALL</option>
+					<option ng-repeat="option in forecastvsMPWCtrl.families"
+						value="{{option.key}}">{{option.name}}</option>
+				</select>
+			</div>
+		</div>
+	</form>
+	
+	<div class="col-xs-2 pull-right" ng-if="forecastvsMPWCtrl.displayTable">
+		<button class="btn btn-success btn-md"
+			ng-click="forecastvsMPWCtrl.exportToExcel('#table-data')">
+			<span class="glyphicon glyphicon-share"></span> Export to Excel
+		</button>
+	</div>
+	
+	<div id="table-data" ng-if="forecastvsMPWCtrl.displayTable" class="featureCountsHeader">
+		<div id="table-data" class="wc-table featureCounts">
+			<table class="table table-striped table-bordered tablePadding">
+				<thead>
+					<tr>
+						<th style="height:41px;" class="fixed markets noBorder"></th>
+						<th style="height:41px;" class="fixed features noBorder"></th>
+						<th style="height:41px;" class="fixed consensus noBorder"></th>
+						<th ng-repeat="month in forecastvsMPWCtrl.months track by $index" ng-class="forecastvsMPWCtrl.getTypeOfMonthObj(month)?'red':'orange'"  
+							colspan = "{{forecastvsMPWCtrl.getColspanForMonths(month)}}" rowspan = "{{forecastvsMPWCtrl.getRowspanForMonths(month)}}">
+							<span ng-if="forecastvsMPWCtrl.getTypeOfMonthObj(month)">
+								{{ month.toDate() | date: "MMMM yyyy" }}
+								<span ng-if = "forecastvsMPWCtrl.isMonthLockedIn(month)"> Locked In</span>
+							</span>
+							<span ng-if="!forecastvsMPWCtrl.getTypeOfMonthObj(month)">{{month}}</span>
+						</th>
+					</tr>
+					<tr>
+						<th style="height:41px;" class="fixed markets noBorder">Families</th>
+						<th style="height:41px;" class="fixed features noBorder">Features</th>
+						<th style="height:41px;" class="fixed consensus noBorder">Consensus MPW</th>
+						<th ng-repeat="weekObj in forecastvsMPWCtrl.weeks" ng-class="forecastvsMPWCtrl.getQuarterStyle(weekObj.month)" colspan="2">
+						{{weekObj.week.toDate() | date: "MM/dd"}}
+						</th>
+					</tr>
+					<tr>
+						<th style="height:41px;" class="fixed markets noBorder"></th>
+						<th style="height:41px;" class="fixed features noBorder"></th>
+						<th style="height:41px;" class="fixed consensus noBorder"></th>
+						<th ng-repeat-start="weekObj in forecastvsMPWCtrl.weeks" ng-class="forecastvsMPWCtrl.getQuarterStyle(weekObj.month)">Counts</th>
+						<th ng-repeat-end="weekObj in forecastvsMPWCtrl.weeks" ng-class="forecastvsMPWCtrl.getQuarterStyle(weekObj.month)">Mix</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="familyObj in forecastvsMPWCtrl.selectedFamiliesAndFeatures" ng-class="familyObj.type ? 'orange' : ''">
+						<td class="fixed market" ng-class="familyObj.type ? 'orange' : 'grey'">
+							<span ng-if="!familyObj.type">{{familyObj.displayFamilyName}}</span>
+							<span ng-if="familyObj.type"></span>
+						</td>
+						<td class="fixed features" ng-class="familyObj.type ? 'orange' : 'grey'">
+							<span ng-if="!familyObj.type">{{familyObj.ftrCode}}</span>
+							<span ng-if="familyObj.type">{{familyObj.type}}</span>
+						</td>
+						<td class="fixed consensus" ng-class="familyObj.type ? 'orange' : 'consensusvalue'"></td>
+						<td ng-class="forecastvsMPWCtrl.getColourOfCell(familyObj,weekObj)" 
+						ng-repeat = "weekObj in forecastvsMPWCtrl.transformedWeeks">
+							<span ng-if="weekObj.type =='MPW' && !familyObj.type">{{forecastvsMPWCtrl.getMPWVolume(familyObj,weekObj).vol | number}}</span>
+							<span ng-if="weekObj.type =='Counts' && !familyObj.type">{{forecastvsMPWCtrl.getCounts(familyObj,weekObj).vol | number}}</span>
+							<span ng-if="weekObj.type =='Mix' && !familyObj.type">{{forecastvsMPWCtrl.calculateMix(familyObj,weekObj)}}%</span>
+							<span ng-if="weekObj.type =='MPW' && familyObj.type">{{forecastvsMPWCtrl.getMPWSum(familyObj,weekObj) | number}}</span>
+							<span ng-if="weekObj.type =='Counts' && familyObj.type">{{forecastvsMPWCtrl.getCountsSum(familyObj,weekObj) | number}}</span>
+							<span ng-if="weekObj.type =='Mix' && familyObj.type">{{forecastvsMPWCtrl.getCountsSum(familyObj,weekObj) === 0 ? 0 : 100}}%</span>
+						</td> 
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

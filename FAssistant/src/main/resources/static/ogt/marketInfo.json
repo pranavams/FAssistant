@@ -1,0 +1,110 @@
+{
+	"markets" : [
+		{
+			"key" : "GBR",
+			"name" : "Britain",
+			"models" : [
+				{
+					"key" : "CMAX",
+					"name" : "CMAX",
+					"modelYears" : [
+						{ "modelYear" : "2016.5", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e", "commitStatus" : "N"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e","commitStatus" : "N" },
+						{ "modelYear" : "2016.25", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e", "commitStatus" : "N"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e","commitStatus" : "N" }
+					]
+				},
+				{
+					"key" : "BMAX",
+					"name" : "BMAX",
+					"modelYears" : [
+						{ "modelYear" : "2016.75", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016.5", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016.25", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e","commitStatus" : "Y" }
+					]
+				},
+				{
+					"key" : "Fusion",
+					"name" : "Fusion",
+					"modelYears" : [
+							{ "modelYear" : "2016.5", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016.25", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e","commitStatus" : "Y" }
+					]
+				}
+			]
+		}, {
+			"key" : "FIN",
+			"name" : "Finand",
+			"models" : [
+				{
+					"key" : "CMAX",
+					"name" : "CMAX",
+					"modelYears" : [
+							{ "modelYear" : "2016.5", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016.25", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e","commitStatus" : "Y" }
+					]
+				},
+				{
+					"key" : "BMAX",
+					"name" : "BMAX",
+					"modelYears" : [
+						{ "modelYear" : "2016.5", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "N"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "N"},
+						{ "modelYear" : "2016.25", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "N"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "N"}
+					]
+				},
+				{
+					"key" : "Fusion",
+					"name" : "Fusion",
+					"modelYears" : [
+						{ "modelYear" : "2016.5", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016.25", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "e77698eb-9cfb-48a3-b958-7b446a3fcf4e" }
+					]
+				}
+			]
+		}, {
+			"key" : "FRA",
+			"name" : "France",
+			"models" : [
+				{
+					"key" : "CMAX",
+					"name" : "CMAX",
+					"modelYears" : [
+						{ "modelYear" : "2016.75", "sessionId" : "576565763826436" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016.5", "sessionId" : "576565763826435", "commitStatus" : "Y" },
+						{ "modelYear" : "2016.25", "sessionId" : "576565763826434" , "commitStatus" : "Y"},
+						{ "modelYear" : "2016", "sessionId" : "576565763826433", "commitStatus" : "Y" }
+					]
+				},
+				{
+					"key" : "BMAX",
+					"name" : "BMAX",
+					"modelYears" : [
+						{ "modelYear" : "2016.75", "sessionId" : "576565763826436" , "commitStatus" : "N"},
+						{ "modelYear" : "2016.5", "sessionId" : "576565763826435", "commitStatus" : "N" },
+						{ "modelYear" : "2016.25", "sessionId" : "576565763826434", "commitStatus" : "N" },
+						{ "modelYear" : "2016", "sessionId" : "576565763826433", "commitStatus" : "N" }
+					]
+				},
+				{
+					"key" : "Fusion",
+					"name" : "Fusion",
+					"modelYears" : [
+						{ "modelYear" : "2016.75", "sessionId" : "576565763826436", "commitStatus" : "N" },
+						{ "modelYear" : "2016.5", "sessionId" : "576565763826435", "commitStatus" : "N" },
+						{ "modelYear" : "2016.25", "sessionId" : "576565763826434", "commitStatus" : "N" },
+						{ "modelYear" : "2016", "sessionId" : "576565763826433", "commitStatus" : "N" }
+					]
+				}
+			]
+		}
+	]
+}

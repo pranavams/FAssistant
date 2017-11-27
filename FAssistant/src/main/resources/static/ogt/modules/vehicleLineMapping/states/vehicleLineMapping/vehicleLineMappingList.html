@@ -1,0 +1,111 @@
+<div wc-protected-resource="ModelMappings:execute" id="content" class="container-fluid" >
+	<h2>{{'application.navigation.links.administration.vehiclelinemapping' | translate}}</h2>
+	<hr />
+	<form class="well" name="vehicleMappingListForm" ng-if="isDataReceivedFromOgm == true">
+		<div class="row" >
+			<div class="col-sm-6 form-group">
+				<label for="market" class="control-label">{{'application.fields.market' | translate}} </label> 
+				<select name = "market" id = "market" class = "form-control" multiple
+					ng-model = 'vehicleLineMappingCtrl.selectedMarket'
+					ng-change = "vehicleLineMappingCtrl.loadStatusList();">
+					<option value = "ALL" default>ALL</option>
+					<option ng-repeat="option in vehicleLineMappingCtrl.vehicleLineMappings.markets | orderBy:'name'" value="{{option.key}}">{{option.name}}</option>
+				</select>
+			</div>
+			<div class="col-sm-6 form-group">
+				<label for="modelStatus" class="control-label">{{'application.fields.filter' | translate}} </label> 
+				<select name = "modelStatus" id = "modelStatus" class = "form-control"
+					ng-model = 'vehicleLineMappingCtrl.selectedModelStatus'
+					ng-change = "vehicleLineMappingCtrl.hideAndPopulateDataTable();">
+					<option value = "" default>{{'application.dropdownDefaults.selectStatus' | translate}}</option>
+					<option ng-repeat="option in vehicleLineMappingCtrl.modelStatusList | orderBy:'label'" value="{{option.id}}">{{option.label}}</option>
+				</select>
+			</div>
+		</div>
+	</form>	
+	<div ng-if="vehicleLineMappingCtrl.isDisplayDataTable" >
+		<div og-responsive-table data="vehicleLineMappingCtrl.dataTableMappings" 
+			data-table-name="vehicleLine-mapping-table" row-key="uniqueKey" pagination-enabled
+			responsive-view="list" id="list-vehicleLine-mapping-table" class="col-xs-12 wc-table" 
+			ng-model="vehicleLineMappingCtrl.vehiclesToUpdate">
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th class="text-center">
+						<div ng-show="vehicleLineMappingCtrl.selectedModelStatus == vehicleLineMappingCtrl.ACTIVE_STATUS"
+						 >In-Activate</div>
+						<div ng-show="vehicleLineMappingCtrl.selectedModelStatus != vehicleLineMappingCtrl.ACTIVE_STATUS"
+						 >Activate</div>
+						<og-row-select-header-checkbox/></th>
+						<th wc-column-sort="marketName" wc-column-sort-default="asc">{{'application.fields.market' | translate}} 
+							<input class="form-control input-sm" type="text" wc-column-filter="marketName" />
+						</th>
+						<th wc-column-sort="modelName">{{'application.fields.model' | translate}} 
+							<input class="form-control input-sm" type="text" wc-column-filter="modelName" />
+						</th>
+						<th wc-column-sort="modelYear">{{'application.fields.modelyear' | translate}} 
+							<input class="form-control input-sm" type="text" wc-column-filter="modelYear" />
+						</th>
+						<th wc-column-sort="currentStatus">{{'application.fields.vehicleStatus' | translate}}
+							<input class="form-control input-sm" type="text" wc-column-filter="currentStatus" />
+						</th>
+						<th wc-column-sort="surrogateModelName">{{'application.fields.surrogateModels' | translate}}
+							<input class="form-control input-sm" type="text" wc-column-filter="surrogateModelName" />
+						</th>
+					</tr>
+				</thead>
+					
+				<tbody>
+				<tr>
+						<td class="text-center width-10">
+							<div ogt-protected-resource="ModelMappings:execute_{{$parent.$parent.vehicleLineMappingCtrl.businessProcess}}:{{$parent.$parent.vehicleLineMappingCtrl.marketGroup}}:{{row.marketKey}}:WRITE@remove"><og-row-select-checkbox/></div>
+						</td>
+						<td>{{row.marketName}}</td>
+						<td>{{row.modelName}}</td>
+						<td>{{row.modelYear}}</td>
+						<td>{{row.currentStatus}}</td>
+						<td>
+						<div ogt-protected-resource="ModelMappings:execute_{{$parent.$parent.vehicleLineMappingCtrl.businessProcess}}:{{$parent.$parent.vehicleLineMappingCtrl.marketGroup}}:{{row.marketKey}}:WRITE@remove">
+						<div ng-show="$parent.$parent.vehicleLineMappingCtrl.showSurrogateDropdown(row.isSurrogateEligible)">
+						<select name="selectsurrogateModel"
+														id="selectsurrogateModel"
+														class="form-control input-sm"
+														ng-model='row.surrogateModelKey'
+														ng-change="$parent.$parent.vehicleLineMappingCtrl.populateSurrogateModel(row)"
+														ng-options="sm.key as sm.name for sm  in row.surrogateModels">
+						</select>
+						</div>
+						</div>							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="row text-center">
+			<div class="col-sm-6 text-right">
+				<button id="cancel" class="btn btn-secondary btn-md" ui-sref="ogt-ui-home">
+					<span>{{'application.buttons.backToHome' | translate}}</span>
+				</button>
+			</div>
+			<div class="col-sm-1 text-center">
+			<div ng-if="vehicleLineMappingCtrl.selectedModelStatus == vehicleLineMappingCtrl.INACTIVE_STATUS">
+				<button id="activate-mappings" class="btn btn-primary btn-md" og-row-action-multiple="activate-mappings" >
+					<span>{{'application.buttons.save' | translate}}</span>
+				</button>
+			</div>
+			<div ng-if="vehicleLineMappingCtrl.selectedModelStatus == vehicleLineMappingCtrl.ACTIVE_STATUS">
+				<button id="inactivate-mappings" class="btn btn-primary btn-md" og-row-action-multiple="inactivate-mappings" >
+					<span>{{'application.buttons.save' | translate}}</span>
+				</button>
+			</div>
+			<div ng-if="vehicleLineMappingCtrl.selectedModelStatus == vehicleLineMappingCtrl.NEW_STATUS">
+				<button id="inactivate-mappings" class="btn btn-primary btn-md" og-row-action-multiple="activate-mappings" >
+					<span>{{'application.buttons.save' | translate}}</span>
+				</button>
+			</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

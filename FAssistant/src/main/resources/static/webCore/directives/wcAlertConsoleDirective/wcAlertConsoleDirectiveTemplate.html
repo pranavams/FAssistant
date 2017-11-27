@@ -1,0 +1,11 @@
+<div id="alert-console">
+	<div class="alert alert-dismissable" ng-swipe-right="closeAlert(alert.uniqueishID)" role="alert" ng-repeat="alert in visibleMessages" type="{{alert.type}}"
+		 ng-class="{'zoom-out-animate': alert.fadeOut, 'fade-out': alert.fadeOut, 'alert-success' : alert.type == 'success', 'alert-danger' : alert.type == 'danger', 'alert-warning' : alert.type == 'warning'}">
+		<span class="glyphicon"
+			  ng-class="{'glyphicon-ok': alert.type == 'success', 'glyphicon-warning-sign': alert.type == 'warning', 'glyphicon-remove-circle': alert.type == 'danger'}"></span>
+		<button class="close" ng-click="closeAlert(alert.uniqueishID)"><span aria-hidden="true">&#120;</span><span class="sr-only">Close</span></button>
+		<div><span>{{alert.message}}</span>
+			<!--<progressbar ng-if="!alert.persist" class="progress-striped active" value="100 - alert.timeout*10" type="{{alert.type}}"></progressbar>-->
+		</div>
+	</div>
+</div>

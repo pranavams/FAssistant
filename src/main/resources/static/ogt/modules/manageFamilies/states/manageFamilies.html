@@ -1,0 +1,199 @@
+<div id="content" wc-protected-resource="ManageFamilies:execute" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.manageFamilies' | translate}}</h2>
+	<hr />
+	<form class="well" name="manageFamiliesForm" ng-if="isDataReceivedFromOgm == true" novalidate >
+		<div class="row">
+			<div class="col-sm-3 form-group">
+				<label for="market" class="control-label">{{'application.fields.market'| translate}} </label> 
+				<select id="market" name="market" class="form-control"
+					ng-model="manageFamiliesCtrl.selectedMarket"
+					ng-options="market.key as market.name for market in manageFamiliesCtrl.markets|orderBy:'name'" 
+					 ng-change="manageFamiliesCtrl.loadModels();">  
+					<option value="" default>{{'application.dropdownDefaults.selectMarket'| translate}}</option>
+				</select>
+			</div>
+				
+			<div class="col-sm-3 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'| translate}} </label> 
+				<select id="model" name="model" class="form-control" 
+					ng-model="manageFamiliesCtrl.selectedModel"
+					ng-options="model.key as model.name for model in manageFamiliesCtrl.models|orderBy:'name'"
+					ng-change="manageFamiliesCtrl.loadModelYears();">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'| translate}}</option>
+				</select>
+			</div>
+		
+			<div class="col-sm-3 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear' | translate}} </label> 
+				<select id="modelYear" name="modelYr" class="form-control"
+					ng-model='manageFamiliesCtrl.selectedModelYear'
+					ng-options="modelYr as modelYr for modelYr in manageFamiliesCtrl.modelYears|orderBy:'-modelYr'"
+					ng-change="manageFamiliesCtrl.searchFamilyList()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'| translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-3 form-group">
+			</div>
+			
+			<div ng-hide="manageFamiliesCtrl.buttonsDisabled" class="row text-center">
+				<div ng-if="manageFamiliesCtrl.isDisplayDataTable" class="col-sm-1">
+					<button id="generateBEG" class="btn btn-primary btn-md">
+						<span>{{'application.buttons.generateBEG' | translate}}</span>
+					</button>
+			</div></div>
+	</form>	
+			
+	</div>
+	
+	<div ng-if="manageFamiliesCtrl.isDisplayDataTable" >
+	
+	<!-- <div class="row text-right">
+				<div class="col-sm-6 text-right">
+					<button id="generateBEG" class="btn btn-primary btn-md">
+						<span>{{'application.buttons.generateBEG' | translate}}</span>
+					</button>
+				</div>
+			<div class="col-sm-1 text-center">
+					<button id="showBEG" class="btn btn-primary btn-md" ng-click="manageFamiliesCtrl.open(manageFamiliesCtrl.begFeatures,'')">
+						<span>{{'application.buttons.showBEG' | translate}}</span>
+					</button>
+			</div>
+			
+	</div> -->
+		
+		<div id="tab" class="row form-actions">
+				<div class="row">	
+		<div wc-responsive-table data="manageFamiliesCtrl.dataTableMappings" 
+			data-table-name="manage-Families-table" row-key="key" pagination-enabled
+			responsive-view="list" id="list-manage-Families-table" class="col-xs-12 wc-table" 
+			ng-model="manageFamiliesCtrl.familiesToUpdate">
+			<table ng-disabled="manageFamiliesCtrl.buttonsDisabled" class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr>
+					 
+						<!-- <th> {{'application.fields.actions' | translate}} 
+						</th> -->
+						<th wc-column-sort="sortFlag" wc-column-sort-default="desc" style="width:9em">{{'application.fields.superFamily' | translate}} 
+						<input class="form-control input-sm" type="text"
+										wc-column-filter="code"/>
+						</th>			
+						<th class="text-center">{{'application.fields.family' | translate}} 
+						<input class="form-control input-sm" type="text"
+										wc-column-filter="code"/>
+						</th>
+						<th class="text-center">{{'application.fields.description' | translate}} 
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="name"/>
+						</th>
+						<th class="text-center">{{'application.fields.process' | translate}}
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="familyToProcess"/>
+						</th>
+						<th class="text-center" >{{'application.fields.baseVehicle' | translate}}
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="baseVehicle"/>
+						</th>
+						<th class="text-center" style="width:12em">{{'application.fields.equipmentGroup' | translate}}
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="equipmentGroup"/>
+						</th>
+						<th ng-hide="manageFamiliesCtrl.isCorrelationProcessColumn" class="text-center" style="width:10em">{{'application.fields.correlationProcess' | translate}}
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="correlationProcess"/>
+						</th>
+						<th class="text-center" style="width:9em">{{'application.fields.weight' | translate}}
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="familyWeightage"/>
+						</th>
+						<th class="text-center" style="width:9em">{{'application.fields.varietyAdjFactor' | translate}}
+						<input class="form-control input-sm" type="text"
+										 wc-column-filter="familyVarietyAdjustment"/>
+						</th>
+						<th class="text-center">{{'application.fields.featuresWithCamelCase' | translate}}
+						</th>
+					</tr>
+				</thead>
+					
+				<tbody>
+				<tr >
+						<!-- <td class="text-center width-10">
+						<div ng-show="row.showEditLink == 'Y'"><a ng-href ng-click="alert();manageFamiliesCtrl.enabletextFields(row)" >Edit</a></div>
+						</td> -->
+						<td  ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" style="font-weight:bold;text-align:center ;"> <div ng-show="row.superFamily == 'Y'" >{{row.code}}</div>
+						</td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" style="font-weight:bold;text-align:center "> <div ng-show="row.superFamily == 'N'">{{row.code}}</div></td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" style="font-weight:bold;">{{row.name}}</td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" >{{row.familyToProcess}}</td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);">{{row.baseVehicle}}</td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);">
+						<select name="equipGroup" class="form-control" ng-disabled="row.equipmentFlag == 'N' || row.showEditLink == 'N'" ng-model-options="{updateOn: 'change'}" 
+								ng-model='row.equipmentGroup' ng-change="$parent.$parent.manageFamiliesCtrl.onchangeEquipmentGroup(row);"
+								ng-options="equipGroup.key as equipGroup.name for equipGroup in row.equipmentGroupArray">
+						</select>
+						</td>
+						<td ng-hide="$parent.$parent.manageFamiliesCtrl.isCorrelationProcessColumn" 
+						ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);">{{row.correlationProcess}}</td>
+						
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" >
+						<input ng-model="row.familyWeightage"   ng-model-options="{updateOn: 'keyup'}" 
+							ng-change="$parent.$parent.manageFamiliesCtrl.constructSave(row);"
+							number-only-validator="_____"  ng-disabled="row.showEditLink == 'N'" />
+						</td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" >
+						<input ng-model="row.familyVarietyAdjustment" 
+							ng-change="$parent.$parent.manageFamiliesCtrl.constructSave(row);"
+						 	ng-model-options="{updateOn: 'keyup'}" required placeholder="__.__"  digit-decimal-validator="__.__" ng-disabled="row.showEditLink == 'N'"/>
+						 </td>
+						<td ng-style="$parent.$parent.manageFamiliesCtrl.changeStyle(row.equipmentFlag,row.begFamily);" class="text-center width-10">
+						<a ng-href ng-click="$parent.$parent.manageFamiliesCtrl.open(row.featuresArray,row,'')">Show Features</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- </div></div></div> -->
+		<div class="row text-center">
+				<div class="col-sm-6 text-right">
+					<button id="cancel" class="btn btn-secondary btn-md" ui-sref="ogt-ui-home">
+						<span>{{'application.buttons.backToHome' | translate}}</span>
+					</button>
+				</div>
+			<div ng-hide="manageFamiliesCtrl.buttonsDisabled" class="col-sm-1 text-center">
+					<button id="save" class="btn btn-primary btn-md" ng-click="manageFamiliesCtrl.saveFamilies();">
+						<span>{{'application.buttons.save' | translate}}</span>
+					</button>
+			</div>
+			
+		</div>
+		
+		
+		<div class="row form-horizontal gstform-group  pull-right">
+				<br />
+				<table>
+					<tr>
+						<td style="width: 30%"></td>
+
+						<td style="width: 12%;font-size: 13px;">
+							<div class="colorbox" style="background:#e59595"></div>
+							<div style="line-height: 3">
+								<span> Super Family </span>
+							</div>
+						</td>
+						
+						<td style="width: 12%;font-size: 13px;">
+							<div class="colorbox" style="background:bisque"></div>
+							<div style="line-height: 3">
+								<span> BEG Family </span>
+							</div>
+						</td>
+						
+					</tr>
+				</table>
+			</div>
+			
+			
+	</div>
+	</div></div>
+	
+</div>

@@ -1,0 +1,242 @@
+<div id="content" class="container-fluid">
+	<h2>{{'application.navigation.links.administration.createEditChangeoverMapping'
+		| translate}}</h2>
+	<hr />
+	<form class="well" name="createEditChangeoverMapping" novalidate
+		role="form">
+		<div class="row">
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="market" class="control-label">{{'application.fields.market'
+						| translate}} </label> <select
+						og-validation-indicator="{{'application.fields.market' | translate}}"
+						name="market" id="market" class="form-control" required
+						ng-model='changeoverMappingCreateEditCtrl.selectedMarket'
+						ng-options="market.key as market.name for market in changeoverMappingCreateEditCtrl.markets | orderBy:'name'"
+						ng-change="changeoverMappingCreateEditCtrl.loadModels()">
+						<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+							translate}}</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="col-xs-2">
+
+				<div class="form-group">
+					<label for="vehicleLine" class="control-label">{{'application.fields.model'
+						| translate}} </label> <select
+						og-validation-indicator="{{'application.fields.model' | translate}}"
+						name="vehicleLine" id="vehicleLine" class="form-control" required
+						ng-model='changeoverMappingCreateEditCtrl.selectedModel'
+						ng-options="model.key as model.name for model in changeoverMappingCreateEditCtrl.models | orderBy:'name'"
+						ng-change="changeoverMappingCreateEditCtrl.loadModelYears()">
+						<option value="" default>{{'application.dropdownDefaults.selectModel'|
+							translate}}</option>
+					</select>
+				</div>
+
+			</div>
+
+			<div class="col-xs-2">
+				<div class="form-group">
+					<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+						| translate}} </label> <select name="modelYr" id="modelYr"
+						class="form-control" required
+						ng-model='changeoverMappingCreateEditCtrl.selectedModelYear'
+						ng-options="my.modelYear as my.modelYear for my in changeoverMappingCreateEditCtrl.modelYears|orderBy:['modelYr']:false"
+						ng-change="changeoverMappingCreateEditCtrl.hideAndPopulateDataTable(changeoverMappingCreateEditCtrl.selectedModelYear);">
+						<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+							translate}}</option>
+					</select>
+				</div>
+			</div>
+
+		</div>
+
+
+	</form>
+
+
+
+	<div ng-if="changeoverMappingCreateEditCtrl.isDisplayTable == true">
+		<fieldset class="mapping-border">
+			<legend class="mapping-border"></legend>
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<h4 class="panel-title">{{'application.fields.family' |
+						translate}}</h4>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<label for="prevModelYearFamily" class="control-label">{{changeoverMappingCreateEditCtrl.changeovermappings.pmy}}
+						Family: </label>
+					<button class="pull-right btn btn-primary btn-sm"
+						style="margin-top: 0px" ng-click="clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="pmyFamilyQ" class="form-control pull-right"
+						ng-model="changeoverMappingCreateEditCtrl.search.pmyFamilyQuery"
+						type="text" ng-keyup="keyedIn('pmyFamilyQ')"
+						style="width: 20%; height: 25px" placeholder="Search" /> <span
+						ng-if="changeoverMappingCreateEditCtrl.typeFamilyPmy=='typed'"
+						class="glyphicon glyphicon-remove remove"
+						ng-click="clearSearch('pmyFamilyQ')"></span> <select
+						id="prevMYFamilies" name="prevMYFamilies"
+						class="form-control selectBoxHorizontalScorll" size="5"
+						style="height: 130px"
+						ng-model="changeoverMappingCreateEditCtrl.selectedPmyFamily"
+						ng-options='prevMYFamily.key as prevMYFamily.name for prevMYFamily in changeoverMappingCreateEditCtrl.pmyFamilies | filter:{name:pmyFamilySearch} '
+						ng-change="changeoverMappingCreateEditCtrl.loadFeatures(changeoverMappingCreateEditCtrl.selectedPmyFamily,changeoverMappingCreateEditCtrl.selectedCmyFamily)"
+						>
+						<option ng-if="!changeoverMappingCreateEditCtrl.selectedPmyFamily"
+							style="display: none" value=""></option>
+					</select>
+				</div>
+				<div class="col-sm-6 form-group">
+					<label for="currentModelYearFamily" class="control-label">{{changeoverMappingCreateEditCtrl.changeovermappings.cmy}}
+						Family: </label>
+					<button class="pull-right btn btn-primary btn-sm"
+						style="margin-top: 0px" ng-click="clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="cmyFamilyQ" class="form-control pull-right"
+						ng-model="changeoverMappingCreateEditCtrl.search.cmyFamilyQuery"
+						type="text" ng-keyup="keyedIn('cmyFamilyQ')"
+						style="width: 20%; height: 25px" placeholder="Search" /> <span
+						ng-if="changeoverMappingCreateEditCtrl.typeFamilyCmy=='typed'"
+						class="glyphicon glyphicon-remove remove"
+						ng-click="clearSearch('cmyFamilyQ')"></span> <select
+						id="currMYFamilies" name="currMYFamilies"
+						class="form-control selectBoxHorizontalScorll" size="5"
+						style="height: 130px"
+						ng-change="changeoverMappingCreateEditCtrl.loadFeatures(changeoverMappingCreateEditCtrl.selectedPmyFamily,changeoverMappingCreateEditCtrl.selectedCmyFamily)"
+						ng-model="changeoverMappingCreateEditCtrl.selectedCmyFamily"
+						ng-options='currMYFamily.key as currMYFamily.name for currMYFamily in changeoverMappingCreateEditCtrl.cmyFamilies | filter:{name:cmyFamilySearch}'>
+	<option ng-if="!changeoverMappingCreateEditCtrl.selectedCmyFamily"
+							style="display: none" value=""></option>
+					</select>
+				</div>
+			</div>
+
+			<hr class="clear">
+			<div class="row">
+				<div class="col-sm-6 form-group">
+					<label for="prevModelYearFeatures" class="control-label">{{changeoverMappingCreateEditCtrl.changeovermappings.pmy}}
+						{{'application.fields.features'| translate}}</label>
+					<button class="pull-right btn btn-primary btn-sm"
+						style="margin-top: 0px" ng-click="clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="pmyFeatureQ" class="form-control pull-right"
+						ng-model="changeoverMappingCreateEditCtrl.search.pmyFeatureQuery"
+						type="text" ng-keyup="keyedIn('pmyFeatureQ')"
+						style="width: 20%; height: 25px" placeholder="Search" /> <span
+						ng-if="changeoverMappingCreateEditCtrl.typeFeaturePmy=='typed'"
+						class="glyphicon glyphicon-remove remove"
+						ng-click="clearSearch('pmyFeatureQ')"></span> <select id="prevMYFeatures"
+						name="prevMYFeatures"
+						class="form-control selectBoxHorizontalScorll" size="10"
+						style="height: 260px"
+						ng-model="changeoverMappingCreateEditCtrl.selectedPmyFeature"
+						ng-options='prevMYFeatureObj.key as prevMYFeatureObj.name for prevMYFeatureObj in changeoverMappingCreateEditCtrl.unMappedPmyFeatures | filter:{name:pmyFeatureSearch} '>
+						<option ng-if="!changeoverMappingCreateEditCtrl.selectedPmyFeature"
+							style="display: none" value=""></option>
+					</select>
+				</div>
+				<div class="col-sm-6 form-group">
+					<label for="currentModelYearFeatures" class="control-label">{{changeoverMappingCreateEditCtrl.changeovermappings.cmy}}
+						{{'application.fields.features'| translate}}</label>
+					<button class="pull-right btn btn-primary btn-sm"
+						style="margin-top: 0px" ng-click="clickSearch()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+					<input id="cmyFeatureQ" class="form-control pull-right"
+						ng-model="changeoverMappingCreateEditCtrl.search.cmyFeatureQuery"
+						type="text" ng-keyup="keyedIn('cmyFeatureQ')"
+						style="width: 20%; height: 25px" placeholder="Search" /> <span
+						ng-if="changeoverMappingCreateEditCtrl.typeFeatureCmy=='typed'"
+						class="glyphicon glyphicon-remove remove"
+						ng-click="clearSearch('cmyFeatureQ')"></span> <select id="currMYFeatures"
+						name="currMYFeatures"
+						class="form-control selectBoxHorizontalScorll" size="10"
+						style="height: 260px"
+						ng-model="changeoverMappingCreateEditCtrl.selectedCmyFeature"
+						ng-options='currMYFeatureObj.key as currMYFeatureObj.name for currMYFeatureObj in changeoverMappingCreateEditCtrl.unMappedCmyFeatures | filter:{name:cmyFeatureSearch} '>
+						<option ng-if="!changeoverMappingCreateEditCtrl.selectedCmyFeature"
+							style="display: none" value=""></option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3 "></div>
+				<div class="col-sm-2 "></div>
+				<div class="col-sm-3 form-group addMappingBtn pull-left">
+					<button id="addMapping" class="btn btn-primary btn-md"
+						ng-disabled="changeoverMappingCreateEditCtrl.buttonsDisabled"
+						ng-click="changeoverMappingCreateEditCtrl.addMappings()">
+						<span class="glyphicon glyphicon-plus"></span>&nbsp; <span>{{'application.buttons.addMapping'
+							| translate}}</span>
+					</button>
+				</div>
+				<div class="col-sm-1 "></div>
+				<div class="col-sm-3 "></div>
+			</div>
+			<div class="panel-group" id="accordionManual"
+				style="margin-bottom: 2px; margin-top: 10px;">
+				<div class="panel panel-default">
+					<div class="panel-heading collapsed" data-toggle="collapse"
+						data-parent="#accordionManual" href="#manualMappingList">
+						<h4 class="panel-title" style="color: #ffffff;">
+							<span class="accordion-toggle">
+								&nbsp;{{'application.fields.mappedChangeoverList' |
+								translate}} </span>
+						</h4>
+					</div>
+					<div id="manualMappingList" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<div class="row form-group col-sm-15" style="padding-left: 20px">
+								<div class="checkbox"
+									ng-repeat="mappingObj in changeoverMappingCreateEditCtrl.mappedFeatures">
+									<label> <input type="checkbox" value="{{mappingObj}}"
+										ng-model="changeoverMappingCreateEditCtrl.selectedCheckBoxObjsMapped[mappingObj.value]">
+										{{mappingObj.value}}
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 text-left">
+					<button id="remove-mappings" class="btn btn-danger btn-md"
+						ng-disabled="changeoverMappingCreateEditCtrl.buttonsDisabled"
+						ng-click="changeoverMappingCreateEditCtrl.removeMappings()">
+						<span class="glyphicon glyphicon-trash"></span>&nbsp; <span>{{'application.buttons.deleteChangeoverMappings'
+							| translate}}</span>
+					</button>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-6 text-right">
+					<button id="saveMappings" class="btn btn-primary btn-md"
+						ng-click="changeoverMappingCreateEditCtrl.saveMappings()">
+						<span class="glyphicon glyphicon-floppy-save"></span>&nbsp; <span>{{'application.buttons.saveMappings'
+							| translate}}</span>
+					</button>
+				</div>
+				<div class="col-sm-6 text-left">
+					<button id="cancel-mappings" class="btn btn-secondary btn-md"
+						ng-click="changeoverMappingCreateEditCtrl.cancel()">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>

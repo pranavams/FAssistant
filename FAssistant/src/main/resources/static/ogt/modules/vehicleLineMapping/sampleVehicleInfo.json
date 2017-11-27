@@ -1,0 +1,128 @@
+{
+	"markets" : [
+		{
+			"key" : "GBR",
+			"name" : "Britain",
+			"modelsByStatus" : [
+				{
+					"status" : "Active",
+					"models" : [
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2015"},
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2014"},
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2016"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.75"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.5"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.25"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.75"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.5"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.25"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.75"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.5"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.25"},
+						{"key" : "F-150", "name" : "F-150", "modelYear" : "2015"},
+						{"key" : "F-150", "name" : "F-150", "modelYear" : "2014"},
+						{"key" : "F-150", "name" : "F-150", "modelYear" : "2016"},
+						{"key" : "Navigator", "name" : "Navigator", "modelYear" : "2016.75"},
+						{"key" : "Navigator", "name" : "Navigator", "modelYear" : "2016.5"},
+						{"key" : "Navigator", "name" : "Navigator", "modelYear" : "2016.25"},
+						{"key" : "Focus", "name" : "Focus", "modelYear" : "2016.75"},
+						{"key" : "Focus", "name" : "Focus", "modelYear" : "2016.5"},
+						{"key" : "Focus", "name" : "Focus", "modelYear" : "2016.25"},
+						{"key" : "MKC", "name" : "MKC", "modelYear" : "2016.75"},
+						{"key" : "MKC", "name" : "MKC", "modelYear" : "2016.5"},
+						{"key" : "MKC", "name" : "MKC", "modelYear" : "2016.25"},
+						{"key" : "Ecosport", "name" : "Ecosport", "modelYear" : "2016.75"},
+						{"key" : "Ecosport", "name" : "Ecosport", "modelYear" : "2016.5"},
+						{"key" : "Ecosport", "name" : "Ecosport", "modelYear" : "2016.25"},
+						{"key" : "Taurus", "name" : "Taurus", "modelYear" : "2016.75"},
+						{"key" : "Taurus", "name" : "Taurus", "modelYear" : "2016.5"},
+						{"key" : "Taurus", "name" : "Taurus", "modelYear" : "2016.25"},
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2016.75"},
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2016.5"},
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2016.25"}
+					]
+				}, {
+					"status" : "Inactive",
+					"models" : [
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2015"},
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2014"},
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2016"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.75"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.5"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.25"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.75"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.5"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.25"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.75"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.5"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.25"},
+						{"key" : "F-150", "name" : "F-150", "modelYear" : "2015"},
+						{"key" : "F-150", "name" : "F-150", "modelYear" : "2014"},
+						{"key" : "F-150", "name" : "F-150", "modelYear" : "2016"},
+						{"key" : "Navigator", "name" : "Navigator", "modelYear" : "2016.75"},
+						{"key" : "Navigator", "name" : "Navigator", "modelYear" : "2016.5"},
+						{"key" : "Navigator", "name" : "Navigator", "modelYear" : "2016.25"},
+						{"key" : "Focus", "name" : "Focus", "modelYear" : "2016.75"},
+						{"key" : "Focus", "name" : "Focus", "modelYear" : "2016.5"},
+						{"key" : "Focus", "name" : "Focus", "modelYear" : "2016.25"},
+						{"key" : "MKC", "name" : "MKC", "modelYear" : "2016.75"},
+						{"key" : "MKC", "name" : "MKC", "modelYear" : "2016.5"},
+						{"key" : "MKC", "name" : "MKC", "modelYear" : "2016.25"},
+						{"key" : "Ecosport", "name" : "Ecosport", "modelYear" : "2016.75"},
+						{"key" : "Ecosport", "name" : "Ecosport", "modelYear" : "2016.5"},
+						{"key" : "Ecosport", "name" : "Ecosport", "modelYear" : "2016.25"},
+						{"key" : "Taurus", "name" : "Taurus", "modelYear" : "2016.75"},
+						{"key" : "Taurus", "name" : "Taurus", "modelYear" : "2016.5"},
+						{"key" : "Taurus", "name" : "Taurus", "modelYear" : "2016.25"},
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2016.75"},
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2016.5"},
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2016.25"}
+					]
+				}, {
+					"status" : "New",
+					"models" : [
+						{"key" : "MKZ", "name" : "MKZ", "modelYear" : "2017.5"}
+					]
+				}
+			]
+		}, {
+			"key" : "FIN",
+			"name" : "Finland",
+			"modelsByStatus" : [
+				{
+					"status" : "Active",
+					"models" : [
+						{"key" : "BMAXNB", "name" : "BMAX", "modelYear" : "2016.75"},
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2016.5"},
+						{"key" : "BMAX", "name" : "BMAX", "modelYear" : "2016.25"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.75"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.5"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016.25"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.75"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.5"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016.25"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.75"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.5"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016.25"}
+					]
+				}, {
+					"status" : "Inactive",
+					"models" : [
+						{"key" : "BMAXNB", "name" : "BMAX", "modelYear" : "2016"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2016"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2016"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2016"}
+					]
+				}, {
+					"status" : "New",
+					"models" : [
+						{"key" : "BMAXNB", "name" : "BMAX", "modelYear" : "2017"},
+						{"key" : "CMAX", "name" : "CMAX", "modelYear" : "2017"},
+						{"key" : "Fusion", "name" : "Fusion", "modelYear" : "2017"},
+						{"key" : "Fiesta", "name" : "Fiesta", "modelYear" : "2017"}
+					]
+				}
+			]
+		}
+	]
+}

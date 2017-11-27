@@ -1,0 +1,52 @@
+{
+  "RenditionProposal": [
+    {
+      "ruid": "1",
+      "entityid": "JFV59N5",
+      "dbpid": "",
+      "modelyear": "2017",
+      "body": "3 DOOR PANEL VAN",
+      "derivative": "SPORT VAN",
+      "svp": "NON SVP",
+      "engine": "1.5TDCI 95PS STAGE 6",
+      "transmission": "5 SPEED MANUAL IB5",
+      "weightedsalesmix": "0",
+      "unweightedsalesmix": "0",
+      "currentinventorymix": "0",
+      "projectedinventorymix": "0",
+      "modifiedsalesmix": "0",
+      "ordermix": "0",
+      "orderstogenerate": "9999",
+      "newinventorymix": "0",
+      "weightedsalesmixoverridereason": "",
+      "ordermixoverridereason": "",
+      "weightedsalesmixoverride": "",
+      "ordermixoverride": "",
+      "colorRepresentationType": "BelowThreshold"
+    },
+    {
+      "ruid": "2",
+      "entityid": "JFV79J5",
+      "dbpid": "",
+      "modelyear": "2017",
+      "body": "3 DOOR PANEL VAN",
+      "derivative": "ECO VAN",
+      "svp": "NON SVP",
+      "engine": "1.5L SOHC DITC BECO",
+      "transmission": "5 SPEED MANUAL IB5",
+      "weightedsalesmix": "0",
+      "unweightedsalesmix": "0",
+      "currentinventorymix": "0",
+      "projectedinventorymix": "0",
+      "modifiedsalesmix": "0",
+      "ordermix": "0",
+      "orderstogenerate": "8888",
+      "newinventorymix": "0",
+      "weightedsalesmixoverridereason": "",
+      "ordermixoverridereason": "",
+      "weightedsalesmixoverride": "",
+      "ordermixoverride": "",
+      "colorRepresentationType": "BelowThreshold"
+    }
+  ]
+}

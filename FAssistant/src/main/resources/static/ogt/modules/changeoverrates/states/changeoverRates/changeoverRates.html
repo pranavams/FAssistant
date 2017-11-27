@@ -1,0 +1,167 @@
+<div id="content" wc-protected-resource="ProductAdministration:execute"
+	class="container-fluid">
+	<h1></h1>
+	<h2>{{'application.navigation.links.administration.changeoverRates'
+		| translate}}</h2>
+	<hr />
+	<form class="well" role="form" name="changeoverRatesForm" novalidate>
+			<div class="row">
+				<div class="col-xs-2">
+					<div class="form-group">
+						<label for="market" class="control-label">{{'application.fields.market'
+							| translate}} </label> <select
+							og-validation-indicator="{{'application.fields.market' | translate}}"
+							name="market" id="market" class="form-control" required
+							ng-model='changeoverRatesCtrl.selectedMarket'
+							ng-options="market.key as market.name for market in changeoverRatesCtrl.markets | orderBy:'name'"
+							ng-change="changeoverRatesCtrl.loadModels()">
+							<option value="" default>{{'application.dropdownDefaults.selectMarket'|
+								translate}}</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="col-xs-2">
+
+					<div class="form-group">
+						<label for="vehicleLine" class="control-label">{{'application.fields.model'
+							| translate}} </label> <select
+							og-validation-indicator="{{'application.fields.model' | translate}}"
+							name="vehicleLine" id="vehicleLine" class="form-control" required
+							ng-model='changeoverRatesCtrl.selectedModel'
+							ng-options="model.key as model.name for model in changeoverRatesCtrl.models | orderBy:'name'"
+							ng-change="changeoverRatesCtrl.loadModelYears()">
+							<option value="" default>{{'application.dropdownDefaults.selectModel'|
+								translate}}</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="col-xs-2">
+					<div class="form-group">
+						<label for="modelYr" class="control-label">{{'application.fields.modelyear'
+							| translate}} </label> <select name="modelYr" id="modelYr"
+							class="form-control" required
+							ng-model='changeoverRatesCtrl.selectedModelYear'
+							ng-options="modelYr for modelYr in changeoverRatesCtrl.modelYears|orderBy:['modelYr']:false"
+							ng-change="changeoverRatesCtrl.hideAndPopulateDataTable(changeoverRatesCtrl.selectedModelYear);">
+							<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+								translate}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<p></p>
+					<div ng-if="changeoverRatesCtrl.isDisplayTable == true"
+						class="pull-right">
+						<p></p>
+						<div  ogt-protected-resource="ProductAdministration:execute_{{changeoverRatesCtrl.selectedBusinessProcess}}:{{changeoverRatesCtrl.selectedMarketGroup}}:{{changeoverRatesCtrl.selectedMarket}}:WRITE">
+						<div id="showPen" ng-hide="changeoverRatesCtrl.showEditButton">
+							<button type="button" class="btn  btn-primary btn-md"
+								ng-click="changeoverRatesCtrl.setEditableFlag(true);changeoverRatesCtrl.onClickEdit(); changeoverRatesCtrl.showEditButton = ! changeoverRatesCtrl.showEditButton">Edit</button>
+						</div>
+						</div>
+					<!-- 	<div ng-show="changeoverRatesCtrl.showEditButton">
+							<span>
+								<button type="button" class="btn  btn-primary btn-md"
+									ng-click="changeoverRatesCtrl.onClickSave();changeoverRatesCtrl.showEditButton =! changeoverRatesCtrl.showEditButton">Save</button>
+								<button type="button" class="btn  btn-primary btn-md"
+									ng-click="changeoverRatesCtrl.onClickCancel();changeoverRatesCtrl.showEditButton =! changeoverRatesCtrl.showEditButton">Cancel</button>
+							</span>
+
+						</div> -->
+					</div>
+				</div>
+			</div>
+
+
+		<div class="row  form-actions" ng-if="changeoverRatesCtrl.isDisplayTable == true">
+			<div wc-responsive-table data="changeoverRates"
+				data-table-name="changeoverRatesTable"
+				ng-model="changeoverRatesCtrl.changeoverRatesToUpdate"
+				row-key="ruid" pagination-enabled responsive-view="list"
+				id="list-changeoverRates" class="col-xs-12 wc-table">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th wc-column-sort="entityid" wc-column-sort-default="asc">{{'application.fields.entityid'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="entityid" />
+							</th>
+
+							<th wc-column-sort="engine">{{'application.fields.engine' |
+								translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="engine" />
+							</th>
+							<th wc-column-sort="body">{{'application.fields.body' |
+								translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="body" />
+							</th>
+							<th wc-column-sort="derivative">{{'application.fields.derivative'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="derivative" />
+							</th>
+							<th wc-column-sort="svp">{{'application.fields.svp' |
+								translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="svp" />
+							</th>
+							<th wc-column-sort="transmission">{{'application.fields.transmission'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="transmission" />
+							</th>
+							<th wc-column-sort="transmission">{{'application.fields.changeoverrate'
+								| translate}} <input class="form-control input-sm" type="text"
+								wc-column-filter="changeoverrate" />
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+
+							<td>{{row.entityid}}</td>
+							<td>{{row.engine}}</td>
+							<td>{{row.body}}</td>
+							<td>{{row.derivative}}</td>
+							<td>{{row.svp}}</td>
+							<td>{{row.transmission}}</td>
+
+							<td>
+								<div ng-show="row.changeoverRatesFlag">
+									<!-- <div> -->
+									<input class="form-control input-sm" type="text"
+										placeholder="_._" digit-decimal-validator="_._"
+										ng-model="row.changeoverrateEdit" />
+								</div> <!-- 	<div ng-show="!changeoverRatesCtrl.showEditTextbox"> -->
+								<div ng-hide="row.changeoverRatesFlag">{{
+									row.changeoverrate }}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+		<div ng-if="changeoverRatesCtrl.isDisplayTable == true">
+			<div class="row">
+				<div class="col-xs-4"></div>
+				<div class="col-xs-4">
+					<div ng-show="changeoverRatesCtrl.showEditButton">
+						<span>
+							<button type="button" class="btn  btn-primary btn-md"
+								ng-click="changeoverRatesCtrl.onClickSave();changeoverRatesCtrl.showEditButton =! changeoverRatesCtrl.showEditButton">Save</button>
+								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+							<button type="button" class="btn  btn-primary btn-md pull-right"
+								ng-click="changeoverRatesCtrl.onClickCancel();changeoverRatesCtrl.showEditButton =! changeoverRatesCtrl.showEditButton">Cancel</button>
+						</span>
+
+					</div>
+				</div>
+				<div class="col-xs-4"></div>
+			</div>
+		</div>
+	</form>
+</div>
+

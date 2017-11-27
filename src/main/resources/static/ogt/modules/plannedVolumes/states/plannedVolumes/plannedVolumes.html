@@ -1,0 +1,285 @@
+<div id="content" wc-protected-resource="WeeklyVolume:execute"
+	class="container-fluid" ng-init = "plannedVolCtrl.getDropdownValues()">
+	<h2>{{plannedVolCtrl.buttonName == 'save'? 'application.navigation.links.administration.plannedVolumeEditMode' : 'application.navigation.links.administration.plannedVolume' | translate}}</h2>
+	<hr />
+	<form class="well" name="plannedVolumeForm" ng-if="plannedVolCtrl.dropdownValuesReceived" novalidate>
+		<div class="row">
+			<div class="col-sm-2 form-group">
+				<label for="modelYear" class="control-label">{{'application.fields.modelyear'
+					| translate}} </label> <select id="modelYear" name="modelYr"
+					class="form-control"
+					ng-model='plannedVolCtrl.selectedModelYear'
+					ng-options="modelYr.modelYear as modelYr.modelYear for modelYr in plannedVolCtrl.modelYears|orderBy:'-'"
+					ng-change="plannedVolCtrl.loadModels()">
+					<option value="" default>{{'application.dropdownDefaults.selectModelYear'|
+						translate}}</option>
+				</select>
+			</div>
+			<div class="col-sm-2 form-group">
+				<label for="model" class="control-label">{{'application.fields.model'|
+					translate}} </label> <select id="model" name="model" class="form-control"
+					ng-model="plannedVolCtrl.selectedModel"
+					ng-options="model.key as model.name for model in plannedVolCtrl.models|orderBy:'name'"
+					ng-change="plannedVolCtrl.loadStartMonths();">
+					<option value="" default>{{'application.dropdownDefaults.selectModel'|
+						translate}}</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="startMonth" class="control-label">{{'application.fields.startMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="startMonth"
+						ng-model="plannedVolCtrl.startMonthRange.startDate"
+						is-open="plannedVolCtrl.startMonthRange.isStartDateOpen"
+						datepicker-options="{minDate:
+                          plannedVolCtrl.startMonthRange.minStartDate,
+                          maxDate: plannedVolCtrl.startMonthRange.maxStartDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false"
+						ng-change="plannedVolCtrl.loadEndMonths()" placeholder = "Select Start Month"> <span
+						class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="plannedVolCtrl.startMonthRange.openStartDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+			
+			<div class="col-sm-2 form-group monthHorizon">
+				<label for="endMonth" class="control-label">{{'application.fields.endMonth'
+					| translate}} </label>
+				<p class="input-group">
+					<input type="text" class="form-control" onkeydown="return false"
+						uib-datepicker-popup="MMMM-yyyy" name="endMonth"
+						ng-model="plannedVolCtrl.endMonthRange.endDate"
+						is-open="plannedVolCtrl.endMonthRange.isEndDateOpen"
+						datepicker-options="{minDate:
+                          plannedVolCtrl.endMonthRange.minEndDate,
+                          maxDate: plannedVolCtrl.endMonthRange.maxEndDate,
+                          dateMode: 'month', minMode: 'month', startingDay: 0}"
+						show-button-bar="false" ng-change="plannedVolCtrl.loadButtons()" placeholder = "Select End Month">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default"
+							ng-click="plannedVolCtrl.endMonthRange.openEndDate($event)">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+			</div>
+			<div class="col-sm-2 form-group"></div>
+			<div class="col-sm-1 form-group">
+				<label for="retrieve" class="control-label"></label> 
+				<div ng-if = "plannedVolCtrl.buttonName == 'retrieve'" class="plannedVolumesButton">
+					<button id="retrieve" class="btn btn-primary btn-md" ng-click="plannedVolCtrl.loadPlannedVolumes()">
+						<span>{{'application.buttons.retrieve' | translate}}</span>
+					</button>
+				</div>
+				<div ng-if = "plannedVolCtrl.isDisplayPlannedVolumes &&  plannedVolCtrl.buttonName == 'edit'" class="plannedVolumesButton">
+						<button id="edit" class="btn btn-primary btn-md" ng-click="plannedVolCtrl.buttonName = 'save'">
+							<span>{{'application.buttons.edit' | translate}}</span>
+						</button>
+				</div>
+				<div ng-if = "plannedVolCtrl.buttonName == 'save'" class="plannedVolumesButton">
+						<button id="save" class="btn  btn-success btn-sm" ng-click="plannedVolCtrl.savePlannedVolumes()" ng-disabled="plannedVolCtrl.errorStack.length!==0 || !plannedVolCtrl.isOperatingPlanExists()">
+							<span>{{'application.buttons.save' | translate}}</span>
+						</button>
+				</div>
+			</div>
+			<div class="col-sm-1 form-group">
+			<label for="cancel" class="control-label"></label> 
+			<div ng-if = "plannedVolCtrl.enableCancelButton" class="plannedVolumesButton">
+					<button id="cancel" class="btn btn-secondary btn-md"
+						ng-click="plannedVolCtrl.cancel();">
+						<span>{{'application.buttons.cancel' | translate}}</span>
+					</button>
+			</div>
+			</div>
+		</div>
+
+		<div class="row" >
+			<div class="col-sm-3 form-group"></div>
+			<div class="col-sm-2 form-group plannedVolumeOtherFilter">
+				<label for="applyPattern" class="control-label"></label>
+				<div ng-if="plannedVolCtrl.isDisplayPlannedVolumes">
+					<button id="pattern" class="btn btn-primary btn-md"
+						ng-click="plannedVolCtrl.applyPreferencePatterns()"
+						ng-disabled="!plannedVolCtrl.canPatternsBeApplied()">
+						<span>Apply Preference Pattern</span>
+					</button>
+				</div>
+			</div>
+			<div class="col-sm-2 plannedVolumeFilter"
+				ng-show="plannedVolCtrl.isDisplayPlannedVolumes">
+				<form class="form">
+					<div class="switch-field">
+						<input type="radio" id="switch_left" name="tableDisplayMode"
+							id="one" ng-value="false" ng-model="plannedVolCtrl.monthlyView"
+							checked /> <label for="switch_left">Weekly</label> <input
+							type="radio" id="switch_right" name="tableDisplayMode"
+							ng-value="true" ng-model="plannedVolCtrl.monthlyView" /> <label
+							for="switch_right">Monthly</label>
+					</div>
+				</form>
+			</div>
+			
+			<div class="col-sm-2 form-group plannedVolumesCheckBox">
+				<div class="col-sm-2 form-group plannedVolumeOtherFilter">
+					<div ng-if="plannedVolCtrl.isDisplayPlannedVolumes" class="importCountsDiv">
+						<button id="pattern" class="btn btn-md" ng-class="plannedVolCtrl.showCounts?'buttonEnabled':'buttonDisabled'"
+							ng-click="plannedVolCtrl.showCounts = !plannedVolCtrl.showCounts"
+							ng-disabled="!plannedVolCtrl.canPatternsBeApplied()">
+							<span>Import Schedule Counts</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-3 form-group">
+			<div class="col-sm-2 form-group plannedVolumeOtherFilter">
+				<label for="deriveEntityVolumes" class="control-label"></label>
+				<div ng-if="plannedVolCtrl.isDisplayPlannedVolumes">
+					<button id="pattern" class="btn btn-primary btn-md"
+						ng-click="plannedVolCtrl.deriveEntityVolumes()"
+						ng-disabled="!plannedVolCtrl.isPlannedVolumesSaved">
+						<span>Update Entity Volumes</span>
+					</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	</form>
+	<br/>
+	
+
+	<div ondragstart="return false;" ondrop="return false;" ng-show ="plannedVolCtrl.isDisplayPlannedVolumes" class="row">
+		<div id="tab" class="row form-actions plannedVolumesHeader">
+           <div class="wc-table plannedVolumes">
+               <table class="table table-striped table-bordered tablePadding">
+               		<thead>
+               			<tr>
+	                        <th class="red fixed months"> Months </th>
+	                        <th class="red" ng-repeat = "monthObj in plannedVolCtrl.months" 
+	                             colspan = "{{plannedVolCtrl.monthlyView ? 2 : plannedVolCtrl.getNumberOfWeeks(monthObj.month)}}" >
+	                        	{{monthObj.month | date : 'MMMM-yyyy'}} <span ng-if = "plannedVolCtrl.isMonthLockedIn(monthObj.month)">Locked In</span></th>
+	                     </tr>
+	                     <tr>
+	                        <th class="blue fixed weeks"> Weeks </th>
+	                        <th ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))"
+	                            ng-repeat = "weekObj in plannedVolCtrl.weeks">
+	                        	<span ng-if="weekObj.type === 'Total'">Total</span>
+	                        	<span ng-if="weekObj.type === 'Overrides'">Overrides</span>
+	                        	<span ng-if="!weekObj.type">{{weekObj.week | date : 'MM/dd'}}</span>
+	                        </th>
+	                     </tr>
+	                     <tr>
+	                        <th class="grey fixed oplan">
+								<em ng-hide="plannedVolCtrl.plantsExpanded" class="glyphicon glyphicon-plus"  ng-click="plannedVolCtrl.plantsExpanded=true"></em>
+								<em ng-show="plannedVolCtrl.plantsExpanded" class="glyphicon glyphicon-minus" ng-click="plannedVolCtrl.plantsExpanded=false"></em>
+								Operating Plan
+							</th>
+	                        <th class="oplan preferenceFont" ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))"
+	                            ng-repeat = "weekObj in plannedVolCtrl.weeks" ng-class="weekObj.type === 'Overrides' ? 'orange' : 'grey'">
+	                        	<span ng-if="weekObj.type === 'Total'">{{plannedVolCtrl.getOpPlanTotalForMonth(weekObj.month) | number}}</span>
+	                        	<span ng-if="!weekObj.type">{{plannedVolCtrl.getOpPlanVolumeForWeek(weekObj).opPlanVolume | number}}</span>
+							</th>
+	                     </tr>
+	                     <tr ng-show="plannedVolCtrl.plantsExpanded" ng-repeat = "plant in plannedVolCtrl.plants">
+	                     	<th class="grey fixed oplan"> {{plant}} </th>
+	                     	<th class="oplan preferenceFont" ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))"
+	                     	    ng-repeat= "weekObj in plannedVolCtrl.weeks" ng-class="weekObj.type === 'Overrides' ? 'orange' : 'grey'">
+	                     		<span ng-if="weekObj.type === 'Total'">{{plannedVolCtrl.getMonthLevelPlantTotal(weekObj.month,plant) | number}}</span>
+	                     		<span ng-if="!weekObj.type">{{plannedVolCtrl.getPlantVolumeForWeek(weekObj,plant).plantVolume | number}}</span>
+	                     	</th>
+	                     </tr>
+	                     <tr>
+	                        <th class="orange fixed oplan"> SPCPS Overriden Volume </th>
+	                        <th class="oplan preferenceFont" ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))"  
+	                            ng-repeat = "weekObj in plannedVolCtrl.weeks" ng-class="weekObj.type === 'Total' ? 'grey' : 'orange'">
+	                        	<span ng-if="weekObj.type">{{plannedVolCtrl.getMonthLevelSPCPSOverrideSum(weekObj.month) | number}}</span>
+	                        	<span ng-class = "{highlightRed : !plannedVolCtrl.isOverridenVolumeValid(weekObj)}"
+	                        	ng-if="!weekObj.type">{{plannedVolCtrl.getWeekLevelSPCPSOverrideSum(weekObj.week) | number}}</span>
+							</th>
+	                     </tr>
+	                     <tr>
+	                        <th class="grey fixed weeks"> SPCPS Original Volume </th>
+	                        <th class="oplan preferenceFont" ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))" 
+	                            ng-repeat = "weekObj in plannedVolCtrl.weeks" ng-class="weekObj.type === 'Overrides' ? 'orange' : 'grey'">
+	                        	<span ng-if="weekObj.type === 'Total'">{{plannedVolCtrl.getSPCPSOriginalTotalForMonth(weekObj.month) | number}}</span>
+	                        	<span ng-if="!weekObj.type">{{plannedVolCtrl.getOpPlanVolumeForWeek(weekObj).spcpsOriginalVolume | number}}</span>
+							</th>
+	                     </tr>
+	                     <tr ng-show = "plannedVolCtrl.showCounts">
+	                        <th class="scheduleCountsHeader fixed weeks"> Scheduled Counts </th>
+	                        <th class=" oplan preferenceFont" ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))" 
+	                            ng-repeat = "weekObj in plannedVolCtrl.weeks" ng-class="weekObj.type === 'Total' ? 'grey' : weekObj.type === 'Overrides' ? 'orange' : 'scheduleCountsHeader'">
+	                        	<span ng-if="weekObj.type === 'Total'">{{plannedVolCtrl.getMonthLevelScheduledCounts(weekObj.month) | number}}</span>
+	                        	<span ng-if="!weekObj.type">{{plannedVolCtrl.getWeekLevelScheduledCounts(weekObj.week) | number}}</span>
+							</th>
+	                     </tr>
+	                     <tr class="tbodyBorder">
+	                     	
+	                     </tr>
+               		</thead>
+               		<tbody>
+               			<tr ng-repeat = "channel in plannedVolCtrl.channels" 
+               			ng-hide = "(channel.type === 'ScheduleCounts' || channel.type === 'MarketScheduleCounts') && !plannedVolCtrl.showCounts">
+               				<td class="fixed channels" ng-class="plannedVolCtrl.getChannelClass(channel.type)"> 
+               					<span ng-if="channel.type === 'Market'">{{channel.market}}</span>
+               					<span ng-if="channel.type === 'MarketScheduleCounts'"></span>
+               					<span ng-if="!channel.type">{{channel.channelName}}</span>
+               					<span ng-if="channel.type === 'ScheduleCounts'"></span>
+             				</td>
+             				<td ng-show="!plannedVolCtrl.monthlyView || (plannedVolCtrl.monthlyView && (weekObj.type==='Total' || weekObj.type==='Overrides'))" 
+             				    ng-repeat = "weekObj in plannedVolCtrl.weeks" class="preferenceFont" ng-class="plannedVolCtrl.getChannelClass(channel.type,weekObj.type)">
+             					<span  ng-if="channel.type == 'Market' && weekObj.type == 'Total'">
+             						{{::plannedVolCtrl.getMarketSumSPCPSTotal(channel.market, weekObj.month, weekObj.type) | number}}
+             					</span>
+             					<span ng-if="channel.type == 'Market' && weekObj.type == 'Overrides'">
+             						{{plannedVolCtrl.getMarketSumSPCPSOverrides(channel.market, weekObj.month) | number}}
+             					</span>
+             					<span ng-if="channel.type == 'Market' && !weekObj.type">
+             						{{plannedVolCtrl.getMarketSumForWeek(channel.market, weekObj.week) | number}}
+             					</span>
+             					
+             					<span ng-if="!channel.type && weekObj.type === 'Total'">
+             						{{::plannedVolCtrl.getSPCPSTotalChannelVolume(channel.market, channel.channelName, weekObj.type, weekObj.month).volume | number}}
+             					</span>
+             					<span ng-if="!channel.type && weekObj.type === 'Overrides'">
+             						{{plannedVolCtrl.getSPCPSOverrideSumForChannel(channel.market, channel.channelName, weekObj.month) | number}}
+             					</span>
+             					
+             					<span ng-if="channel.type == 'MarketScheduleCounts' && weekObj.type == 'Total'">
+             						{{::plannedVolCtrl.getMarketCountsForTotalcolumn(channel.market, weekObj.month, weekObj.type) | number}}
+             					</span>
+             					<span ng-if="channel.type == 'MarketScheduleCounts' && !weekObj.type">
+             						{{plannedVolCtrl.getMarketSumCountsForWeek(channel.market, weekObj.week) | number}}
+             					</span>
+             					<span ng-if="channel.type == 'ScheduleCounts' && weekObj.type === 'Total'">
+             						{{::plannedVolCtrl.getSPCPSTotalChannelVolume(channel.market, channel.channelName, weekObj.type, weekObj.month).counts | number}}
+             					</span>
+             					<span ng-if="channel.type == 'ScheduleCounts' && !weekObj.type">
+									{{plannedVolCtrl.getChannelVolumeForWeek(channel.market, channel.channelName, weekObj.week).counts | number}}
+             					</span>
+             					
+             					<span ng-if="plannedVolCtrl.buttonName == 'edit' && !channel.type && !weekObj.type">
+             						{{plannedVolCtrl.getChannelVolumeForWeek(channel.market, channel.channelName, weekObj.week).volume | number}}
+             					</span>
+             					<span ng-if="plannedVolCtrl.buttonName == 'save' && !channel.type && !weekObj.type">
+             						<input type= "number" ng-model = "plannedVolCtrl.getChannelVolumeForWeek(channel.market, channel.channelName, weekObj.week).volume" 
+             						ng-model-options="{updateOn: 'keyup'}" ng-disabled = "plannedVolCtrl.freezeChannelCell(weekObj)" 
+             						ng-change = "blur=true;plannedVolCtrl.getChannelVolumeForWeek(channel.market, channel.channelName, weekObj.week).changed = true"
+             						min="0" maxlength ="6" stop-cut-copy-paste
+             						class = "pref-input-sm" ng-class="{ myBlur: blur }" onfocus="this.select()" 
+             						ng-style = "{'background-color' : plannedVolCtrl.freezeChannelCell(weekObj) ? '#ccccb3' : '' }" />
+             					</span>
+             				</td>
+               			</tr>
+               		</tbody>
+               </table>
+           </div>
+        </div>
+	</div>
+</div>

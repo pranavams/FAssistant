@@ -1,0 +1,12 @@
+
+<div class="form-group">
+	<label for="vehicleLine" class="control-label">{{'application.fields.model'
+		| translate}} </label> <select
+		og-validation-indicator="{{'application.fields.model' | translate}}"
+		name="vehicleLine" id="vehicleLine" class="form-control" required
+		ng-model='vehicleLinesCtrl.selectedModel'
+		ng-options="model.key as model.name for model in vehicleLinesCtrl.models | orderBy:'name'"
+		ng-change="{{onModelChange}}">
+		<option value="" default>{{'application.dropdownDefaults.selectModel'| translate}}</option>
+	</select>
+</div>
